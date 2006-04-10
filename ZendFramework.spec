@@ -1,0 +1,49 @@
+Summary:	Zend Framework
+Name:		ZendFramework
+Version:	0.1.2
+Release:	0.1
+License:	Zend Framework License, 1.0, (distributable, see LICENSE)
+Group:		Development/Languages/PHP
+Source0:	http://framework.zend.com/releases/%{name}-%{version}.tar.gz
+# Source0-md5:	68a2d2673abaf34d6db7facb79cef670
+URL:		http://framework.zend.com/
+Requires:	php-common >= 4:5.0.0
+BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_appdir	%{_datadir}/%{name}
+
+%description
+Zend Framework is a high quality and open source framework for
+developing Web Applications and Web Services.
+
+Built in the true PHP spirit, the Zend Framework delivers ease-of-use
+and powerful functionality. It provides solutions for building modern,
+robust, and secure websites.
+
+%prep
+%setup -q
+
+%install
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_appdir}}
+cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
+# library should be in include_path if used
+cp -a library $RPM_BUILD_ROOT%{_appdir}
+
+# The /incubator directory contains recent contributions that may
+# eventually be moved to the /library directory.  These are considered
+# highly unstable.
+cp -a incubator $RPM_BUILD_ROOT%{_appdir}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644,root,root,755)
+%doc LICENSE.txt README.txt NEWS.txt
+# TODO: subpackage docs
+%doc documentation/*
+%{_appdir}
+%{_examplesdir}/%{name}-%{version}
