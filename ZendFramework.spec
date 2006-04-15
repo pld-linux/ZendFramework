@@ -1,4 +1,5 @@
 Summary:	Zend Framework
+Summary(pl):	Szkielet Zend
 Name:		ZendFramework
 Version:	0.1.2
 Release:	0.1
@@ -20,6 +21,14 @@ developing Web Applications and Web Services.
 Built in the true PHP spirit, the Zend Framework delivers ease-of-use
 and powerful functionality. It provides solutions for building modern,
 robust, and secure websites.
+
+%description -l pl
+Zend Framework to maj±cy otwarte ¼ród³a, wysokiej jako¶ci szkielet do
+tworzenia aplikacji i us³ug WWW.
+
+Stworzony w prawdziwym duchu PHP szkielet Zend dostarcza ³atw± w
+u¿yciu i potê¿n± funkcjonalno¶æ. Udostêpnia rozwi±zania do tworzenia
+nowoczesnych, bogatych i bezpiecznych serwisów WWW.
 
 %prep
 %setup -q
