@@ -1,12 +1,12 @@
 Summary:	Zend Framework
 Summary(pl):	Szkielet Zend
 Name:		ZendFramework
-Version:	0.1.2
+Version:	0.1.3
 Release:	0.1
 License:	Zend Framework License, 1.0, (distributable, see LICENSE)
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	68a2d2673abaf34d6db7facb79cef670
+# Source0-md5:	3adef29f62bb8f3c536b81e56d65fd86
 URL:		http://framework.zend.com/
 Requires:	php-common >= 4:5.0.0
 BuildArch:	noarch
