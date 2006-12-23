@@ -30,6 +30,17 @@ Stworzony w prawdziwym duchu PHP szkielet Zend dostarcza ³atw± w
 u¿yciu i potê¿n± funkcjonalno¶æ. Udostêpnia rozwi±zania do tworzenia
 nowoczesnych, bogatych i bezpiecznych serwisów WWW.
 
+%package doc
+Summary:	Documentation for Zend Framework
+Summary(pl):	Dokumentacja dla Szkieletu Zend
+Group:		Documentation
+
+%description doc
+Documentation for Zend Framework.
+
+%description doc -l pl
+Dokumentacja dla Szkieletu Zend.
+
 %prep
 %setup -q
 
@@ -52,7 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc LICENSE.txt README.txt NEWS.txt
-# TODO: subpackage docs
-%doc documentation/*
 %{_appdir}
 %{_examplesdir}/%{name}-%{version}
+
+%files doc
+%defattr(644,root,root,755)
+%doc documentation/*
