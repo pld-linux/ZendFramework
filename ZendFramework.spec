@@ -1,5 +1,5 @@
 Summary:	Zend Framework
-Summary(pl.UTF-8):   Szkielet Zend
+Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	0.1.3
 Release:	0.1
@@ -32,7 +32,7 @@ nowoczesnych, bogatych i bezpiecznych serwisów WWW.
 
 %package doc
 Summary:	Documentation for Zend Framework
-Summary(pl.UTF-8):   Dokumentacja dla Szkieletu Zend
+Summary(pl.UTF-8):	Dokumentacja dla Szkieletu Zend
 Group:		Documentation
 
 %description doc
