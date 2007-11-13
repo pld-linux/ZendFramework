@@ -1,14 +1,15 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	0.1.3
-Release:	0.1
+Version:	1.0.2
+Release:	1
 License:	Zend Framework License, 1.0, (distributable, see LICENSE)
 Group:		Development/Languages/PHP
-Source0:	http://framework.zend.com/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	3adef29f62bb8f3c536b81e56d65fd86
+Source0:	http://framework.zend.com/releases/ZendFramework-%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	15066ea33600df509c1ba6a5924688a7
 URL:		http://framework.zend.com/
-Requires:	php-common >= 4:5.0.0
+Requires:	php-common >= 4:5.1.4
+Obsoletes:	ZendFramework-doc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -41,6 +42,13 @@ Documentation for Zend Framework.
 %description doc -l pl.UTF-8
 Dokumentacja dla Szkieletu Zend.
 
+%package demos
+Summary:	Demos for Zend Framework
+Group:		Documentation
+
+%description demos
+Demos for Zend Framework.
+
 %prep
 %setup -q
 
@@ -52,11 +60,6 @@ cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 # library should be in include_path if used
 cp -a library $RPM_BUILD_ROOT%{_appdir}
 
-# The /incubator directory contains recent contributions that may
-# eventually be moved to the /library directory.  These are considered
-# highly unstable.
-cp -a incubator $RPM_BUILD_ROOT%{_appdir}
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -64,8 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc LICENSE.txt README.txt NEWS.txt
 %{_appdir}
-%{_examplesdir}/%{name}-%{version}
 
-%files doc
+%files demos
 %defattr(644,root,root,755)
-%doc documentation/*
+%{_examplesdir}/%{name}-%{version}
