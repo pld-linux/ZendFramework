@@ -31,23 +31,16 @@ Stworzony w prawdziwym duchu PHP szkielet Zend dostarcza łatwą w
 użyciu i potężną funkcjonalność. Udostępnia rozwiązania do tworzenia
 nowoczesnych, bogatych i bezpiecznych serwisów WWW.
 
-%package doc
-Summary:	Documentation for Zend Framework
-Summary(pl.UTF-8):	Dokumentacja dla Szkieletu Zend
-Group:		Documentation
-
-%description doc
-Documentation for Zend Framework.
-
-%description doc -l pl.UTF-8
-Dokumentacja dla Szkieletu Zend.
-
 %package demos
 Summary:	Demos for Zend Framework
+Summary(pl.UTF-8):	Programy demonstracyjne dla szkieletu Zend Framework
 Group:		Documentation
 
 %description demos
 Demos for Zend Framework.
+
+%description demos -l pl.UTF-8
+Programy demonstracyjne dla szkieletu Zend Framework.
 
 %prep
 %setup -q
