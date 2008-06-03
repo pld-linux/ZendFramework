@@ -17,8 +17,6 @@ Requires:	php-iconv
 Requires:	php-pcre
 Requires:	php-pdo
 Requires:	php-pdo-mysql
-Requires:	php-session
-Requires:	php-spl
 Obsoletes:	ZendFramework-doc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
