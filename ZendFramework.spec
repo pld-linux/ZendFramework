@@ -4,7 +4,7 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.5.2
-Release:	1.1
+Release:	1.2
 License:	Zend Framework License, 1.0, (distributable, see LICENSE)
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
