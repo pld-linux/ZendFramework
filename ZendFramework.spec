@@ -1,14 +1,24 @@
+# TODO
+# - split by Components to subpackages
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.5.2
-Release:	1
+Release:	1.1
 License:	Zend Framework License, 1.0, (distributable, see LICENSE)
 Group:		Development/Languages/PHP
-Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
 # Source0-md5:	f2c3d4e6aea6136645d20979cc94bf5b
 URL:		http://framework.zend.com/
 Requires:	php-common >= 4:5.1.4
+Requires:	php-ctype
+Requires:	php-hash
+Requires:	php-iconv
+Requires:	php-pcre
+Requires:	php-pdo
+Requires:	php-pdo-mysql
+Requires:	php-session
+Requires:	php-spl
 Obsoletes:	ZendFramework-doc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -51,7 +61,7 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_appdir}}
 cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 # library should be in include_path if used
-cp -a library $RPM_BUILD_ROOT%{_appdir}
+cp -a library/Zend/* $RPM_BUILD_ROOT%{_appdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
