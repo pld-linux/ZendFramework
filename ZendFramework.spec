@@ -4,7 +4,7 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.5.2
-Release:	1.2
+Release:	1.5
 License:	Zend Framework License, 1.0, (distributable, see LICENSE)
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
@@ -20,8 +20,6 @@ Requires:	php-pdo-mysql
 Obsoletes:	ZendFramework-doc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_appdir	%{_datadir}/%{name}
 
 %description
 Zend Framework is a high quality and open source framework for
@@ -55,11 +53,11 @@ Programy demonstracyjne dla szkieletu Zend Framework.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_appdir}}
+install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{php_pear_dir}}
 cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-# library should be in include_path if used
-cp -a library/Zend/* $RPM_BUILD_ROOT%{_appdir}
+# library should be in include_path if used, so we use already defined %{php_pear_dir}
+cp -a library/* $RPM_BUILD_ROOT%{php_pear_dir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,7 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc LICENSE.txt README.txt
-%{_appdir}
+%{php_pear_dir}
 
 %files demos
 %defattr(644,root,root,755)
