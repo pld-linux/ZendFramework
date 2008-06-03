@@ -42,58 +42,77 @@ nowoczesnych, bogatych i bezpiecznych serwisów WWW.
 %package Zend_Acl
 Summary:	Zend_Acl
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.acl.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Acl
-Zend_Acl
+Zend_Acl provides lightweight and flexible access control list (ACL)
+functionality and privileges management. In general, an application
+may utilize such functionality to control access to certain protected
+objects by other requesting objects.
 
 %package Zend_Auth
 Summary:	Zend_Auth
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.auth.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Auth
-Zend_Auth
+Zend_Auth provides an API for authentication and includes concrete
+authentication adapters for common use case scenarios.
 
 %package Zend_Cache
 Summary:	Zend_Cache
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.cache.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Cache
-Zend_Cache
+Zend_Cache provides a generic way to cache any data.
 
 %package Zend_Config
 Summary:	Zend_Config
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.config.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Config
-Zend_Config
+Zend_Config is designed to simplify access to and use of configuration
+data within applications.
 
 %package Zend_Console_Getopt
 Summary:	Zend_Console_Getopt
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.console.getopt.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Console_Getopt
-Zend_Console_Getopt
+The Zend_Console_Getopt class helps command-line applications to parse
+their options and arguments.
 
 %package Zend_Controller
 Summary:	Zend_Controller
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.controller.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Controller
-Zend_Controller
+Zend_Controller is the heart of Zend Framework's MVC system. MVC
+stands for Model-View-Controller and is a design pattern targeted at
+separating application logic from display logic.
 
 %package Zend_Currency
 Summary:	Zend_Currency
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.currency.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Currency
-Zend_Currency
+Zend_Currency is part of the I18N core of the Zend_Framework. It
+handles all issues related to currency, money representation and
+formating. And it also provides additional informational methods which
+include localized informations on currencies, informations about which
+currency is used in which region and more.
 
 %package Zend_Date
 Summary:	Zend_Date
