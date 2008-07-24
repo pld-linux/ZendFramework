@@ -2,15 +2,16 @@
 # - Components to subpackages
 # - dependencies?
 %include	/usr/lib/rpm/macros.php
+%define		rel RC1
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.5.2
-Release:	1.11
+Version:	1.6.0
+Release:	0.%{rel}.1
 License:	New BSD License
 Group:		Development/Languages/PHP
-Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
-# Source0-md5:	f2c3d4e6aea6136645d20979cc94bf5b
+Source0:	http://framework.zend.com/releases/%{name}-%{version}%{rel}/ZendFramework-%{version}%{rel}.tar.gz
+# Source0-md5:	196aef8904be20c199e536480f92c5c9
 URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-common >= 4:5.1.4
@@ -174,6 +175,33 @@ Zend_Debug::dump() prints or returns information about an expression.
 This simple technique of debugging is easy to use in an ad hoc
 fashion, and requires no initialization, special tools, or debugging
 environment.
+
+%package Zend_Dojo
+Summary:	Zend_Dojo
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.dojo.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Dojo
+Zend_Dojo component provides integration with Dojo Toolkit.
+
+Integration points with Dojo include:
+- JSON-RPC support
+- dojo.data compatibility
+- View helper to help setup the Dojo environment
+- Dijit-specific Zend_View helpres
+- Dijit-specific Zend_Form elements and decorators
+
+%package Zend_Dom
+Summary:	Zend_Dom
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.dom.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Dom
+Zend_Dom provides tools for working with DOM documents and structures.
+Currently, it offer Zend_Dom_Query, which provides a unified interface
+for querying DOM documents utilizing both XPath and CSS selectors.
 
 %package Zend_Exception
 Summary:	Zend_Exception
@@ -441,6 +469,25 @@ Requires:	%{name} = %{version}-%{release}
 %description Zend_OpenId
 Zend_OpenId is a Zend Framework component that provides a simple API
 for building OpenID-enabled sites and identity providers.
+
+%package Zend_Paginator
+Summary:	Zend_Paginator
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.paginator.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Paginator
+Zend_Paginator is a flexible component for paginating collections of
+data and presenting that data to users.
+
+The primary design goals of Zend_Paginator are as follows:
+- Paginate arbitrary data, not just relational databases
+- Fetch only the results that need to be displayed
+- Do not force users to adhere to only one way of displaying data or
+  rendering pagination controls
+- Loosely couple Zend_Paginator to other Zend Framework components so
+  that users who wish to use it independently of Zend_View, Zend_Db,
+  etc. can do so.
 
 %package Zend_Pdf
 Summary:	Zend_Pdf
@@ -724,6 +771,38 @@ Requires:	%{name} = %{version}-%{release}
 %description Zend_Session
 Zend_Session
 
+%package Zend_Soap
+Summary:	Zend_Soap
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.soap.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Soap
+Zend_Soap component is intended to simplify Web Services development
+for PHP programmers.
+
+%package Zend_Text
+Summary:	Zend_Text
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.text.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Text
+Zend_Text is a component which enables developers to create a so
+called FIGlet text. A FIGlet text is a string, which is represented as
+ASCII art. FIGlets use a special font format, called FLT (FigLet
+Font).
+
+%package Zend_Test
+Summary:	Zend_Test
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.test.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Test
+Zend_Test provides tools to facilitate unit testing of your Zend
+Framework applications.
+
 %package Zend_Translate
 Summary:	Zend_Translate
 Group:		Development/Languages/PHP
@@ -831,7 +910,7 @@ Demos for Zend Framework.
 Programy demonstracyjne dla szkieletu Zend Framework.
 
 %prep
-%setup -q
+%setup -q -n %{name}-1.6%{rel}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -912,6 +991,15 @@ rm -rf $RPM_BUILD_ROOT
 %files Zend_Debug
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Debug.php
+
+%files Zend_Dojo
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Dojo
+%{php_pear_dir}/Zend/Dojo.php
+
+%files Zend_Dom
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Dom
 
 %files Zend_Exception
 %defattr(644,root,root,755)
@@ -1006,6 +1094,11 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/OpenId
 %{php_pear_dir}/Zend/OpenId.php
 
+%files Zend_Paginator
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Paginator
+%{php_pear_dir}/Zend/Paginator.php
+
 %files Zend_Pdf
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Pdf
@@ -1087,6 +1180,18 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Session
 %{php_pear_dir}/Zend/Session.php
+
+%files Zend_Soap
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Soap
+
+%files Zend_Text
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Text
+
+%files Zend_Test
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Test
 
 %files Zend_Translate
 %defattr(644,root,root,755)
