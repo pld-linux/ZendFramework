@@ -1,5 +1,6 @@
 # TODO
 # - Components to subpackages
+# - dependencies?
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
@@ -117,78 +118,147 @@ currency is used in which region and more.
 %package Zend_Date
 Summary:	Zend_Date
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.date.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Date
-Zend_Date
+Zend_Date component offers a detailed, but simple API for manipulating
+dates and times. Its methods accept a wide variety of types of
+information, including date parts, in numerous combinations yielding
+many features and possibilities above and beyond the existing PHP date
+related functions.
 
 %package Zend_Db
 Summary:	Zend_Db
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.db.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Db
-Zend_Db
+Zend_Db and its related classes provide a simple SQL database
+interface for Zend Framework. The Zend_Db_Adapter is the basic class
+you use to connect your PHP application to an RDBMS. There is a
+different Adapter class for each brand of RDBMS. The Zend_Db Adapters
+create a bridge from the vendor-specific PHP extensions to a common
+interface, to help you write PHP applications once and deploy with
+multiple brands of RDBMS with very little effort. The interface of the
+Adapter class is similar to the interface of the PHP Data Objects
+extension.
+
+Zend_Db provides Adapter classes to PDO drivers for the following
+RDBMS brands:
+- IBM DB2 and Informix Dynamic Server (IDS), using the pdo_ibm PHP
+  extension
+- MySQL, using the pdo_mysql PHP extension
+- Microsoft SQL Server, using the pdo_mssql PHP extension
+- Oracle, using the pdo_oci PHP extension
+- PostgreSQL, using the pdo_pgsql PHP extension
+- SQLite, using the pdo_sqlite PHP extension
+
+In addition, Zend_Db provides Adapter classes that utilize PHP
+database extensions for the following RDBMS brands:
+- MySQL, using the mysqli PHP extension
+- Oracle, using the oci8 PHP extension
+- IBM DB2, using the ibm_db2 PHP extension
+- Firebird/Interbase, using the php_interbase PHP extension
 
 %package Zend_Debug
 Summary:	Zend_Debug
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.debug.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Debug
-Zend_Debug
+Zend_Debug is a simple debugging component. The static method
+Zend_Debug::dump() prints or returns information about an expression.
+This simple technique of debugging is easy to use in an ad hoc
+fashion, and requires no initialization, special tools, or debugging
+environment.
 
 %package Zend_Exception
 Summary:	Zend_Exception
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.exception.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Exception
-Zend_Exception
+Zend_Exception is a base exception class. All exceptions thrown by
+Zend Framework classes should throw an exception that derives from the
+base class Zend_Exception.
 
 %package Zend_Feed
 Summary:	Zend_Feed
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.feed.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Feed
-Zend_Feed
+Zend_Feed provides functionality for consuming RSS and Atom feeds. It
+provides a natural syntax for accessing elements of feeds, feed
+attributes, and entry attributes. Zend_Feed also has extensive support
+for modifying feed and entry structure with the same natural syntax,
+and turning the result back into XML. In the future, this modification
+support could provide support for the Atom Publishing Protocol.
 
 %package Zend_Filter
 Summary:	Zend_Filter
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.filter.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Filter
-Zend_Filter
+Zend_Filter component provides a set of commonly needed data filters.
+It also provides a simple filter chaining mechanism by which multiple
+filters may be applied to a single datum in a user-defined order.
 
 %package Zend_Filter_Input
 Summary:	Zend_Filter_Input
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.filter.input.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Filter_Input
-Zend_Filter_Input
+Zend_Filter_Input provides a declarative interface to associate
+multiple filters and validators, apply them to collections of data,
+and to retrieve input values after they have been processed by the
+filters and validators. Values are returned in escaped format by
+default for safe HTML output.
 
 %package Zend_Form
 Summary:	Zend_Form
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.form.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Form
-Zend_Form
+Zend_Form simplifies form creation and handling in your web
+application. It accomplishes the following goals:
+- Element input filtering and validation
+- Element ordering
+- Element and Form rendering, including escaping
+- Element and form grouping
+- Element and form-level configuration
 
 %package Zend_Gdata
 Summary:	Zend_Gdata
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.gdata.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Gdata
-Zend_Gdata
+Zend_Gdata component is a interface for accessing Google Data from
+PHP. Google Data APIs provide programmatic interface to some of
+Google's online services. The Google data Protocol is based upon the
+Atom Publishing Protocol and allows client applications to retrieve
+data matching queries, post data, update data and delete data using
+standard HTTP and the Atom syndication formation. Zend_Gdata component
+also supports accessing other services implementing the Atom
+Publishing Protocol.
 
 %package Zend_Http
 Summary:	Zend_Http
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.http.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Http
@@ -197,46 +267,90 @@ Zend_Http
 %package Zend_InfoCard
 Summary:	Zend_InfoCard
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.infocard.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_InfoCard
-Zend_InfoCard
+Zend_InfoCard component implements relying-party support for
+Information Cards. Infomation Cards are used for identity management
+on the internet and authentication of users to web sites (called
+relying parties).
 
 %package Zend_Json
 Summary:	Zend_Json
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.json.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Json
-Zend_Json
+Zend_Json provides convenience methods for serializing native PHP to
+JSON and decoding JSON to native PHP.
+
+JSON, JavaScript Object Notation, can be used for data interchange
+between JavaScript and other languages. Since JSON can be directly
+evaluated by JavaScript, it is a more efficient and lightweight format
+than XML for exchanging data with JavaScript clients.
+
+In addition, Zend_Json provides a useful way to convert any arbitrary
+XML formatted string into a JSON formatted string. This built-in
+feature will enable PHP developers to transform the enterprise data
+encoded in XML format into JSON format before sending it to
+browser-based Ajax client applications. It provides an easy way to do
+dynamic data conversion on the server-side code thereby avoiding
+unnecessary XML parsing in the browser-side applications. It offers a
+nice utility function that results in easier application-specific data
+processing techniques.
 
 %package Zend_Layout
 Summary:	Zend_Layout
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.layout.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Layout
-Zend_Layout
+Zend_Layout implements a classic Two Step View pattern, allowing
+developers to wrap application content within another view, usually
+representing the site template. Such templates are often termed
+layouts by other projects, and Zend Framework has adopted this term
+for consistency.
+
+The main goals of Zend_Layout are as follows:
+- Automate selection and rendering of layouts when used with the Zend
+  Framework MVC components.
+- Provide separate scope for layout related variables and content.
+- Allow configuration, including layout name, layout script resolution
+  (inflection), and layout script path.
+- Allow disabling layouts, changing layout scripts, and other states;
+  allow these actions from within action controllers and view scripts.
+- Follow same script resolution rules (inflection) as the
+  ViewRenderer, but allow them to also use different rules.
+- Allow usage without Zend Framework MVC components.
 
 %package Zend_Ldap
 Summary:	Zend_Ldap
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.ldap.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Ldap
-Zend_Ldap
+Zend_Ldap is a class for performing LDAP operations including but not
+limited to binding, searching and modifying entries in an LDAP
+directory.
 
 %package Zend_Loader
 Summary:	Zend_Loader
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.loader.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Loader
-Zend_Loader
+The Zend_Loader class includes methods to help you load files
+dynamically.
 
 %package Zend_Locale
 Summary:	Zend_Locale
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.locale.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Locale
@@ -245,69 +359,133 @@ Zend_Locale
 %package Zend_Log
 Summary:	Zend_Log
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.log.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Log
-Zend_Log
+Zend_Log is a component for general purpose logging. It supports
+multiple log backends, formatting messages sent to the log, and
+filtering messages from being logged. These functions are divided into
+the following objects:
+- A Log (instance of Zend_Log) is the object that your application
+  uses the most. You can have as many Log objects as you like; they do
+  not interact. A Log object must contain at least one Writer, and can
+  optionally contain one or more Filters.
+- A Writer (inherits from Zend_Log_Writer_Abstract) is responsible for
+  saving data to storage.
+- A Filter (implements Zend_Log_Filter_Interface) blocks log data from
+  being saved. A filter may be applied to an individual Writer, or to a
+  Log where it is applied before all Writers. In either case, filters
+  may be chained.
+- A Formatter (implements Zend_Log_Formatter_Interface) can format the
+  log data before it is written by a Writer. Each Writer has exactly one
+  Formatter.
 
 %package Zend_Mail
 Summary:	Zend_Mail
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.mail.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Mail
-Zend_Mail
+Zend_Mail provides generalized functionality to compose and send both
+text and MIME-compliant multipart e-mail messages. Mail can be sent
+with Zend_Mail via the default Zend_Mail_Transport_Sendmail transport
+or via Zend_Mail_Transport_Smtp.
 
 %package Zend_Measure
 Summary:	Zend_Measure
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.measure.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Measure
-Zend_Measure
+Zend_Measure component provide a generic and easy way for working with
+measurements. Using Zend_Measure_* classes, you can convert
+measurements into different units of the same type. They can be added,
+subtracted and compared against each other. From a given input made in
+the user's native language, the unit of measurement can be
+automatically extracted. Numerous units of measurement are supported.
 
 %package Zend_Memory
 Summary:	Zend_Memory
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.memory.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Memory
-Zend_Memory
+The Zend_Memory component is intended to manage data in an environment
+with limited memory. Memory objects (memory containers) are generated
+by memory manager by request and transparently swapped/loaded when
+it's necessary. For example, if creating or loading a managed object
+would cause the total memory usage to exceed the limit you specify,
+some managed objects are copied to cache storage outside of memory. In
+this way, the total memory used by managed objects does not exceed the
+limit you need to enforce.
 
 %package Zend_Mime
 Summary:	Zend_Mime
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.mime.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Mime
-Zend_Mime
+Zend_Mime is a support class for handling multipart MIME messages.
 
 %package Zend_OpenId
 Summary:	Zend_OpenId
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.openid.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_OpenId
-Zend_OpenId
+Zend_OpenId is a Zend Framework component that provides a simple API
+for building OpenID-enabled sites and identity providers.
 
 %package Zend_Pdf
 Summary:	Zend_Pdf
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.pdf.html
+Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Pdf
-Zend_Pdf
+Zend_Pdf module is a PDF (Portable Document Format) manipulation
+engine. It can load existing documents, create new, modify and save
+modified documents. Thus it can help application dynamically prepare
+documents in a PDF by modifying existing template or generating
+document from a scratch.
+
+Zend_Pdf module supports the following features:
+- Create new document or load existing one (PDF V1.4 (Acrobat 5)
+  documents are supported for loading now).
+- Retrieving specified revision of the document.
+- Manipulate pages within document. Changing page order, adding new
+  pages, removing pages from a document.
+- Different drawing primitives (lines, rectangles, polygons, circles,
+  ellipses and sectors).
+- Text drawing using any of the 14 standard (built-in) fonts or your
+  own custom TrueType fonts.
+- Rotations.
+- Image drawing (JPG, PNG [Up to 8bit per channel+Alpha] and TIFF
+  images are supported).
+- Incremental PDF file update.
 
 %package Zend_Registry
 Summary:	Zend_Registry
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.registry.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Registry
-Zend_Registry
+The registry is a container for storing objects and values in the
+application space. By storing the value in the registry, the same
+object is always available throughout your application. This mechanism
+is an alternative to using global storage.
 
 %package Zend_Rest
 Summary:	Zend_Rest
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.rest.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Rest
@@ -316,109 +494,231 @@ Zend_Rest
 %package Zend_Search_Lucene
 Summary:	Zend_Search_Lucene
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.search.lucene.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Search_Lucene
-Zend_Search_Lucene
+Zend_Search_Lucene is a general purpose text search engine. Since it
+stores its index on the filesystem and does not require a database
+server, it can add search capabilities to almost any PHP-driven
+website.
+
+Zend_Search_Lucene supports the following features:
+- Ranked searching - best results returned first
+- Many powerful query types: phrase queries, wildcard queries,
+  proximity queries, range queries and more
+- Search by specific field (e.g., title, author, contents)
 
 %package Zend_Server_Reflection
 Summary:	Zend_Server_Reflection
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.server.reflection.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Server_Reflection
-Zend_Server_Reflection
+Zend_Server_Reflection provides a standard mechanism for performing
+function and class introspection for use with server classes. It is
+based on Reflection API, and extends it to provide methods for
+retrieving parameter and return value types and descriptions, a full
+list of function and method prototypes (i.e., all possible valid
+calling combinations), and function/method descriptions.
 
 %package Zend_Service_Akismet
 Summary:	Zend_Service_Akismet
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.akismet.html
+Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Akismet
-Zend_Service_Akismet
+Zend_Service_Akismet provides a client for the Akismet API. The
+Akismet service is used to determine if incoming data is potentially
+spam; it also exposes methods for submitting data as known spam or as
+false positives (ham). Originally intended to help categorize and
+identify spam for Wordpress, it can be used for any type of data.
+
+Akismet requires an API key for usage. You may get one for signing up
+for a WordPress.com account. You do not need to activate a blog;
+simply acquiring the account will provide you with the API key.
+
+Additionally, Akismet requires that all requests contain a URL to the
+resource for which data is being filtered, and, because of Akismet's
+origins in WordPress, this resource is called the blog url. This value
+should be passed as the second argument to the constructor, but may be
+reset at any time using the setBlogUrl() accessor, or overridden by
+specifying a 'blog' key in the various method calls.
 
 %package Zend_Service_Amazon
 Summary:	Zend_Service_Amazon
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.amazon.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Amazon
-Zend_Service_Amazon
+Zend_Service_Amazon is a simple API for using Amazon web services.
+Zend_Service_Amazon has two APIs: a more traditional one that follows
+Amazon's own API, and a simpler "Query API" for constructing even
+complex search queries easily.
+
+Zend_Service_Amazon enables developers to retrieve information
+appearing throughout Amazon.com web sites directly through the Amazon
+Web Services API.
 
 %package Zend_Service_Audioscrobbler
 Summary:	Zend_Service_Audioscrobbler
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.audioscrobbler.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Audioscrobbler
-Zend_Service_Audioscrobbler
+Zend_Service_Audioscrobbler is a simple API for using the
+Audioscrobbler REST Web Service. The Audioscrobbler Web Service
+provides access to its database of Users, Artists, Albums, Tracks,
+Tags, Groups, and Forums.
 
 %package Zend_Service_Delicious
 Summary:	Zend_Service_Delicious
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.delicious.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Delicious
-Zend_Service_Delicious
+Zend_Service_Delicious is simple API for using del.icio.us XML and
+JSON web services. This component gives you read-write access to posts
+at del.icio.us if you provide credentials. It also allows read-only
+access to public data of all users.
 
 %package Zend_Service_Flickr
 Summary:	Zend_Service_Flickr
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.delicious.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Flickr
-Zend_Service_Flickr
+Zend_Service_Flickr is a simple API for using the Flickr REST Web
+Service. In order to use the Flickr web services, you must have an API
+key. To obtain a key, visit the Flickr API Documentation
+(http://www.flickr.com/services/api/).
 
 %package Zend_Service_Nirvanix
 Summary:	Zend_Service_Nirvanix
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.nirvanix.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Nirvanix
-Zend_Service_Nirvanix
+Nirvanix provides an Internet Media File System (IMFS), an Internet
+storage service that allows applications to upload, store and organize
+files and subsequently access them using a standard Web Services
+interface. An IMFS is distributed clustered file system, accessed over
+the Internet, and optimized for dealing with media files (audio,
+video, etc). The goal of an IMFS is to provide massive scalability to
+deal with the challenges of media storage growth, with guaranteed
+access and availability regardless of time and location. Finally, an
+IMFS gives applications the ability to access data securely, without
+the large fixed costs associated with acquiring and maintaining
+physical storage assets.
+
+Before you can get started with Zend_Service_Nirvanix, you must first
+register for an account (https://www.nirvanix.com/signUpSingle.aspx).
+After registering, you will receive a Username, Password, and
+Application Key. All three are required to use Zend_Service_Nirvanix.
 
 %package Zend_Service_Simpy
 Summary:	Zend_Service_Simpy
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.simpy.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Simpy
-Zend_Service_Simpy
+Zend_Service_Simpy is a lightweight wrapper for the free REST API
+available for the Simpy social bookmarking service.
+
+In order to use Zend_Service_Simpy, you should already have a Simpy
+account. To get an account, visit the Simpy web site
+(http://simpy.com/).
 
 %package Zend_Service_SlideShare
 Summary:	Zend_Service_SlideShare
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.slideshare.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_SlideShare
-Zend_Service_SlideShare
+The Zend_Service_SlideShare component is used to interact with the
+slideshare.net web services for hosting slide shows online. With this
+component, you can embed slide shows which are hosted on this web site
+within a web site and even upload new slide shows to your account.
+
+In order to use the Zend_Service_SlideShare component you must first
+create an account on the slideshare.net servers in order to receive an
+API key, username, password and shared secret value -- all of which
+are needed in order to use the Zend_Service_SlideShare component.
 
 %package Zend_Service_StrikeIron
 Summary:	Zend_Service_StrikeIron
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.strikeiron.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_StrikeIron
-Zend_Service_StrikeIron
+Zend_Service_StrikeIron provides a client to StrikeIron web services.
+
+The Zend_Service_StrikeIron component provides:
+- A single point for configuring your StrikeIron authentication
+  credentials that can be used across many StrikeIron services.
+- A standard way of retrieving your StrikeIron subscription
+  information such as license status and the number of hits remaining to
+  a service.
+- The ability to use any StrikeIron service from its WSDL without
+  creating a PHP wrapper class, and the option of creating a wrapper for
+  a more convenient interface.
+- Wrappers for three popular StrikeIron services.
+
+Before you can get started with Zend_Service_StrikeIron, you must
+first register (http://strikeiron.com/Register.aspx) for a StrikeIron
+developer account. After registering, you will receive a StrikeIron
+username and password. These will be used when connecting to
+StrikeIron using Zend_Service_StrikeIron. You will also need to sign
+up (http://www.strikeiron.com/ProductDetail.aspx?p=257) for
+StrikeIron's Super Data Pack Web Service. Both registration steps are
+free and can be done relatively quickly through the StrikeIron
+website.
 
 %package Zend_Service_Technorati
 Summary:	Zend_Service_Technorati
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.technorati.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Technorati
-Zend_Service_Technorati
+Zend_Service_Technorati provides an easy, intuitive and
+object-oriented interface for using the Technorati API. It provides
+access to all available Technorati API queries and returns the
+original XML response as a friendly PHP object.
+
+Technorati requires a valid API key for usage. To get your own API Key
+you first need to create a new Technorati account
+(http://technorati.com/signup/), then visit the API Key section
+(http://technorati.com/developers/apikey.html).
 
 %package Zend_Service_Yahoo
 Summary:	Zend_Service_Yahoo
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.yahoo.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Yahoo
-Zend_Service_Yahoo
+Zend_Service_Yahoo is a simple API for using many of the Yahoo! REST
+APIs. Zend_Service_Yahoo allows you to search Yahoo! Web search,
+Yahoo! News, Yahoo! Local, Yahoo! Images. In order to use the Yahoo!
+REST API, you must have a Yahoo! Application ID. To obtain an
+Application ID, please complete and submit the Application ID Request
+Form (http://developer.yahoo.com/wsregapp/).
 
 %package Zend_Session
 Summary:	Zend_Session
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.session.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Session
@@ -427,30 +727,60 @@ Zend_Session
 %package Zend_Translate
 Summary:	Zend_Translate
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.translate.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Translate
-Zend_Translate
+Zend_Translate is the Zend Framework's solution for multilingual
+applications.
+
+The benefits of Zend_Translate are:
+- Supports multiple source formats: Zend_Translate supports several
+  source formats, including those supported by PHP, and other formats
+  including TMX and CSV files.
+- Thread-safe gettext: The gettext reader of Zend_Translate is
+  thread-safe. There are no problems using it in multi-threaded
+  environments.
+- Easy and generic API: The API of Zend_Translate is very simple and
+  requires only a handful of functions. So it's easy to learn and easy
+  to maintain. All source formats are handled the same way, so if the
+  format of your source files change from Gettext to TMX, you only need
+  to change one line of code to specify the storage adapter.
+- Detection of the user's standard language: The preferred language of
+  the user accessing the site can be detected and used by
+  Zend_Translate.
+- Automatic source detection: Zend_Translate is capable of detecting
+  and integrating multiple source files and additionally detect the
+  locale to be used depending on directory or filenames.
 
 %package Zend_Uri
 Summary:	Zend_Uri
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.uri.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Uri
-Zend_Uri
+Zend_Uri is a component that aids in manipulating and validating
+Uniform Resource Identifiers (URIs). Zend_Uri exists primarily to
+service other components such as Zend_Http_Client but is also useful
+as a standalone utility.
 
 %package Zend_Validate
 Summary:	Zend_Validate
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.validate.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Validate
-Zend_Validate
+The Zend_Validate component provides a set of commonly needed
+validators. It also provides a simple validator chaining mechanism by
+which multiple validators may be applied to a single datum in a
+user-defined order.
 
 %package Zend_Version
 Summary:	Zend_Version
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.version.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Version
@@ -459,18 +789,35 @@ Zend_Version
 %package Zend_View
 Summary:	Zend_View
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.view.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_View
-Zend_View
+Zend_View is a class for working with the "view" portion of the
+model-view-controller pattern. That is, it exists to help keep the
+view script separate from the model and controller scripts. It
+provides a system of helpers, output filters, and variable escaping.
+Zend_View is template system agnostic; you may use PHP as your
+template language, or create instances of other template systems and
+manipulate them within your view script. Essentially, using Zend_View
+happens in two major steps: 1. Your controller script creates an
+instance of Zend_View and assigns variables to that instance. 2. The
+controller tells the Zend_View to render a particular view, thereby
+handing control over the view script, which generates the view output.
 
 %package Zend_XmlRpc
 Summary:	Zend_XmlRpc
 Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.xmlrpc.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_XmlRpc
-Zend_XmlRpc
+From its home page (http://www.xmlrpc.com/), XML-RPC is described as a
+"...remote procedure calling using HTTP as the transport and XML as
+the encoding. XML-RPC is designed to be as simple as possible, while
+allowing complex data structures to be transmitted, processed and
+returned". The Zend Framework provides support for both consuming
+remote XML-RPC services and building new XML-RPC servers.
 
 %package demos
 Summary:	Demos for Zend Framework
@@ -579,6 +926,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Filter
 %{php_pear_dir}/Zend/Filter.php
+#???
 %exclude %{php_pear_dir}/Zend/Filter/Input.php
 
 %files Zend_Filter_Input
