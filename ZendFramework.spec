@@ -1,5 +1,6 @@
 # TODO
 # - Components to subpackages
+# - sumaries for subpackages
 # - dependencies?
 %include	/usr/lib/rpm/macros.php
 %define		rel RC1
@@ -70,7 +71,8 @@ URL:		http://framework.zend.com/manual/en/zend.cache.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Cache
-Zend_Cache provides a generic way to cache any data.
+Zend_Cache provides a flexible approach toward caching data, including
+support for tagging, manipulating, iterating, and removing subsets.
 
 %package Zend_Config
 Summary:	Zend_Config
@@ -290,7 +292,11 @@ URL:		http://framework.zend.com/manual/en/zend.http.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Http
-Zend_Http
+Zend_Http component provides a client for the HTTP protocol. It
+supports:
+- URL validation
+- cookies
+- proxy servers.
 
 %package Zend_InfoCard
 Summary:	Zend_InfoCard
@@ -382,7 +388,13 @@ URL:		http://framework.zend.com/manual/en/zend.locale.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Locale
-Zend_Locale
+Zend_Locale is the Framework's answer to the question, "How can the
+same application be used around the whole world?". This component is
+the foundation of Zend_Date, Zend_Translate, and others. It provides:
+- access to CLDR, an international data repository for I18N issues,
+  for all framework classes
+- localizing of numbers
+- normalizing of dates, times and numbers.
 
 %package Zend_Log
 Summary:	Zend_Log
@@ -536,7 +548,13 @@ URL:		http://framework.zend.com/manual/en/zend.rest.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Rest
-Zend_Rest
+REST Web Services use service-specific XML formats. These ad-hoc
+standards mean that the manner for accessing a REST web service is
+different for each service. REST web services typically use URL
+parameters (GET data) or path information for requesting data and POST
+data for sending data. Zend_Rest component provides:
+- capabilities to access REST web services
+- capabilities to expose APIs as REST services
 
 %package Zend_Search_Lucene
 Summary:	Zend_Search_Lucene
@@ -769,7 +787,12 @@ URL:		http://framework.zend.com/manual/en/zend.session.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Session
-Zend_Session
+Zend_Session helps manage and preserve session data across multiple
+page requests by the same client. Zend_Session component:
+- provides an object-oriented interface to access session data
+- provides optional security features to help protect against session
+  hijacking
+- supports namespaced access to the PHP session for interoperability.
 
 %package Zend_Soap
 Summary:	Zend_Soap
@@ -863,7 +886,8 @@ URL:		http://framework.zend.com/manual/en/zend.version.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Version
-Zend_Version
+Zend_Version component delivers current version number of Zend
+Framework.
 
 %package Zend_View
 Summary:	Zend_View
