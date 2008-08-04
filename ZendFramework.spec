@@ -1,11 +1,11 @@
 # TODO
-# - Components to subpackages
+# - Components to subpackages (WIP on @DEVEL)
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.5.2
-Release:	2
+Release:	3
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
@@ -67,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc LICENSE.txt README.txt
-%{php_pear_dir}
+%{php_pear_dir}/Zend
 
 %files demos
 %defattr(644,root,root,755)
