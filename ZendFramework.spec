@@ -1,9 +1,9 @@
 # TODO
-# - Components to subpackages
+# - components to subpackages
 # - sumaries for subpackages
-# - dependencies?
+# - dependencies
 %include	/usr/lib/rpm/macros.php
-%define		rel RC1
+%define		rel RC2
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
@@ -12,7 +12,7 @@ Release:	0.%{rel}.1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}%{rel}/ZendFramework-%{version}%{rel}.tar.gz
-# Source0-md5:	196aef8904be20c199e536480f92c5c9
+# Source0-md5:	a18273c6ad6f2af784911e1b3515061a
 URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-common >= 4:5.1.4
@@ -73,6 +73,24 @@ Requires:	%{name} = %{version}-%{release}
 %description Zend_Cache
 Zend_Cache provides a flexible approach toward caching data, including
 support for tagging, manipulating, iterating, and removing subsets.
+
+%package Zend_Captcha
+Summary:	Zend_Captcha
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.captcha.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Captcha
+CAPTCHA stands for "Completely Automated Turing test to tell Computers
+and Humans Apart" it is used as a challenge-response to ensure that
+the individual submitting information is a human and not an automated
+process. Typically, a captcha is used with form submissions where
+authenticated users are not necessary, but you desire to prevent spam
+submissions. Captchas can take variety of forms, including asking
+logic questions, presenting skewed fonts, and presenting images and
+asking how they relate. Zend_Captcha aims to provide a variety of
+backends that may be utilized either standalone or in conjunction with
+Zend_Form.
 
 %package Zend_Config
 Summary:	Zend_Config
@@ -229,6 +247,20 @@ attributes, and entry attributes. Zend_Feed also has extensive support
 for modifying feed and entry structure with the same natural syntax,
 and turning the result back into XML. In the future, this modification
 support could provide support for the Atom Publishing Protocol.
+
+%package Zend_File
+Summary:	Zend_File
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.file.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_File
+Zend_File enables developers to take control over file uploads and
+also over file downloads. It allows you to use built in validators for
+file purposes and gives you the ability even to change files with
+filters. Zend_File_Transfer works with adapters which allow to use the
+same API for different transport protocols like HTTP, FTP, WEBDAV and
+more.
 
 %package Zend_Filter
 Summary:	Zend_Filter
@@ -688,6 +720,28 @@ register for an account (https://www.nirvanix.com/signUpSingle.aspx).
 After registering, you will receive a Username, Password, and
 Application Key. All three are required to use Zend_Service_Nirvanix.
 
+%package Zend_Service_ReCaptcha
+Summary:	Zend_Service_ReCaptcha
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.recaptcha.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_ReCaptcha
+Zend_Service_ReCaptcha provides a client for the reCAPTCHA Web
+Service. Per the reCAPTCHA site, "reCAPTCHA is a free CAPTCHA service
+that helps to digitize books." Each reCAPTCHA requires the user to
+input two words, the first of which is the actual captcha, and the
+second of which is a word from some scanned text that Optical
+Character Recognition (OCR) software has been unable to identifiy. The
+assumption is that if a user correctly provides the first word, the
+second is likely correctly entered as well, and can be used to improve
+OCR software for digitizing books.
+
+In order to use the reCAPTCHA service, you will need to sign up for an
+account (http://recaptcha.net/whyrecaptcha.html) and register one or
+more domains with the service in order to generate public and private
+keys.
+
 %package Zend_Service_Simpy
 Summary:	Zend_Service_Simpy
 Group:		Development/Languages/PHP
@@ -908,6 +962,21 @@ instance of Zend_View and assigns variables to that instance. 2. The
 controller tells the Zend_View to render a particular view, thereby
 handing control over the view script, which generates the view output.
 
+%package Zend_Wildfire
+Summary:	Zend_Wildfire
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.wildfire.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Wildfire
+Zend_Wildfire is a component that facilitates communication between
+PHP code and Wildfire client components. The purpose of the Wildfire
+Project is to develop standardized communication channels between a
+large variety of components and a dynamic and scriptable plugin
+architecture. At this time the primary focus is to provide a system to
+allow server-side PHP code to inject logging messages into the Firebug
+Console (http://getfirebug.com/).
+
 %package Zend_XmlRpc
 Summary:	Zend_XmlRpc
 Group:		Development/Languages/PHP
@@ -934,7 +1003,7 @@ Demos for Zend Framework.
 Programy demonstracyjne dla szkieletu Zend Framework.
 
 %prep
-%setup -q -n %{name}-1.6%{rel}
+%setup -q -n %{name}-%{version}%{rel}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -963,6 +1032,7 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Service/Abstract.php
 %{php_pear_dir}/Zend/Service/Exception.php
 
+%dir %{php_pear_dir}/Zend/Request
 %{php_pear_dir}/Zend/Request/Interface.php
 
 %{php_pear_dir}/Zend/TimeSync
@@ -982,6 +1052,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Cache
 %{php_pear_dir}/Zend/Cache.php
+
+%files Zend_Captcha
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Captcha
 
 %files Zend_Config
 %defattr(644,root,root,755)
@@ -1033,6 +1107,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Feed
 %{php_pear_dir}/Zend/Feed.php
+
+%files Zend_File
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/File
 
 %files Zend_Filter
 %defattr(644,root,root,755)
@@ -1175,6 +1253,11 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Service/Nirvanix
 %{php_pear_dir}/Zend/Service/Nirvanix.php
 
+%files Zend_Service_ReCaptcha
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/ReCaptcha
+%{php_pear_dir}/Zend/Service/ReCaptcha.php
+
 %files Zend_Service_Simpy
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Simpy
@@ -1240,6 +1323,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/View
 %{php_pear_dir}/Zend/View.php
+
+%files Zend_Wildfire
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Wildfire
 
 %files Zend_XmlRpc
 %defattr(644,root,root,755)
