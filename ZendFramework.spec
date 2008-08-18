@@ -18,7 +18,6 @@ Requires:	php-hash
 Requires:	php-iconv
 Requires:	php-pcre
 Requires:	php-pdo
-Requires:	php-pdo-mysql
 Obsoletes:	ZendFramework-doc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
