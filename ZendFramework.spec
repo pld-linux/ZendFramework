@@ -3,7 +3,7 @@
 # - sumaries for subpackages
 # - dependencies
 %include	/usr/lib/rpm/macros.php
-%define		rel RC2
+%define		rel RC3
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
@@ -12,7 +12,7 @@ Release:	0.%{rel}.1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}%{rel}/ZendFramework-%{version}%{rel}.tar.gz
-# Source0-md5:	a18273c6ad6f2af784911e1b3515061a
+# Source0-md5:	5d1a5392c5fd780b2527cc91be0e1096
 URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-common >= 4:5.1.4
