@@ -1,6 +1,6 @@
 # TODO
-# - sumaries for subpackages
-# - dependencies
+# - summaries for subpackages
+# - dependencies to subpackages
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
