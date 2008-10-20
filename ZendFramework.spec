@@ -6,7 +6,7 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.6.2
-Release:	1
+Release:	2
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
@@ -575,6 +575,7 @@ Summary:	Zend_Rest
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.rest.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-dom
 
 %description Zend_Rest
 REST Web Services use service-specific XML formats. These ad-hoc
