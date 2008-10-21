@@ -25,5 +25,5 @@ find $dir -type f -name '*.xml' | while read file; do
 	# TODO: <variant type="SAAHO"/>
 
 	lang=$language${territory:+_$territory}${script:+@$script}
-	echo "%lang($lang) ${file#$RPM_BUILD_ROOT} # $o" >> $langfile
+	echo "%lang($lang) ${file#$RPM_BUILD_ROOT}" >> $langfile
 done
