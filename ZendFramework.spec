@@ -6,13 +6,15 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.6.2
-Release:	2
+Release:	2.5
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
 # Source0-md5:	d1ad283f9190688fcae0daf25625e3cb
+Source1:	%{name}-find-lang.sh
 URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
+BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
 Requires:	php-ctype
 Requires:	php-hash
@@ -873,6 +875,7 @@ Summary:	Zend_Test
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.test.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-PHPUnit
 
 %description Zend_Test
 Zend_Test provides tools to facilitate unit testing of your Zend
@@ -1003,6 +1006,10 @@ Programy demonstracyjne dla szkieletu Zend Framework.
 %prep
 %setup -q
 
+find '(' -name '*.php' -o -name '*.xml' ')' -print0 | xargs -0 %{__sed} -i -e 's,\r$,,'
+
+install %{SOURCE1} find-lang.sh
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{php_pear_dir}}
@@ -1010,6 +1017,8 @@ cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 # library should be in include_path if used, so we use already defined %{php_pear_dir}
 cp -a library/* $RPM_BUILD_ROOT%{php_pear_dir}
+
+./find-lang.sh %{name}.lang
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -1160,10 +1169,19 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Loader
 %{php_pear_dir}/Zend/Loader.php
 
-%files Zend_Locale
+%files Zend_Locale -f %{name}.lang
 %defattr(644,root,root,755)
-%{php_pear_dir}/Zend/Locale
+%dir %{php_pear_dir}/Zend/Locale
 %{php_pear_dir}/Zend/Locale.php
+%{php_pear_dir}/Zend/Locale/Exception.php
+%{php_pear_dir}/Zend/Locale/Format.php
+%{php_pear_dir}/Zend/Locale/Math.php
+%{php_pear_dir}/Zend/Locale/Math
+
+%{php_pear_dir}/Zend/Locale/Data.php
+%dir %{php_pear_dir}/Zend/Locale/Data
+%{php_pear_dir}/Zend/Locale/Data/Translation.php
+%{php_pear_dir}/Zend/Locale/Data/supplementalData.xml
 
 %files Zend_Log
 %defattr(644,root,root,755)
