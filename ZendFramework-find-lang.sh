@@ -4,8 +4,6 @@ langfile=${1:-ZendFramework.lang}
 
 > $langfile
 find $dir -type f -name '*.xml' | while read file; do
-	file=${file#$RPM_BUILD_ROOT}
-
 	case "${file##*/}" in
 	supplementalData.xml)
 		# skip - no lang tag for this one
@@ -25,5 +23,6 @@ find $dir -type f -name '*.xml' | while read file; do
 	# TODO: <variant type="SAAHO"/>
 
 	lang=$language${territory:+_$territory}${script:+@$script}
+	file=${file#$RPM_BUILD_ROOT}
 	echo "%lang($lang) ${file#$RPM_BUILD_ROOT}" >> $langfile
 done
