@@ -1,12 +1,46 @@
 # TODO
 # - summaries for subpackages
 # - dependencies to subpackages
+#        php-fileinfo is needed by ZendFramework-1.6.2-2.5.noarch
+#        php-mime_magic is needed by ZendFramework-1.6.2-2.5.noarch
+#        php-pecl_http is needed by ZendFramework-1.6.2-2.5.noarch
+#        php-apc is needed by ZendFramework-Zend_Cache-1.6.2-2.5.noarch
+#        php-ereg is needed by ZendFramework-Zend_Cache-1.6.2-2.5.noarch
+#        php-sqlite is needed by ZendFramework-Zend_Cache-1.6.2-2.5.noarch
+#        php-gd is needed by ZendFramework-Zend_Captcha-1.6.2-2.5.noarch
+#        php-sapi_apache is needed by ZendFramework-Zend_Controller-1.6.2-2.5.noarch
+#        php-mysqli is needed by ZendFramework-Zend_Db-1.6.2-2.5.noarch
+#        php-oci8 is needed by ZendFramework-Zend_Db-1.6.2-2.5.noarch
+#        php-mbstring is needed by ZendFramework-Zend_Feed-1.6.2-2.5.noarch
+#        php-mbstring is needed by ZendFramework-Zend_Filter-1.6.2-2.5.noarch
+#        php-zip is needed by ZendFramework-Zend_Filter-1.6.2-2.5.noarch
+#        php-ereg is needed by ZendFramework-Zend_Gdata-1.6.2-2.5.noarch
+#        php-openssl is needed by ZendFramework-Zend_Gdata-1.6.2-2.5.noarch
+#        php-mcrypt is needed by ZendFramework-Zend_InfoCard-1.6.2-2.5.noarch
+#        php-openssl is needed by ZendFramework-Zend_InfoCard-1.6.2-2.5.noarch
+#        php-json is needed by ZendFramework-Zend_Json-1.6.2-2.5.noarch
+#        php-ldap is needed by ZendFramework-Zend_Ldap-1.6.2-2.5.noarch
+#        php-bcmath is needed by ZendFramework-Zend_Locale-1.6.2-2.5.noarch
+#        php-zip is needed by ZendFramework-Zend_Mail-1.6.2-2.5.noarch
+#        php-bcmath is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
+#        php-gmp is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
+#        php-mhash is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
+#        php-openssl is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
+#        php-gd is needed by ZendFramework-Zend_Pdf-1.6.2-2.5.noarch
+#        php-bitset is needed by ZendFramework-Zend_Search_Lucene-1.6.2-2.5.noarch
+#        php-mbstring is needed by ZendFramework-Zend_Search_Lucene-1.6.2-2.5.noarch
+#        php-zip is needed by ZendFramework-Zend_Search_Lucene-1.6.2-2.5.noarch
+#        php-ereg is needed by ZendFramework-Zend_Service_Amazon-1.6.2-2.5.noarch
+#        php-mcrypt is needed by ZendFramework-Zend_Service_ReCaptcha-1.6.2-2.5.noarch
+#        php-pecl_http is needed by ZendFramework-Zend_Uri-1.6.2-2.5.noarch
+#        php-mime_magic is needed by ZendFramework-Zend_Validate-1.6.2-2.5.noarch
+# - add rpm-whiteout: http://pld.pastebin.com/f33091903
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.6.2
-Release:	2.5
+Release:	2.6
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
@@ -24,6 +58,9 @@ Requires:	php-pdo
 Obsoletes:	ZendFramework-doc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# exclude optional dependencies
+%define		_noautoreq	'php(oci8)' 'php(bitset)'
 
 %description
 Zend Framework is a high quality and open source framework for
