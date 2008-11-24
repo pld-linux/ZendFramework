@@ -4,15 +4,12 @@
 #        php-fileinfo is needed by ZendFramework-1.6.2-2.5.noarch
 #        php-mime_magic is needed by ZendFramework-1.6.2-2.5.noarch
 #        php-pecl_http is needed by ZendFramework-1.6.2-2.5.noarch
-#        php-apc is needed by ZendFramework-Zend_Cache-1.6.2-2.5.noarch
 #        php-ereg is needed by ZendFramework-Zend_Cache-1.6.2-2.5.noarch
 #        php-sqlite is needed by ZendFramework-Zend_Cache-1.6.2-2.5.noarch
 #        php-gd is needed by ZendFramework-Zend_Captcha-1.6.2-2.5.noarch
 #        php-sapi_apache is needed by ZendFramework-Zend_Controller-1.6.2-2.5.noarch
 #        php-mysqli is needed by ZendFramework-Zend_Db-1.6.2-2.5.noarch
 #        php-oci8 is needed by ZendFramework-Zend_Db-1.6.2-2.5.noarch
-#        php-mbstring is needed by ZendFramework-Zend_Feed-1.6.2-2.5.noarch
-#        php-mbstring is needed by ZendFramework-Zend_Filter-1.6.2-2.5.noarch
 #        php-zip is needed by ZendFramework-Zend_Filter-1.6.2-2.5.noarch
 #        php-ereg is needed by ZendFramework-Zend_Gdata-1.6.2-2.5.noarch
 #        php-openssl is needed by ZendFramework-Zend_Gdata-1.6.2-2.5.noarch
@@ -20,7 +17,6 @@
 #        php-openssl is needed by ZendFramework-Zend_InfoCard-1.6.2-2.5.noarch
 #        php-json is needed by ZendFramework-Zend_Json-1.6.2-2.5.noarch
 #        php-ldap is needed by ZendFramework-Zend_Ldap-1.6.2-2.5.noarch
-#        php-bcmath is needed by ZendFramework-Zend_Locale-1.6.2-2.5.noarch
 #        php-zip is needed by ZendFramework-Zend_Mail-1.6.2-2.5.noarch
 #        php-bcmath is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
 #        php-gmp is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
@@ -28,7 +24,6 @@
 #        php-openssl is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
 #        php-gd is needed by ZendFramework-Zend_Pdf-1.6.2-2.5.noarch
 #        php-bitset is needed by ZendFramework-Zend_Search_Lucene-1.6.2-2.5.noarch
-#        php-mbstring is needed by ZendFramework-Zend_Search_Lucene-1.6.2-2.5.noarch
 #        php-zip is needed by ZendFramework-Zend_Search_Lucene-1.6.2-2.5.noarch
 #        php-ereg is needed by ZendFramework-Zend_Service_Amazon-1.6.2-2.5.noarch
 #        php-mcrypt is needed by ZendFramework-Zend_Service_ReCaptcha-1.6.2-2.5.noarch
@@ -50,7 +45,6 @@ URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
-Requires:	php-ctype
 Requires:	php-hash
 Requires:	php-iconv
 Requires:	php-pcre
@@ -97,17 +91,19 @@ URL:		http://framework.zend.com/manual/en/zend.amf.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Amf
-Zend_Amf provides support for Adobe's Action Message Format (AMF), to allow
-communication between Adobe's Flash Player and PHP. Specifically, it provides a
-gateway server implementation for handling requests sent from the Flash Player
-to the server and mapping these requests to object and class methods and
-arbitrary callbacks.
+Zend_Amf provides support for Adobe's Action Message Format (AMF), to
+allow communication between Adobe's Flash Player and PHP.
+Specifically, it provides a gateway server implementation for handling
+requests sent from the Flash Player to the server and mapping these
+requests to object and class methods and arbitrary callbacks.
 
 %package Zend_Auth
 Summary:	Zend_Auth
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.auth.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-ctype
+# Zend_Auth_Adapter_Http has hard dependency on hash
 
 %description Zend_Auth
 Zend_Auth provides an API for authentication and includes concrete
@@ -118,6 +114,7 @@ Summary:	Zend_Cache
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.cache.html
 Requires:	%{name} = %{version}-%{release}
+# Zend_Cache_Backend_Apc hard dep on php-pecl-APC
 
 %description Zend_Cache
 Zend_Cache provides a flexible approach toward caching data, including
@@ -177,6 +174,7 @@ Summary:	Zend_Currency
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.currency.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-iconv
 
 %description Zend_Currency
 Zend_Currency is part of the I18N core of the Zend_Framework. It
@@ -288,6 +286,8 @@ Summary:	Zend_Feed
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.feed.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-dom
+Requires:	php-mbstring
 
 %description Zend_Feed
 Zend_Feed provides functionality for consuming RSS and Atom feeds. It
@@ -355,6 +355,8 @@ Summary:	Zend_Gdata
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.gdata.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-ctype
+Requires:	php-dom
 
 %description Zend_Gdata
 Zend_Gdata component is a interface for accessing Google Data from
@@ -371,6 +373,8 @@ Summary:	Zend_Http
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.http.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-ctype
+# Zend_Http_Client_Adapter_Curl has hard dependency on curl
 
 %description Zend_Http
 Zend_Http component provides a client for the HTTP protocol. It
@@ -467,6 +471,8 @@ Summary:	Zend_Locale
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.locale.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-iconv
+Suggests:	php-bcmath
 
 %description Zend_Locale
 Zend_Locale is the Framework's answer to the question, "How can the
@@ -482,6 +488,7 @@ Summary:	Zend_Log
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.log.html
 Requires:	%{name} = %{version}-%{release}
+# Zend_Log_Formatter_Xml has hard dependency on dom
 
 %description Zend_Log
 Zend_Log is a component for general purpose logging. It supports
@@ -549,6 +556,7 @@ Summary:	Zend_Mime
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.mime.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-iconv
 
 %description Zend_Mime
 Zend_Mime is a support class for handling multipart MIME messages.
@@ -587,6 +595,10 @@ Summary:	Zend_Pdf
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.pdf.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-ctype
+Requires:	php-gd
+Requires:	php-iconv
+Requires:	php-zlib
 
 %description Zend_Pdf
 Zend_Pdf module is a PDF (Portable Document Format) manipulation
@@ -617,11 +629,12 @@ URL:		http://framework.zend.com/manual/en/zend.progressbar.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_ProgressBar
-Zend_ProgressBar is a component to create and update progressbars in different
-environments. It consists of a single backend, which outputs the progress
-through one of the multiple adapters. On every update, it takes an absolute
-value and optionally a status message, and then calls the adapter with some
-precalculated values like percentage and estimated time left.
+Zend_ProgressBar is a component to create and update progressbars in
+different environments. It consists of a single backend, which outputs
+the progress through one of the multiple adapters. On every update, it
+takes an absolute value and optionally a status message, and then
+calls the adapter with some precalculated values like percentage and
+estimated time left.
 
 %package Zend_Registry
 Summary:	Zend_Registry
@@ -640,6 +653,7 @@ Summary:	Zend_Rest
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.rest.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-ctype
 Requires:	php-dom
 
 %description Zend_Rest
@@ -656,6 +670,10 @@ Summary:	Zend_Search_Lucene
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.search.lucene.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-ctype
+Requires:	php-dom
+Requires:	php-iconv
+Suggests:	php-pecl-bitset
 
 %description Zend_Search_Lucene
 Zend_Search_Lucene is a general purpose text search engine. Since it
@@ -712,6 +730,7 @@ Summary:	Zend_Service_Amazon
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.amazon.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-dom
 
 %description Zend_Service_Amazon
 Zend_Service_Amazon is a simple API for using Amazon web services.
@@ -728,6 +747,7 @@ Summary:	Zend_Service_Audioscrobbler
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.audioscrobbler.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-iconv
 
 %description Zend_Service_Audioscrobbler
 Zend_Service_Audioscrobbler is a simple API for using the
@@ -740,6 +760,7 @@ Summary:	Zend_Service_Delicious
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.delicious.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-dom
 
 %description Zend_Service_Delicious
 Zend_Service_Delicious is simple API for using del.icio.us XML and
@@ -752,12 +773,14 @@ Summary:	Zend_Service_Flickr
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.delicious.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-dom
+Requires:	php-iconv
 
 %description Zend_Service_Flickr
 Zend_Service_Flickr is a simple API for using the Flickr REST Web
 Service. In order to use the Flickr web services, you must have an API
 key. To obtain a key, visit the Flickr API Documentation
-(http://www.flickr.com/services/api/).
+<http://www.flickr.com/services/api/>.
 
 %package Zend_Service_Nirvanix
 Summary:	Zend_Service_Nirvanix
@@ -810,6 +833,7 @@ Summary:	Zend_Service_Simpy
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.simpy.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-dom
 
 %description Zend_Service_Simpy
 Zend_Service_Simpy is a lightweight wrapper for the free REST API
@@ -891,16 +915,17 @@ Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Twitter
 Zend_Service_Twitter provides a client for the Twitter REST API.
-Zend_Service_Twitter will allow you to query the public timeline and if you
-provide a username and password for Twitter it will allow you to get and update
-your status, reply to friends, direct message friends, mark tweets as favorite
-and much more.
+Zend_Service_Twitter will allow you to query the public timeline and
+if you provide a username and password for Twitter it will allow you
+to get and update your status, reply to friends, direct message
+friends, mark tweets as favorite and much more.
 
 %package Zend_Service_Yahoo
 Summary:	Zend_Service_Yahoo
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.yahoo.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-dom
 
 %description Zend_Service_Yahoo
 Zend_Service_Yahoo is a simple API for using many of the Yahoo! REST
@@ -991,6 +1016,7 @@ Summary:	Zend_Uri
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.uri.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-ctype
 
 %description Zend_Uri
 Zend_Uri is a component that aids in manipulating and validating
@@ -1003,6 +1029,7 @@ Summary:	Zend_Validate
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.validate.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-ctype
 
 %description Zend_Validate
 The Zend_Validate component provides a set of commonly needed
@@ -1059,9 +1086,11 @@ Summary:	Zend_XmlRpc
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.xmlrpc.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php-dom
+Requires:	php-iconv
 
 %description Zend_XmlRpc
-From its home page (http://www.xmlrpc.com/), XML-RPC is described as a
+From its home page <http://www.xmlrpc.com/>, XML-RPC is described as a
 "...remote procedure calling using HTTP as the transport and XML as
 the encoding. XML-RPC is designed to be as simple as possible, while
 allowing complex data structures to be transmitted, processed and
