@@ -39,12 +39,12 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.6.2
-Release:	2.6
+Version:	1.7.0
+Release:	0.1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
-# Source0-md5:	d1ad283f9190688fcae0daf25625e3cb
+# Source0-md5:	423629a9be793d3b6df352913f8c1401
 Source1:	%{name}-find-lang.sh
 URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -89,6 +89,19 @@ Zend_Acl provides lightweight and flexible access control list (ACL)
 functionality and privileges management. In general, an application
 may utilize such functionality to control access to certain protected
 objects by other requesting objects.
+
+%package Zend_Amf
+Summary:	Zend_Amf
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.amf.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Amf
+Zend_Amf provides support for Adobe's Action Message Format (AMF), to allow
+communication between Adobe's Flash Player and PHP. Specifically, it provides a
+gateway server implementation for handling requests sent from the Flash Player
+to the server and mapping these requests to object and class methods and
+arbitrary callbacks.
 
 %package Zend_Auth
 Summary:	Zend_Auth
@@ -597,6 +610,19 @@ Zend_Pdf module supports the following features:
   images are supported).
 - Incremental PDF file update.
 
+%package Zend_ProgressBar
+Summary:	Zend_ProgressBar
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.progressbar.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_ProgressBar
+Zend_ProgressBar is a component to create and update progressbars in different
+environments. It consists of a single backend, which outputs the progress
+through one of the multiple adapters. On every update, it takes an absolute
+value and optionally a status message, and then calls the adapter with some
+precalculated values like percentage and estimated time left.
+
 %package Zend_Registry
 Summary:	Zend_Registry
 Group:		Development/Languages/PHP
@@ -857,6 +883,19 @@ you first need to create a new Technorati account
 (http://technorati.com/signup/), then visit the API Key section
 (http://technorati.com/developers/apikey.html).
 
+%package Zend_Service_Twitter
+Summary:	Zend_Service_Twitter
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.technorati.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_Twitter
+Zend_Service_Twitter provides a client for the Twitter REST API.
+Zend_Service_Twitter will allow you to query the public timeline and if you
+provide a username and password for Twitter it will allow you to get and update
+your status, reply to friends, direct message friends, mark tweets as favorite
+and much more.
+
 %package Zend_Service_Yahoo
 Summary:	Zend_Service_Yahoo
 Group:		Development/Languages/PHP
@@ -1071,6 +1110,12 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Server/Abstract.php
 %{php_pear_dir}/Zend/Server/Exception.php
 %{php_pear_dir}/Zend/Server/Interface.php
+%{php_pear_dir}/Zend/Server/Definition.php
+%dir %{php_pear_dir}/Zend/Server/Method
+%{php_pear_dir}/Zend/Server/Method/Callback.php
+%{php_pear_dir}/Zend/Server/Method/Definition.php
+%{php_pear_dir}/Zend/Server/Method/Parameter.php
+%{php_pear_dir}/Zend/Server/Method/Prototype.php
 
 %dir %{php_pear_dir}/Zend/Service
 %{php_pear_dir}/Zend/Service/Abstract.php
@@ -1087,6 +1132,15 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Acl
 %{php_pear_dir}/Zend/Acl.php
 
+%files Zend_Amf
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Amf
+
+%files Zend_ProgressBar
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/ProgressBar.php
+%{php_pear_dir}/Zend/ProgressBar
+
 %files Zend_Auth
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Auth
@@ -1096,6 +1150,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Cache
 %{php_pear_dir}/Zend/Cache.php
+# Zend_Server_Cache subpackage?
+# but not listed as separate component on doc
+%{php_pear_dir}/Zend/Server/Cache.php
 
 %files Zend_Captcha
 %defattr(644,root,root,755)
@@ -1160,7 +1217,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Filter
 %{php_pear_dir}/Zend/Filter.php
-#???
 %exclude %{php_pear_dir}/Zend/Filter/Input.php
 
 %files Zend_Filter_Input
@@ -1218,7 +1274,11 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Locale/Data.php
 %dir %{php_pear_dir}/Zend/Locale/Data
 %{php_pear_dir}/Zend/Locale/Data/Translation.php
+%{php_pear_dir}/Zend/Locale/Data/characters.xml
+%{php_pear_dir}/Zend/Locale/Data/plurals.xml
+%{php_pear_dir}/Zend/Locale/Data/root.xml
 %{php_pear_dir}/Zend/Locale/Data/supplementalData.xml
+%{php_pear_dir}/Zend/Locale/Data/telephoneCodeData.xml
 
 %files Zend_Log
 %defattr(644,root,root,755)
@@ -1330,6 +1390,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Technorati
 %{php_pear_dir}/Zend/Service/Technorati.php
+
+%files Zend_Service_Twitter
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/Twitter.php
+%{php_pear_dir}/Zend/Service/Twitter
+%{php_pear_dir}/Zend/Service/Twitter
 
 %files Zend_Service_Yahoo
 %defattr(644,root,root,755)
