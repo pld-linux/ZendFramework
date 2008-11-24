@@ -1,5 +1,4 @@
 # TODO
-# - summaries for subpackages
 # - dependencies to subpackages
 #        php-fileinfo is needed by ZendFramework-1.6.2-2.5.noarch
 #        php-mime_magic is needed by ZendFramework-1.6.2-2.5.noarch
@@ -35,7 +34,7 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.7.0
-Release:	0.1
+Release:	0.8
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
@@ -45,10 +44,7 @@ URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
-Requires:	php-hash
-Requires:	php-iconv
-Requires:	php-pcre
-Requires:	php-pdo
+Requires:	rpm-whiteout >= 1.12
 Obsoletes:	ZendFramework-doc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -1422,9 +1418,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Zend_Service_Twitter
 %defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/Twitter
 %{php_pear_dir}/Zend/Service/Twitter.php
-%{php_pear_dir}/Zend/Service/Twitter
-%{php_pear_dir}/Zend/Service/Twitter
 
 %files Zend_Service_Yahoo
 %defattr(644,root,root,755)
