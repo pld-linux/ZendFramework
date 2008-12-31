@@ -33,13 +33,15 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.7.0
-Release:	0.8
+Version:	1.7.2
+Release:	0.1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
-# Source0-md5:	423629a9be793d3b6df352913f8c1401
-Source1:	%{name}-find-lang.sh
+# Source0-md5:	7bc33a0ed379f30ab408ecd546025a1b
+Source1:	http://framework.zend.com/releases/ZendFramework-%{version}/%{name}-%{version}-manual-en.tar.gz
+# Source1-md5:	77e7cc4fa67b53763adb47911c0867eb
+Source2:	%{name}-find-lang.sh
 URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
@@ -1104,12 +1106,24 @@ Demos for Zend Framework.
 %description demos -l pl.UTF-8
 Programy demonstracyjne dla szkieletu Zend Framework.
 
+%package manual-en
+Summary:	Zend Framework manual in English language
+Summary(pl.UTF-8):	Podręcznik do Zend Framework w języku angielskim
+Group:		Documentation
+
+%description manual-en
+Zend Framework manual in English language.
+
+%description manual-en -l pl.UTF-8
+Podręcznik do Zend Framework w języku angielskim.
+
 %prep
-%setup -q
+%setup -q -a1
+mv %{name}-%{version}/documentation .
 
 find '(' -name '*.php' -o -name '*.xml' ')' -print0 | xargs -0 %{__sed} -i -e 's,\r$,,'
 
-install %{SOURCE1} find-lang.sh
+install %{SOURCE2} find-lang.sh
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -1120,6 +1134,10 @@ cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -a library/* $RPM_BUILD_ROOT%{php_pear_dir}
 
 ./find-lang.sh %{name}.lang
+
+# manual
+install -d $RPM_BUILD_ROOT%{_docdir}/%{name}-en
+cp -a documentation/manual/core/en/* $RPM_BUILD_ROOT%{_docdir}/%{name}-en
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -1478,3 +1496,7 @@ rm -rf $RPM_BUILD_ROOT
 %files demos
 %defattr(644,root,root,755)
 %{_examplesdir}/%{name}-%{version}
+
+%files manual-en
+%defattr(644,root,root,755)
+%doc %{_docdir}/%{name}-en
