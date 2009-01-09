@@ -34,7 +34,7 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.7.2
-Release:	0.1
+Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
@@ -43,6 +43,8 @@ Source1:	http://framework.zend.com/releases/ZendFramework-%{version}/%{name}-%{v
 # Source1-md5:	77e7cc4fa67b53763adb47911c0867eb
 Source2:	%{name}-find-lang.sh
 URL:		http://framework.zend.com/
+Patch0:		%{name}-additional-locales.patch
+Patch1:		%{name}-db_charset.patch
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
@@ -1120,8 +1122,11 @@ Podręcznik do Zend Framework w języku angielskim.
 %prep
 %setup -q -a1
 mv %{name}-%{version}/documentation .
-
 find '(' -name '*.php' -o -name '*.xml' ')' -print0 | xargs -0 %{__sed} -i -e 's,\r$,,'
+%patch0 -p1
+cd library
+%patch1 -p0
+cd -
 
 install %{SOURCE2} find-lang.sh
 
@@ -1131,6 +1136,8 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{php_pear_dir}}
 cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 # library should be in include_path if used, so we use already defined %{php_pear_dir}
+# NOTE: we could use %{php_data_dir} as of php-common-4:5.2.8-3, but then
+# pear(...) deps won't be satisifed that these libs use extensively.
 cp -a library/* $RPM_BUILD_ROOT%{php_pear_dir}
 
 ./find-lang.sh %{name}.lang
