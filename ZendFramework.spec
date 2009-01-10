@@ -42,9 +42,9 @@ Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{v
 Source1:	http://framework.zend.com/releases/ZendFramework-%{version}/%{name}-%{version}-manual-en.tar.gz
 # Source1-md5:	77e7cc4fa67b53763adb47911c0867eb
 Source2:	%{name}-find-lang.sh
-URL:		http://framework.zend.com/
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-db_charset.patch
+URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
@@ -73,7 +73,8 @@ użyciu i potężną funkcjonalność. Udostępnia rozwiązania do tworzenia
 nowoczesnych, bogatych i bezpiecznych serwisów WWW.
 
 %package Zend_Acl
-Summary:	Zend_Acl
+Summary:	Zend_Acl - ACL functionality and privileges management
+Summary(pl.UTF-8):	Zend_Acl - listy kontroli dostępu i zarządzanie uprawnieniami
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.acl.html
 Requires:	%{name} = %{version}-%{release}
@@ -84,8 +85,15 @@ functionality and privileges management. In general, an application
 may utilize such functionality to control access to certain protected
 objects by other requesting objects.
 
+%description Zend_Acl -l pl.UTF-8
+Zend_Acl udostępnia lekkie i elastyczne listy kontroli dostępu (ACL)
+oraz zarządzanie uprawnieniami. W ogólności aplikacje mogą
+wykorzystywać te funkcje do kontroli dostępu do określonych
+chronionych obiektów przez inne obiekty.
+
 %package Zend_Amf
-Summary:	Zend_Amf
+Summary:	Zend_Amf - Action Message Format support
+Summary(pl.UTF-8):	Zend_Amf - obsługa formatu AMF (Action Message Format)
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.amf.html
 Requires:	%{name} = %{version}-%{release}
@@ -97,8 +105,16 @@ Specifically, it provides a gateway server implementation for handling
 requests sent from the Flash Player to the server and mapping these
 requests to object and class methods and arbitrary callbacks.
 
+%description Zend_Amf -l pl.UTF-8
+Zend_Amf dodaje obsługę formatu Adobe Action Message Format (AMF),
+pozwalającego na komunikację między Adobe Flash Playerem a PHP. W
+szczególności udostępnia implementację serwera bramki do obsługi żądań
+wysyłanych z Flash Playera do serwera i odwzorowywania tych żądań na
+obiekty i metody klas oraz wywołania zwrotne.
+
 %package Zend_Auth
-Summary:	Zend_Auth
+Summary:	Zend_Auth - authentication API
+Summary(pl.UTF-8):	Zend_Auth - API do uwierzytelniania
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.auth.html
 Requires:	%{name} = %{version}-%{release}
@@ -109,8 +125,13 @@ Requires:	php-ctype
 Zend_Auth provides an API for authentication and includes concrete
 authentication adapters for common use case scenarios.
 
+%description Zend_Auth -l pl.UTF-8
+Zend_Auth udostępnia API do uwierzytelniania i zawiera właściwe
+adaptery do uwierzytelniania w popularnych przypadkach użycia.
+
 %package Zend_Cache
-Summary:	Zend_Cache
+Summary:	Zend_Cache - data caching
+Summary(pl.UTF-8):	Zend_Cache - pamięć podręczna dla danych
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.cache.html
 Requires:	%{name} = %{version}-%{release}
@@ -120,8 +141,13 @@ Requires:	%{name} = %{version}-%{release}
 Zend_Cache provides a flexible approach toward caching data, including
 support for tagging, manipulating, iterating, and removing subsets.
 
+%description Zend_Cache -l pl.UTF-8
+Zend_Cache zapewnia elastyczną pamięć podręczną dla danych z obsługą
+oznaczania, modyfikowania, iterowania i usuwania podzbiorów.
+
 %package Zend_Captcha
-Summary:	Zend_Captcha
+Summary:	Zend_Captcha - CAPTCHA functionality
+Summary(pl.UTF-8):	Zend_Captcha - funkcjonalność CAPTCHA
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.captcha.html
 Requires:	%{name} = %{version}-%{release}
@@ -138,8 +164,20 @@ asking how they relate. Zend_Captcha aims to provide a variety of
 backends that may be utilized either standalone or in conjunction with
 Zend_Form.
 
+%description Zend_Captcha -l pl.UTF-8
+CAPTCHA (Completely Automated Turing test to tell Computers and Humans
+Apart) to oparta na pytaniu i odpowiedzi metoda upewnienia się, że
+wysyłający informację jest człowiekiem, a nie zautomatyzowanym
+procesem. Zwykle captcha używa się tam, gdzie formularze są wywyłane
+bez uwierzytelniania, ale chcemy zapobiec wysyłaniu spamu. Mają różne
+postaci, np. zadawanie pytań logicznych, pokazywanie wykrzywionych
+fontów lub obrazków z pytaniem o ich powiązania. Klasa Zend_Captcha
+udostępnia różne backendy. Może być używana zarówno samodzielnie, jak
+i w połączeniu z Zend_Form.
+
 %package Zend_Config
-Summary:	Zend_Config
+Summary:	Zend_Config - access to configuration data
+Summary(pl.UTF-8):	Zend_Config - dostęp do danych konfiguracyjnych
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.config.html
 Requires:	%{name} = %{version}-%{release}
@@ -148,8 +186,13 @@ Requires:	%{name} = %{version}-%{release}
 Zend_Config is designed to simplify access to and use of configuration
 data within applications.
 
+%description Zend_Config -l pl.UTF-8
+Zend_Config ma na celu ułatwienie dostępu i używania danych
+konfiguracyjnych w aplikacjach.
+
 %package Zend_Console_Getopt
-Summary:	Zend_Console_Getopt
+Summary:	Zend_Console_Getopt - parsing command-line options and arguments
+Summary(pl.UTF-8):	Zend_Console_Getopt - analiza opcji i argumentów linii poleceń
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.console.getopt.html
 Requires:	%{name} = %{version}-%{release}
@@ -158,8 +201,13 @@ Requires:	%{name} = %{version}-%{release}
 The Zend_Console_Getopt class helps command-line applications to parse
 their options and arguments.
 
+%description Zend_Console_Getopt -l pl.UTF-8
+Klasa Zend_Console_Getopt pomaga aplikacjom linii poleceń w analizie
+opcji i argumentów.
+
 %package Zend_Controller
-Summary:	Zend_Controller
+Summary:	Zend_Controller - heart of Model-View-Controller system
+Summary(pl.UTF-8):	Zend_Controller - podstawa systemu Model-View-Controller
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.controller.html
 Requires:	%{name} = %{version}-%{release}
@@ -169,8 +217,15 @@ Zend_Controller is the heart of Zend Framework's MVC system. MVC
 stands for Model-View-Controller and is a design pattern targeted at
 separating application logic from display logic.
 
+%description Zend_Controller -l pl.UTF-8
+Zend_Controller to podstawa systemu MVC szkieletu Zend. MVC oznacza
+Model-View-Controller (model-widok-kontroler) i jest wzorcem
+projektowym służącym do oddzielenia logiki aplikacji od logiki
+wyświetlania.
+
 %package Zend_Currency
-Summary:	Zend_Currency
+Summary:	Zend_Currency - currency representation handling
+Summary(pl.UTF-8):	Zend_Currency - obsługa reprezentacji walut
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.currency.html
 Requires:	%{name} = %{version}-%{release}
@@ -183,8 +238,16 @@ formating. And it also provides additional informational methods which
 include localized informations on currencies, informations about which
 currency is used in which region and more.
 
+%description Zend_Currency -l pl.UTF-8
+Zend_Currency to część rdzenia I18N szkieletu Zend. Obsługuje
+wszystkie zawiłości związane z walutami, reprezentacją i formatowaniem
+jednostek monetarnych. Zawiera także dodatkowe metody informacyjne
+zawierające zlokalizowane informacje o walutach, regionach, w których
+są używane itp.
+
 %package Zend_Date
-Summary:	Zend_Date
+Summary:	Zend_Date - manipulating dates and times
+Summary(pl.UTF-8):	Zend_Date - operacje na dacie i czasie
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.date.html
 Requires:	%{name} = %{version}-%{release}
@@ -195,6 +258,12 @@ dates and times. Its methods accept a wide variety of types of
 information, including date parts, in numerous combinations yielding
 many features and possibilities above and beyond the existing PHP date
 related functions.
+
+%description Zend_Date -l pl.UTF-8
+Komponent Zend_Date oferuje szczegółowe, ale proste API do operacji na
+dacie i czasie. Metody przyjmują szeroki zakres typów informacji, w
+tym części daty w różnych kombinacjach wykraczających poza funkcje
+obróbki daty istniejące w PHP.
 
 %package Zend_Db
 Summary:	Zend_Db
