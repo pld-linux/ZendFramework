@@ -1,0 +1,12 @@
+--- ZendFramework-1.7.2/library/Zend/Locale.php~	2009-01-07 18:56:02.000000000 +0200
++++ ZendFramework-1.7.2/library/Zend/Locale.php	2009-01-07 18:56:05.377026299 +0200
+@@ -111,7 +111,8 @@
+         'wal_ET'=> true, 'wal'   => true, 'wo_SN' => true, 'wo'    => true, 'xh_ZA' => true,
+         'xh'    => true, 'yo_NG' => true, 'yo'    => true, 'zh_CN' => true, 'zh_HK' => true,
+         'zh_MO' => true, 'zh_SG' => true, 'zh_TW' => true, 'zh'    => true, 'zu_ZA' => true,
+-        'zu'    => true
++        'zu'    => true, 'en_EE' => true, 'en_LV' => true, 'en_LT' => true, 'en_UA' => true,
++        'ru_EE' => true, 'ru_LV' => true, 'ru_LT' => true,
+     );
+ 
+     /**
