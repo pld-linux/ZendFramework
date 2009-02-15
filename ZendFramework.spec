@@ -1051,6 +1051,18 @@ Requires:	php-PHPUnit
 Zend_Test provides tools to facilitate unit testing of your Zend
 Framework applications.
 
+%package Zend_Tool
+Summary:	Zend_Tool
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/wiki/display/ZFDEV/Zend_Tool
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Tool
+Zend_Tool component is intended to simplify project development
+for PHP programmers.
+
+Please note that this component is part of Zend Framework incubator.
+
 %package Zend_Translate
 Summary:	Zend_Translate
 Group:		Development/Languages/PHP
@@ -1201,13 +1213,21 @@ install %{SOURCE2} find-lang.sh
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{php_pear_dir}}
+install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{php_pear_dir}/bin}
+install -d $RPM_BUILD_ROOT%{_bindir}
 cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 # library should be in include_path if used, so we use already defined %{php_pear_dir}
 # NOTE: we could use %{php_data_dir} as of php-common-4:5.2.8-3, but then
 # pear(...) deps won't be satisifed that these libs use extensively.
 cp -a library/* $RPM_BUILD_ROOT%{php_pear_dir}
+
+# copy Zend_Tool from incubator
+cp -a incubator/library/Zend/Tool $RPM_BUILD_ROOT%{php_pear_dir}/Zend
+cp -a incubator/bin/zf.{sh,php} $RPM_BUILD_ROOT%{php_pear_dir}/bin
+
+# create appropriate symlink
+ln -sf %{php_pear_dir}/bin/zf.sh $RPM_BUILD_ROOT%{_bindir}/zf
 
 ./find-lang.sh %{name}.lang
 
@@ -1536,6 +1556,13 @@ rm -rf $RPM_BUILD_ROOT
 %files Zend_Test
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Test
+
+%files Zend_Tool
+%defattr(644,root,root,755)
+%{_bindir}/zf
+%attr(755,root,root) %{php_pear_dir}/bin/zf.sh
+%attr(755,root,root) %{php_pear_dir}/bin/zf.php
+%{php_pear_dir}/Zend/Tool
 
 %files Zend_Translate
 %defattr(644,root,root,755)
