@@ -42,6 +42,9 @@ Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{v
 Source1:	http://framework.zend.com/releases/ZendFramework-%{version}/%{name}-%{version}-manual-en.tar.gz
 # Source1-md5:	0bd6bf75ac35f48ce2348a37e1789da7
 Source2:	%{name}-find-lang.sh
+Source3:	%{name}-Zend_Tool_Framework_Manifest_Exception.php
+Source4:	%{name}-Zend_Tool_Framework_Provider_Exception.php
+Source5:	%{name}-Zend_Tool_Project_Resource.php
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-db_charset.patch
 URL:		http://framework.zend.com/
@@ -54,7 +57,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # exclude optional dependencies
-%define		_noautoreq	'php(oci8)' 'php(bitset)'
+%define		_noautoreq	'php(oci8)' 'php(bitset)' 'pear(../application/bootstrap.php)'
 
 %description
 Zend Framework is a high quality and open source framework for
@@ -1225,6 +1228,11 @@ cp -a library/* $RPM_BUILD_ROOT%{php_pear_dir}
 # copy Zend_Tool from incubator
 cp -a incubator/library/Zend/Tool $RPM_BUILD_ROOT%{php_pear_dir}/Zend
 cp -a incubator/bin/zf.php $RPM_BUILD_ROOT%{php_pear_dir}/bin
+
+# install missing files
+install %{SOURCE3} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Framework/Manifest/Exception.php
+install %{SOURCE4} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Framework/Provider/Exception.php
+install %{SOURCE5} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Project/Resource.php
 
 # create script in bindir
 cat >> $RPM_BUILD_ROOT%{_bindir}/zf << 'EOF'
