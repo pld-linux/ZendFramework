@@ -42,6 +42,7 @@ Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{v
 Source1:	http://framework.zend.com/releases/ZendFramework-%{version}/%{name}-%{version}-manual-en.tar.gz
 # Source1-md5:	0bd6bf75ac35f48ce2348a37e1789da7
 Source2:	%{name}-find-lang.sh
+# http://framework.zend.com/issues/browse/ZF-5802
 Source3:	%{name}-Zend_Tool_Framework_Manifest_Exception.php
 Source4:	%{name}-Zend_Tool_Framework_Provider_Exception.php
 Source5:	%{name}-Zend_Tool_Project_Resource.php
