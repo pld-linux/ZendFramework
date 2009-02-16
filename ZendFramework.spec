@@ -1060,6 +1060,7 @@ Summary:	Zend_Tool
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/wiki/display/ZFDEV/Zend_Tool
 Requires:	%{name} = %{version}-%{release}
+Requires:	/usr/bin/php
 
 %description Zend_Tool
 Zend_Tool component is intended to simplify project development
@@ -1236,10 +1237,10 @@ install %{SOURCE4} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Framework/Provider/E
 install %{SOURCE5} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Project/Resource.php
 
 # create script in bindir
-cat >> $RPM_BUILD_ROOT%{_bindir}/zf << 'EOF'
+cat >> $RPM_BUILD_ROOT%{_bindir}/zf <<-'EOF'
 #!/bin/sh
 cd %{php_pear_dir}/bin
-/usr/bin/php -d Safe_mode=off zf.php
+exec /usr/bin/php -d Safe_mode=off zf.php ${1:+"$@"}
 EOF
 
 ./find-lang.sh %{name}.lang
