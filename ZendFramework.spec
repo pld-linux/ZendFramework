@@ -1224,10 +1224,14 @@ cp -a library/* $RPM_BUILD_ROOT%{php_pear_dir}
 
 # copy Zend_Tool from incubator
 cp -a incubator/library/Zend/Tool $RPM_BUILD_ROOT%{php_pear_dir}/Zend
-cp -a incubator/bin/zf.{sh,php} $RPM_BUILD_ROOT%{php_pear_dir}/bin
+cp -a incubator/bin/zf.php $RPM_BUILD_ROOT%{php_pear_dir}/bin
 
-# create appropriate symlink
-ln -sf %{php_pear_dir}/bin/zf.sh $RPM_BUILD_ROOT%{_bindir}/zf
+# create script in bindir
+cat >> $RPM_BUILD_ROOT%{_bindir}/zf << 'EOF'
+#!/bin/sh
+cd %{php_pear_dir}/bin
+/usr/bin/php -d Safe_mode=off zf.php
+EOF
 
 ./find-lang.sh %{name}.lang
 
@@ -1559,9 +1563,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Zend_Tool
 %defattr(644,root,root,755)
-%{_bindir}/zf
-%attr(755,root,root) %{php_pear_dir}/bin/zf.sh
-%attr(755,root,root) %{php_pear_dir}/bin/zf.php
+%attr(755,root,root) %{_bindir}/zf
+%{php_pear_dir}/bin/zf.php
 %{php_pear_dir}/Zend/Tool
 
 %files Zend_Translate
