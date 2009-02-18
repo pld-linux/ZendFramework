@@ -1,6 +1,10 @@
-# TODO
-# - broken:
-#   error: ZendFramework-Zend_Service_Audioscrobbler-1.7.4-1.noarch: req pear(Zend/Service/Audioscrobbler/Exception.php) not found
+#
+# TODO:
+# - broken deps:
+#	pear(Zend/Gdata/YouTube/App/Exception.php) is needed by ZendFramework-Zend_Gdata-1.7.5-1.noarch
+#	pear(Zend/Service/Audioscrobbler/Exception.php) is needed by ZendFramework-Zend_Service_Audioscrobbler-1.7.5-1.noarch
+#	pear(Zend/Tool/CodeGenerator/Php/File.php) is needed by ZendFramework-Zend_Tool-1.7.5-1.noarch
+#
 # - dependencies to subpackages
 #        php-fileinfo is needed by ZendFramework-1.6.2-2.5.noarch
 #        php-mime_magic is needed by ZendFramework-1.6.2-2.5.noarch
@@ -30,6 +34,7 @@
 #        php-mcrypt is needed by ZendFramework-Zend_Service_ReCaptcha-1.6.2-2.5.noarch
 #        php-pecl_http is needed by ZendFramework-Zend_Uri-1.6.2-2.5.noarch
 #        php-mime_magic is needed by ZendFramework-Zend_Validate-1.6.2-2.5.noarch
+#
 # - add rpm-whiteout: http://pld.pastebin.com/f33091903
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
