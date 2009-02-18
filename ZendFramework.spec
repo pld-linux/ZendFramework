@@ -35,14 +35,14 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.7.4
+Version:	1.7.5
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
-# Source0-md5:	5240444dc2b0af50086ba6b3b9ee285e
+# Source0-md5:	c85cf1cf3f9b3a990ab3f33dfe114fde
 Source1:	http://framework.zend.com/releases/ZendFramework-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	0bd6bf75ac35f48ce2348a37e1789da7
+# Source1-md5:	b275b14afcc8384ec94f1852eb9f9851
 Source2:	%{name}-find-lang.sh
 # http://framework.zend.com/issues/browse/ZF-5802
 Source3:	%{name}-Zend_Tool_Framework_Manifest_Exception.php
