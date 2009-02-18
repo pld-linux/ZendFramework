@@ -44,9 +44,9 @@ Version:	1.7.5
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
-Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
+Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	c85cf1cf3f9b3a990ab3f33dfe114fde
-Source1:	http://framework.zend.com/releases/ZendFramework-%{version}/%{name}-%{version}-manual-en.tar.gz
+Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
 # Source1-md5:	b275b14afcc8384ec94f1852eb9f9851
 Source2:	%{name}-find-lang.sh
 # http://framework.zend.com/issues/browse/ZF-5802
@@ -1070,8 +1070,8 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	/usr/bin/php
 
 %description Zend_Tool
-Zend_Tool component is intended to simplify project development
-for PHP programmers.
+Zend_Tool component is intended to simplify project development for
+PHP programmers.
 
 Please note that this component is part of Zend Framework incubator.
 
