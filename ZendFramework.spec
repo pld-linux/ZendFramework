@@ -1,4 +1,6 @@
 # TODO
+# - broken:
+#   error: ZendFramework-Zend_Service_Audioscrobbler-1.7.4-1.noarch: req pear(Zend/Service/Audioscrobbler/Exception.php) not found
 # - dependencies to subpackages
 #        php-fileinfo is needed by ZendFramework-1.6.2-2.5.noarch
 #        php-mime_magic is needed by ZendFramework-1.6.2-2.5.noarch
