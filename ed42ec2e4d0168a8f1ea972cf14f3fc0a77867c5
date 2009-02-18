@@ -1,0 +1,2 @@
+- provide missing files for Zend_Tool
+  noautoreq ../application/boostrap.php
