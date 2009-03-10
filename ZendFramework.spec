@@ -1,47 +1,9 @@
-#
-# TODO:
-# - broken deps:
-#	pear(Zend/Gdata/YouTube/App/Exception.php) is needed by ZendFramework-Zend_Gdata-1.7.5-1.noarch
-#	pear(Zend/Service/Audioscrobbler/Exception.php) is needed by ZendFramework-Zend_Service_Audioscrobbler-1.7.5-1.noarch
-#	pear(Zend/Tool/CodeGenerator/Php/File.php) is needed by ZendFramework-Zend_Tool-1.7.5-1.noarch
-#
-# - dependencies to subpackages
-#        php-fileinfo is needed by ZendFramework-1.6.2-2.5.noarch
-#        php-mime_magic is needed by ZendFramework-1.6.2-2.5.noarch
-#        php-pecl_http is needed by ZendFramework-1.6.2-2.5.noarch
-#        php-ereg is needed by ZendFramework-Zend_Cache-1.6.2-2.5.noarch
-#        php-sqlite is needed by ZendFramework-Zend_Cache-1.6.2-2.5.noarch
-#        php-gd is needed by ZendFramework-Zend_Captcha-1.6.2-2.5.noarch
-#        php-sapi_apache is needed by ZendFramework-Zend_Controller-1.6.2-2.5.noarch
-#        php-mysqli is needed by ZendFramework-Zend_Db-1.6.2-2.5.noarch
-#        php-oci8 is needed by ZendFramework-Zend_Db-1.6.2-2.5.noarch
-#        php-zip is needed by ZendFramework-Zend_Filter-1.6.2-2.5.noarch
-#        php-ereg is needed by ZendFramework-Zend_Gdata-1.6.2-2.5.noarch
-#        php-openssl is needed by ZendFramework-Zend_Gdata-1.6.2-2.5.noarch
-#        php-mcrypt is needed by ZendFramework-Zend_InfoCard-1.6.2-2.5.noarch
-#        php-openssl is needed by ZendFramework-Zend_InfoCard-1.6.2-2.5.noarch
-#        php-json is needed by ZendFramework-Zend_Json-1.6.2-2.5.noarch
-#        php-ldap is needed by ZendFramework-Zend_Ldap-1.6.2-2.5.noarch
-#        php-zip is needed by ZendFramework-Zend_Mail-1.6.2-2.5.noarch
-#        php-bcmath is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
-#        php-gmp is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
-#        php-mhash is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
-#        php-openssl is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
-#        php-gd is needed by ZendFramework-Zend_Pdf-1.6.2-2.5.noarch
-#        php-bitset is needed by ZendFramework-Zend_Search_Lucene-1.6.2-2.5.noarch
-#        php-zip is needed by ZendFramework-Zend_Search_Lucene-1.6.2-2.5.noarch
-#        php-ereg is needed by ZendFramework-Zend_Service_Amazon-1.6.2-2.5.noarch
-#        php-mcrypt is needed by ZendFramework-Zend_Service_ReCaptcha-1.6.2-2.5.noarch
-#        php-pecl_http is needed by ZendFramework-Zend_Uri-1.6.2-2.5.noarch
-#        php-mime_magic is needed by ZendFramework-Zend_Validate-1.6.2-2.5.noarch
-#
-# - add rpm-whiteout: http://pld.pastebin.com/f33091903
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.7.6
-Release:	1
+Release:	2
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -55,6 +17,7 @@ Source4:	%{name}-Zend_Tool_Framework_Provider_Exception.php
 Source5:	%{name}-Zend_Tool_Project_Resource.php
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-db_charset.patch
+Patch2:		%{name}-deps.patch
 URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
@@ -552,7 +515,6 @@ Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.locale.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	php-iconv
-Suggests:	php-bcmath
 
 %description Zend_Locale
 Zend_Locale is the Framework's answer to the question, "How can the
@@ -753,7 +715,6 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	php-ctype
 Requires:	php-dom
 Requires:	php-iconv
-Suggests:	php-pecl-bitset
 
 %description Zend_Search_Lucene
 Zend_Search_Lucene is a general purpose text search engine. Since it
@@ -1220,6 +1181,7 @@ find '(' -name '*.php' -o -name '*.xml' ')' -print0 | xargs -0 %{__sed} -i -e 's
 cd library
 %patch1 -p0
 cd -
+%patch2 -p1
 
 install %{SOURCE2} find-lang.sh
 
@@ -1509,6 +1471,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Zend_Service_Audioscrobbler
 %defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/Audioscrobbler
 %{php_pear_dir}/Zend/Service/Audioscrobbler.php
 
 %files Zend_Service_Delicious
