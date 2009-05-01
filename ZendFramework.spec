@@ -1,9 +1,17 @@
+#
+# TODO:
+# error: Failed dependencies:
+#	pear(Zend/Math/Exception.php) is needed by ZendFramework-Zend_Crypt-1.8.0-1.noarch
+#	pear(Abstract.php) is needed by ZendFramework-Zend_Soap-1.8.0-1.noarch
+#	pear(Interface.php) is needed by ZendFramework-Zend_Soap-1.8.0-1.noarch
+#	pear(Zend/Tool/Framework/Manifest/Metadata.php) is needed by ZendFramework-Zend_Tool-1.8.0-1.noarch
+#
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.8.0
-Release:	1
+Release:	0.1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
