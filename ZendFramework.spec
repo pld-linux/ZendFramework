@@ -1,10 +1,7 @@
 #
 # TODO:
 # error: Failed dependencies:
-#	pear(Zend/Math/Exception.php) is needed by ZendFramework-Zend_Crypt-1.8.0-1.noarch
-#	pear(Abstract.php) is needed by ZendFramework-Zend_Soap-1.8.0-1.noarch
-#	pear(Interface.php) is needed by ZendFramework-Zend_Soap-1.8.0-1.noarch
-#	pear(Zend/Tool/Framework/Manifest/Metadata.php) is needed by ZendFramework-Zend_Tool-1.8.0-1.noarch
+#	pear(Zend/Tool/Framework/Manifest/Metadata.php) is needed by ZendFramework-Zend_Tool-1.8.0-0.1.noarch
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
@@ -23,6 +20,7 @@ Source2:	%{name}-find-lang.sh
 Source3:	%{name}-Zend_Tool_Framework_Manifest_Exception.php
 Source4:	%{name}-Zend_Tool_Framework_Provider_Exception.php
 Source5:	%{name}-Zend_Tool_Project_Resource.php
+Source6:	%{name}-Zend_Math_Exception.php
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-db_charset.patch
 Patch2:		%{name}-deps.patch
@@ -1282,7 +1280,7 @@ install %{SOURCE2} find-lang.sh
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{php_pear_dir}/bin}
+install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{php_pear_dir}/{bin,Zend/Math}}
 install -d $RPM_BUILD_ROOT%{_bindir}
 cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
@@ -1295,6 +1293,7 @@ cp -a library/* $RPM_BUILD_ROOT%{php_pear_dir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Framework/Manifest/Exception.php
 install %{SOURCE4} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Framework/Provider/Exception.php
 install %{SOURCE5} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Project/Resource.php
+install %{SOURCE6} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Math/Exception.php
 
 # create script in bindir
 cp -a bin/zf.php $RPM_BUILD_ROOT%{php_pear_dir}/bin
@@ -1325,6 +1324,7 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Server/Exception.php
 %{php_pear_dir}/Zend/Server/Interface.php
 %{php_pear_dir}/Zend/Server/Definition.php
+%{php_pear_dir}/Zend/Math
 %dir %{php_pear_dir}/Zend/Server/Method
 %{php_pear_dir}/Zend/Server/Method/Callback.php
 %{php_pear_dir}/Zend/Server/Method/Definition.php
