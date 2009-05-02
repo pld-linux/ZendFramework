@@ -16,10 +16,6 @@ Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
 # Source1-md5:	46dd0ca64e6b2dde42df14281b94ebc7
 Source2:	%{name}-find-lang.sh
-# http://framework.zend.com/issues/browse/ZF-5802
-Source3:	%{name}-Zend_Tool_Framework_Manifest_Exception.php
-Source4:	%{name}-Zend_Tool_Framework_Provider_Exception.php
-Source5:	%{name}-Zend_Tool_Project_Resource.php
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-db_charset.patch
 Patch2:		%{name}-deps.patch
@@ -1287,11 +1283,6 @@ cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 # NOTE: we could use %{php_data_dir} as of php-common-4:5.2.8-3, but then
 # pear(...) deps won't be satisifed that these libs use extensively.
 cp -a library/* $RPM_BUILD_ROOT%{php_pear_dir}
-
-# install missing files
-install %{SOURCE3} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Framework/Manifest/Exception.php
-install %{SOURCE4} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Framework/Provider/Exception.php
-install %{SOURCE5} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Project/Resource.php
 
 # create script in bindir
 cp -a bin/zf.php $RPM_BUILD_ROOT%{php_pear_dir}/bin
