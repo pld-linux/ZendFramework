@@ -1322,7 +1322,6 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Server/Exception.php
 %{php_pear_dir}/Zend/Server/Interface.php
 %{php_pear_dir}/Zend/Server/Definition.php
-%{php_pear_dir}/Zend/Math
 %dir %{php_pear_dir}/Zend/Server/Method
 %{php_pear_dir}/Zend/Server/Method/Callback.php
 %{php_pear_dir}/Zend/Server/Method/Definition.php
