@@ -7,14 +7,14 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.8.0
+Version:	1.8.1
 Release:	0.1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	2f2acffa24644a1cd975ba90b6bf1077
+# Source0-md5:	e9d3aa55cc608134661ffd5397955316
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	46dd0ca64e6b2dde42df14281b94ebc7
+# Source1-md5:	14fce868333a22f8ce9a7954e4c5fe31
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-db_charset.patch
