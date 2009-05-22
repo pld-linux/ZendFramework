@@ -1,14 +1,9 @@
-#
-# TODO:
-# error: Failed dependencies:
-#	pear(Zend/Tool/Framework/Manifest/Metadata.php) is needed by ZendFramework-Zend_Tool-1.8.0-0.1.noarch
-#
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.8.1
-Release:	0.1
+Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -19,6 +14,7 @@ Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-db_charset.patch
 Patch2:		%{name}-deps.patch
+Patch3:		%{name}-bug6499.patch
 URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
@@ -1270,6 +1266,7 @@ cd library
 %patch1 -p0
 cd -
 %patch2 -p1
+%patch3 -p0
 
 install %{SOURCE2} find-lang.sh
 
