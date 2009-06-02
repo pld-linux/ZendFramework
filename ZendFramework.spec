@@ -15,6 +15,7 @@ Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
 Patch2:		%{name}-bug6499.patch
 URL:		http://framework.zend.com/
+BuildRequires:	php-pecl-runkit
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
@@ -1272,9 +1273,20 @@ find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 %build
 # check *.php files syntax using runkit extension
 lint_php() {
-	for a in $(find library -name '*.php'); do
-		php -l "$a"
-	done
+	php -r '
+		$errors = 0;
+		array_shift($argv);
+		echo "Checking syntax of ", count($argv), " PHP files";
+		foreach ($argv as $file) {
+			echo ".";
+			if (!runkit_lint_file($file)) {
+				echo "PHP Lint: $file\n";
+				$errors++;
+			}
+		}
+		echo "\nDONE!\n";
+		exit($errors ? 1 : 0);
+	' $(find library -name '*.php')
 }
 lint_php
 
