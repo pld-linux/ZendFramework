@@ -1,12 +1,9 @@
-# PHP Fatal error:  Cannot redeclare Zend_Db_Adapter_Pdo_Mysql::_connect() in library/Zend/Db/Adapter/Pdo/Mysql.php on line 120
-#   Errors parsing library/Zend/Db/Adapter/Pdo/Mysql.php
-#   upstream bug: http://framework.zend.com/issues/browse/ZF-6881
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.8.2
-Release:	0.1
+Release:	2
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -15,9 +12,8 @@ Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version
 # Source1-md5:	993547c3d128cde28197bb013024d945
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
-Patch1:		%{name}-db_charset.patch
-Patch2:		%{name}-deps.patch
-Patch3:		%{name}-bug6499.patch
+Patch1:		%{name}-deps.patch
+Patch2:		%{name}-bug6499.patch
 URL:		http://framework.zend.com/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
@@ -1265,13 +1261,13 @@ Podręcznik do Zend Framework w języku angielskim.
 mv %{name}-%{version}/documentation .
 find '(' -name '*.php' -o -name '*.xml' ')' -print0 | xargs -0 %{__sed} -i -e 's,\r$,,'
 %patch0 -p1
-cd library
-%patch1 -p0
-cd -
-%patch2 -p1
-%patch3 -p0
+%patch1 -p1
+%patch2 -p0
 
 install %{SOURCE2} find-lang.sh
+
+# cleanup backups after patching
+find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 
 %build
 # check *.php files syntax using runkit extension
