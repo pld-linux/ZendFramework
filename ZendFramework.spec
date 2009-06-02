@@ -1,7 +1,6 @@
-# 
-#PHP Fatal error:  Cannot redeclare Zend_Db_Adapter_Pdo_Mysql::_connect() in library/Zend/Db/Adapter/Pdo/Mysql.php on line 120
-#Errors parsing library/Zend/Db/Adapter/Pdo/Mysql.php
-
+# PHP Fatal error:  Cannot redeclare Zend_Db_Adapter_Pdo_Mysql::_connect() in library/Zend/Db/Adapter/Pdo/Mysql.php on line 120
+#   Errors parsing library/Zend/Db/Adapter/Pdo/Mysql.php
+#   upstream bug: http://framework.zend.com/issues/browse/ZF-6881
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
