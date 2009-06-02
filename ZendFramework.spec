@@ -1,9 +1,13 @@
+# 
+#PHP Fatal error:  Cannot redeclare Zend_Db_Adapter_Pdo_Mysql::_connect() in library/Zend/Db/Adapter/Pdo/Mysql.php on line 120
+#Errors parsing library/Zend/Db/Adapter/Pdo/Mysql.php
+
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.8.2
-Release:	1
+Release:	0.1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -166,11 +170,11 @@ URL:		http://framework.zend.com/manual/en/zend.codegenerator.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_CodeGenerator
-Zend_CodeGenerator provides facilities to generate arbitrary code using
-an object oriented interface, both to create new code as well as to
-update existing code. While the current implementation is limited to
-generating PHP code, you can easily extend the base class in order to
-provide code generation for other tasks: JavaScript, configuration
+Zend_CodeGenerator provides facilities to generate arbitrary code
+using an object oriented interface, both to create new code as well as
+to update existing code. While the current implementation is limited
+to generating PHP code, you can easily extend the base class in order
+to provide code generation for other tasks: JavaScript, configuration
 files, apache vhosts, etc.
 
 %package Zend_Config
@@ -731,23 +735,23 @@ Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Reflection
 Zend_Reflection is a drop-in extension to PHP's own Reflection API,
-providing several additional features: 
- - Ability to retrieve return values types. 
- - Ability to retrieve method and function parameter types. 
- - Ability to retrieve class property types. 
- - DocBlocks gain a Reflection class, allowing introspection of docblocks.
-   This provides the ability to determine what annotation tags have been
-   defined as well as to retrieve their values, and the ability to retrieve
-   the short and long descriptions. 
- - Files gain a Reflection class, allowing introspection of PHP files. This
-   provides the ability to determine what functions and classes are defined
-   in a given file, as well as to instrospect them. 
- - Ability to override any Reflection class with your own variant, for the
-   entire reflection tree you create. 
+providing several additional features:
+ - Ability to retrieve return values types.
+ - Ability to retrieve method and function parameter types.
+ - Ability to retrieve class property types.
+ - DocBlocks gain a Reflection class, allowing introspection of
+   docblocks. This provides the ability to determine what annotation tags
+   have been defined as well as to retrieve their values, and the ability
+   to retrieve the short and long descriptions.
+ - Files gain a Reflection class, allowing introspection of PHP files.
+   This provides the ability to determine what functions and classes are
+   defined in a given file, as well as to instrospect them.
+ - Ability to override any Reflection class with your own variant, for
+   the entire reflection tree you create.
 
-In general, Zend_Reflection works just like the standard Reflection API,
-but provides a few additional methods for retrieving artifacts not
-defined in the Reflection API.
+In general, Zend_Reflection works just like the standard Reflection
+API, but provides a few additional methods for retrieving artifacts
+not defined in the Reflection API.
 
 %package Zend_Registry
 Summary:	Zend_Registry
@@ -1079,10 +1083,10 @@ Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Tag
 Zend_Tag is a component suite which provides a facility to work with
-taggable Items. As its base, it provides two classes to work with Tags,
-Zend_Tag_Item and Zend_Tag_ItemList. Additionally, it comes with the
-interface Zend_Tag_Taggable, which allows you to use any of your models
-as a taggable item in conjunction with Zend_Tag.
+taggable Items. As its base, it provides two classes to work with
+Tags, Zend_Tag_Item and Zend_Tag_ItemList. Additionally, it comes with
+the interface Zend_Tag_Taggable, which allows you to use any of your
+models as a taggable item in conjunction with Zend_Tag.
 
 %package Zend_Text
 Summary:	Zend_Text
@@ -1269,6 +1273,15 @@ cd -
 %patch3 -p0
 
 install %{SOURCE2} find-lang.sh
+
+%build
+# check *.php files syntax using runkit extension
+lint_php() {
+	for a in $(find library -name '*.php'); do
+		php -l "$a"
+	done
+}
+lint_php
 
 %install
 rm -rf $RPM_BUILD_ROOT
