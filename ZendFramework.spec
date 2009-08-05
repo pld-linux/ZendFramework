@@ -3,7 +3,7 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.8.4PL1
-Release:	1
+Release:	2
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -14,6 +14,7 @@ Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
 Patch2:		%{name}-bug6499.patch
+Patch3:		ZF-5750-pjpeg.patch
 URL:		http://framework.zend.com/
 BuildRequires:	php-pecl-runkit
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -1264,6 +1265,7 @@ find '(' -name '*.php' -o -name '*.xml' ')' -print0 | xargs -0 %{__sed} -i -e 's
 %patch0 -p1
 %patch1 -p1
 %patch2 -p0
+%patch3 -p0
 
 install %{SOURCE2} find-lang.sh
 
