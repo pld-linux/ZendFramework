@@ -2,19 +2,18 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.8.4PL1
-Release:	2
+Version:	1.9.0
+Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	d7374bf9b1741e2f925e8d2443475f9d
+# Source0-md5:	f3fea04a41b0e7d8492d50d7db577b85
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	91c3e781895d07ad3b22e37dbcad7585
+# Source1-md5:	165a952ced6c7c4eacde6aadbcf67fe2
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
-Patch2:		%{name}-bug6499.patch
-Patch3:		ZF-5750-pjpeg.patch
+Patch2:		ZF-5750-pjpeg.patch
 URL:		http://framework.zend.com/
 BuildRequires:	php-pecl-runkit
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -724,6 +723,20 @@ takes an absolute value and optionally a status message, and then
 calls the adapter with some precalculated values like percentage and
 estimated time left.
 
+%package Zend_Queue
+Summary:	Zend_Queue
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.progressbar.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Queue
+Zend_Queue is a standardized interface for dealing with a variety of
+queuing systems. Proposed systems include: simple array access,
+Zend_Cache, Zend Platform Job Queue, Amazon's Simple Queue Service
+(SQS). It should support creating queues, determining the number of
+messages in a queue, retrieving messages from a queue (all or specific
+number), submitting messages to a queue, and removing queues.
+
 %package Zend_Reflection
 Summary:	Zend_Reflection
 Group:		Development/Languages/PHP
@@ -1265,7 +1278,6 @@ find '(' -name '*.php' -o -name '*.xml' ')' -print0 | xargs -0 %{__sed} -i -e 's
 %patch0 -p1
 %patch1 -p1
 %patch2 -p0
-%patch3 -p0
 
 install %{SOURCE2} find-lang.sh
 
@@ -1507,7 +1519,10 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{php_pear_dir}/Zend/Locale/Data
 %{php_pear_dir}/Zend/Locale/Data/Translation.php
 %{php_pear_dir}/Zend/Locale/Data/characters.xml
-%{php_pear_dir}/Zend/Locale/Data/plurals.xml
+%{php_pear_dir}/Zend/Locale/Data/likelySubtags.xml
+%{php_pear_dir}/Zend/Locale/Data/metazoneInfo.xml
+%{php_pear_dir}/Zend/Locale/Data/numberingSystems.xml
+%{php_pear_dir}/Zend/Locale/Data/postalCodeData.xml
 %{php_pear_dir}/Zend/Locale/Data/root.xml
 %{php_pear_dir}/Zend/Locale/Data/supplementalData.xml
 %{php_pear_dir}/Zend/Locale/Data/telephoneCodeData.xml
@@ -1555,6 +1570,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Pdf
 %{php_pear_dir}/Zend/Pdf.php
+
+%files Zend_Queue
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Queue
+%{php_pear_dir}/Zend/Queue.php
 
 %files Zend_Reflection
 %defattr(644,root,root,755)
