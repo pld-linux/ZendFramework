@@ -3,7 +3,7 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.9.1
-Release:	1
+Release:	2
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -16,6 +16,7 @@ Patch1:		%{name}-deps.patch
 Patch2:		ZF-5750-pjpeg.patch
 URL:		http://framework.zend.com/
 BuildRequires:	php-pecl-runkit
+BuildRequires:	php-program
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
