@@ -15,8 +15,8 @@ Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
 Patch2:		ZF-5750-pjpeg.patch
 URL:		http://framework.zend.com/
+BuildRequires:	/usr/bin/php
 BuildRequires:	php-pecl-runkit
-BuildRequires:	php-program
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
