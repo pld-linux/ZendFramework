@@ -2,14 +2,14 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.9.2
+Version:	1.9.3PL1
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	33fa57b9cf4831c717b1d4017ad93176
+# Source0-md5:	87b5a65e2597389544dddb22ecef7bf8
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	e410c7165368daca8959e527c59075de
+# Source1-md5:	4987ad3c770f8fe1b39b5d0424b0c7bd
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
