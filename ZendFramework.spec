@@ -1,3 +1,7 @@
+# TODO
+#error: ZendFramework-Zend_Pdf-1.9.6-1: req pear(Zend/Pdf/Excaption.php) not found
+#error: ZendFramework-Zend_Pdf-1.9.6-1: req pear(Zend/Pdf/FileParser/Image/Jpeg.php) not found
+#error: ZendFramework-Zend_Pdf-1.9.6-1: req pear(Zend/Pdf/FileParser/Image/Tiff.php) not found
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
