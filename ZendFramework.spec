@@ -1,6 +1,8 @@
+#
 # TODO
-#error: ZendFramework-Zend_Pdf-1.9.6-1: req pear(Zend/Pdf/FileParser/Image/Jpeg.php) not found
-#error: ZendFramework-Zend_Pdf-1.9.6-1: req pear(Zend/Pdf/FileParser/Image/Tiff.php) not found
+# - check Zend/Pdf/FileParser/Image/Jpeg.php and Zend/Pdf/FileParser/Image/Tiff.php
+#   presence in Zend/Pdf/Image.php after update [not implemented in 1.9.7)
+#
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
@@ -31,7 +33,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # exclude optional dependencies
-%define		_noautoreq	'php(oci8)' 'php(bitset)' 'pear(../application/bootstrap.php)'
+%define		_noautoreq	'php(oci8)' 'php(bitset)' 'pear(../application/bootstrap.php)' 'pear(Zend/Pdf/FileParser/Image/Tiff.php)' 'pear(Zend/Pdf/FileParser/Image/Jpeg.php)'
 
 %description
 Zend Framework is a high quality and open source framework for
