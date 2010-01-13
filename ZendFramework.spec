@@ -1,23 +1,23 @@
 # TODO
-#error: ZendFramework-Zend_Pdf-1.9.6-1: req pear(Zend/Pdf/Excaption.php) not found
 #error: ZendFramework-Zend_Pdf-1.9.6-1: req pear(Zend/Pdf/FileParser/Image/Jpeg.php) not found
 #error: ZendFramework-Zend_Pdf-1.9.6-1: req pear(Zend/Pdf/FileParser/Image/Tiff.php) not found
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.9.6
+Version:	1.9.7
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	53d6651ff58f5d8937599a2feee01bd3
+# Source0-md5:	ee066286942723187216fd236739e3dd
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	1f2cbd915e0c2bcfe6b1f2c92ab51b42
+# Source1-md5:	c774ce7fc0053f14e64a5248e4b167d9
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
 Patch2:		ZF-5750-pjpeg.patch
+Patch3:		%{name}-Zend_Pdf-excaption.patch
 URL:		http://framework.zend.com/
 BuildRequires:	/usr/bin/php
 BuildRequires:	php-pecl-runkit
@@ -1283,6 +1283,7 @@ find '(' -name '*.php' -o -name '*.xml' ')' -print0 | xargs -0 %{__sed} -i -e 's
 %patch0 -p1
 %patch1 -p1
 %patch2 -p0
+%patch3 -p1
 
 install %{SOURCE2} find-lang.sh
 
