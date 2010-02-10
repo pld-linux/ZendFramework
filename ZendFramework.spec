@@ -639,7 +639,7 @@ renderer that extends Zend_Markup_Renderer_Abstract. The factory
 method accepts three arguments. The first one is the parser used to
 tokenize the text (e.g. BbCode). The second (optional) parameter is
 the renderer to use, Html by default. Thirdly an array with options to
-use for the renderer can be specified. 
+use for the renderer can be specified.
 
 %package Zend_Measure
 Summary:	Zend_Measure
@@ -885,7 +885,7 @@ Requires:	%{name} = %{version}-%{release}
 %description Zend_Serializer
 Zend_Serializer provides an adapter based interface to simply generate
 storable representation of php types by different facilities, and
-recover. 
+recover.
 
 %package Zend_Server_Reflection
 Summary:	Zend_Server_Reflection
@@ -975,12 +975,12 @@ URL:		http://framework.zend.com/manual/en/zend.service.developergarden.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_DeveloperGarden
-DeveloperGarden is the name for the "Open Development services" of
-the German Telekom. The "Open Development services" are a set of SOAP
-API Services.
+DeveloperGarden is the name for the "Open Development services" of the
+German Telekom. The "Open Development services" are a set of SOAP API
+Services.
 
 The family of Zend_Service_DeveloperGarden components provides a clean
-and simple interface to the » DeveloperGarden API and additionally
+and simple interface to the DeveloperGarden API and additionally
 offers functionality to improve handling and performance
 
 %package Zend_Service_Flickr
@@ -1007,12 +1007,12 @@ Requires:	%{name} = %{version}-%{release}
 LiveDocx is a SOAP service that allows developers to generate word
 processing documents by combining structured data from PHP with a
 template, created in a word processor. The resulting document can be
-saved as a PDF, DOCX, DOC, HTML or RTF file. LiveDocx implements »
+saved as a PDF, DOCX, DOC, HTML or RTF file. LiveDocx implements
 mail-merge in PHP.
 
 The family of Zend_Service_LiveDocx components provides a clean and
-simple interface to the » LiveDocx API and additionally offers
-functionality to improve network performance. 
+simple interface to the LiveDocx API and additionally offers
+functionality to improve network performance.
 
 %package Zend_Service_Nirvanix
 Summary:	Zend_Service_Nirvanix
@@ -1164,7 +1164,7 @@ platform, an operating system in the cloud providing services for
 hosting, management, scalable storage with support for simple blobs,
 tables, and queues, as well as a management infrastructure for
 provisioning and geo-distribution of cloud-based services, and a
-development platform for the Azure Services layer. 
+development platform for the Azure Services layer.
 
 %package Zend_Service_Yahoo
 Summary:	Zend_Service_Yahoo
