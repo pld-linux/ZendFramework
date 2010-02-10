@@ -1,25 +1,25 @@
 #
 # TODO
 # - check Zend/Pdf/FileParser/Image/Jpeg.php and Zend/Pdf/FileParser/Image/Tiff.php
-#   presence in Zend/Pdf/Image.php after update [not implemented in 1.9.7)
+#   presence in Zend/Pdf/Image.php after update [not implemented in 1.10.0)
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.9.7
+Version:	1.10.0
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	ee066286942723187216fd236739e3dd
+# Source0-md5:	326156a309383648c17fb02df5b10e6c
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	c774ce7fc0053f14e64a5248e4b167d9
+# Source1-md5:	49de25dc4d484df0215deb1e1629f98d
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
 Patch2:		ZF-5750-pjpeg.patch
-Patch3:		%{name}-Zend_Pdf-excaption.patch
+Patch3:		%{name}-Zend_Log_Exception.patch
 URL:		http://framework.zend.com/
 BuildRequires:	/usr/bin/php
 BuildRequires:	php-pecl-runkit
@@ -119,6 +119,26 @@ authentication adapters for common use case scenarios.
 %description Zend_Auth -l pl.UTF-8
 Zend_Auth udostępnia API do uwierzytelniania i zawiera właściwe
 adaptery do uwierzytelniania w popularnych przypadkach użycia.
+
+%package Zend_Barcode
+Summary:	Zend_Barcode - barcode generator
+Summary(pl.UTF_8):	Zend_Barcode - generator kodów kreskowych
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.barcode.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Barcode
+Zend_Barcode provides a generic way to generate barcodes. The
+Zend_Barcode component is divided into two subcomponents: barcode
+objects and renderers. Objects allow you to create barcodes
+independently of the renderer. Renderer allow you to draw barcodes
+based on the support required.
+
+%description Zend_Barcode -l pl.UTF-8
+Zend_Barcode udostępnia funkcjonalność generowania kodów kreskowych.
+Komponent Zend_Barcode podzielony jest na dwa podkomponenty: obiekty i
+renderery. Obiekty pozwalają na tworzenie kodów niezależnie od
+renderera, renderer na rysowanie kodów na podstawie obiektu.
 
 %package Zend_Cache
 Summary:	Zend_Cache - data caching
@@ -603,6 +623,24 @@ text and MIME-compliant multipart e-mail messages. Mail can be sent
 with Zend_Mail via the default Zend_Mail_Transport_Sendmail transport
 or via Zend_Mail_Transport_Smtp.
 
+%package Zend_Markup
+Summary:	Zend_Markup
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.markup.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Markup
+The Zend_Markup component provides an extensible way for parsing text
+and rendering lightweight markup languages like BBcode and Textile. It
+is available as of Zend Framework version 1.10.
+
+Zend_Markup uses a factory method to instantiate an instance of a
+renderer that extends Zend_Markup_Renderer_Abstract. The factory
+method accepts three arguments. The first one is the parser used to
+tokenize the text (e.g. BbCode). The second (optional) parameter is
+the renderer to use, Html by default. Thirdly an array with options to
+use for the renderer can be specified. 
+
 %package Zend_Measure
 Summary:	Zend_Measure
 Group:		Development/Languages/PHP
@@ -654,6 +692,24 @@ Zend_Navigation is a component for managing trees of pointers to web
 pages. Simply put: It can be used for creating menus, breadcrumbs,
 links, and sitemaps, or serve as a model for other navigation related
 purposes.
+
+%package Zend_Oauth
+Summary:	Zend_Oauth
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.oauth.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Oauth
+OAuth allows you to approve access by any application to your private
+data stored a website without being forced to disclose your username
+or password. If you think about it, the practice of handing over your
+username and password for sites like Yahoo Mail or Twitter has been
+endemic for quite a while. This has raised some serious concerns
+because there's nothing to prevent other applications from misusing
+this data. Yes, some services may appear trustworthy but that is never
+guaranteed. OAuth resolves this problem by eliminating the need for
+any username and password sharing, replacing it with a user controlled
+authorization process
 
 %package Zend_OpenId
 Summary:	Zend_OpenId
@@ -820,6 +876,17 @@ Zend_Search_Lucene supports the following features:
   proximity queries, range queries and more
 - Search by specific field (e.g., title, author, contents)
 
+%package Zend_Serializer
+Summary:	Zend_Serializer
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.serializer.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Serializer
+Zend_Serializer provides an adapter based interface to simply generate
+storable representation of php types by different facilities, and
+recover. 
+
 %package Zend_Server_Reflection
 Summary:	Zend_Server_Reflection
 Group:		Development/Languages/PHP
@@ -901,6 +968,21 @@ JSON web services. This component gives you read-write access to posts
 at del.icio.us if you provide credentials. It also allows read-only
 access to public data of all users.
 
+%package Zend_Service_DeveloperGarden
+Summary:	Zend_Service_DeveloperGarden
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.developergarden.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_DeveloperGarden
+DeveloperGarden is the name for the "Open Development services" of
+the German Telekom. The "Open Development services" are a set of SOAP
+API Services.
+
+The family of Zend_Service_DeveloperGarden components provides a clean
+and simple interface to the » DeveloperGarden API and additionally
+offers functionality to improve handling and performance
+
 %package Zend_Service_Flickr
 Summary:	Zend_Service_Flickr
 Group:		Development/Languages/PHP
@@ -914,6 +996,23 @@ Zend_Service_Flickr is a simple API for using the Flickr REST Web
 Service. In order to use the Flickr web services, you must have an API
 key. To obtain a key, visit the Flickr API Documentation
 <http://www.flickr.com/services/api/>.
+
+%package Zend_Service_LiveDocx
+Summary:	Zend_Service_LiveDocx
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.livedocx.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_LiveDocx
+LiveDocx is a SOAP service that allows developers to generate word
+processing documents by combining structured data from PHP with a
+template, created in a word processor. The resulting document can be
+saved as a PDF, DOCX, DOC, HTML or RTF file. LiveDocx implements »
+mail-merge in PHP.
+
+The family of Zend_Service_LiveDocx components provides a clean and
+simple interface to the » LiveDocx API and additionally offers
+functionality to improve network performance. 
 
 %package Zend_Service_Nirvanix
 Summary:	Zend_Service_Nirvanix
@@ -1052,6 +1151,20 @@ Zend_Service_Twitter will allow you to query the public timeline and
 if you provide a username and password for Twitter it will allow you
 to get and update your status, reply to friends, direct message
 friends, mark tweets as favorite and much more.
+
+%package Zend_Service_WindowsAzure
+Summary:	Zend_Service_WindowsAzure
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.windowsazure.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_WindowsAzure
+Windows Azure is the name for Microsoft’s Software + Services
+platform, an operating system in the cloud providing services for
+hosting, management, scalable storage with support for simple blobs,
+tables, and queues, as well as a management infrastructure for
+provisioning and geo-distribution of cloud-based services, and a
+development platform for the Azure Services layer. 
 
 %package Zend_Service_Yahoo
 Summary:	Zend_Service_Yahoo
@@ -1389,6 +1502,11 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Auth
 %{php_pear_dir}/Zend/Auth.php
 
+%files Zend_Barcode
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Barcode
+%{php_pear_dir}/Zend/Barcode.php
+
 %files Zend_Cache
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Cache
@@ -1545,6 +1663,11 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Mail
 %{php_pear_dir}/Zend/Mail.php
 
+%files Zend_Markup
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Markup
+%{php_pear_dir}/Zend/Markup.php
+
 %files Zend_Measure
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Measure
@@ -1563,6 +1686,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Navigation
 %{php_pear_dir}/Zend/Navigation.php
+
+%files Zend_Oauth
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Oauth
+%{php_pear_dir}/Zend/Oauth.php
 
 %files Zend_OpenId
 %defattr(644,root,root,755)
@@ -1602,6 +1730,11 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Search/Lucene
 %{php_pear_dir}/Zend/Search/Lucene.php
 
+%files Zend_Serializer
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Serializer
+%{php_pear_dir}/Zend/Serializer.php
+
 %files Zend_Server_Reflection
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Server/Reflection
@@ -1626,10 +1759,19 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Service/Delicious
 %{php_pear_dir}/Zend/Service/Delicious.php
 
+%files Zend_Service_DeveloperGarden
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/DeveloperGarden
+
 %files Zend_Service_Flickr
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Flickr
 %{php_pear_dir}/Zend/Service/Flickr.php
+
+%files Zend_Service_LiveDocx
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/LiveDocx
+%{php_pear_dir}/Zend/Service/LiveDocx.php
 
 %files Zend_Service_Nirvanix
 %defattr(644,root,root,755)
@@ -1665,6 +1807,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Twitter
 %{php_pear_dir}/Zend/Service/Twitter.php
+
+%files Zend_Service_WindowsAzure
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/WindowsAzure
 
 %files Zend_Service_Yahoo
 %defattr(644,root,root,755)
