@@ -7,18 +7,17 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.10.1
+Version:	1.10.2
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	ddbf31a53052295464c03bac0c603623
+# Source0-md5:	0d14bb2ecc13c7963f8e64fea40d0a2e
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	4dde42c8869cd36fae433a4fb10fb391
+# Source1-md5:	7e9c5012fbf80f2207de2d48eddfb20f
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
-Patch2:		ZF-5750-pjpeg.patch
 URL:		http://framework.zend.com/
 BuildRequires:	/usr/bin/php
 BuildRequires:	php-pecl-runkit
@@ -1396,7 +1395,6 @@ mv %{name}-%{version}/documentation .
 find '(' -name '*.php' -o -name '*.xml' ')' -print0 | xargs -0 %{__sed} -i -e 's,\r$,,'
 %patch0 -p1
 %patch1 -p1
-%patch2 -p0
 
 install %{SOURCE2} find-lang.sh
 
