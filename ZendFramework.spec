@@ -723,6 +723,10 @@ Summary:	Zend_OpenId
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.openid.html
 Requires:	%{name} = %{version}-%{release}
+# needed for dh keys: any of these tree can do for
+Suggests:	php-bcmath
+Suggests:	php-gmp
+Suggests:	php-openssl
 
 %description Zend_OpenId
 Zend_OpenId is a Zend Framework component that provides a simple API
