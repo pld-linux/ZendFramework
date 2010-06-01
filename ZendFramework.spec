@@ -5,14 +5,14 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.10.2
-Release:	2
+Version:	1.10.5
+Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	0d14bb2ecc13c7963f8e64fea40d0a2e
+# Source0-md5:	febb5614c8ea5fbab59377e16a27089f
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	7e9c5012fbf80f2207de2d48eddfb20f
+# Source1-md5:	86008d523ae58a8a456b47a777ec86e6
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
