@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	tests	# do not perform "make test"
+
 # TODO
 # - check Zend/Pdf/FileParser/Image/Jpeg.php and Zend/Pdf/FileParser/Image/Tiff.php
 #   presence in Zend/Pdf/Image.php after update [not implemented in 1.10.2)
@@ -6,7 +10,7 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.10.5
-Release:	1
+Release:	2
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -18,7 +22,7 @@ Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
 URL:		http://framework.zend.com/
 BuildRequires:	/usr/bin/php
-BuildRequires:	php-pecl-runkit
+%{?with_tests:BuildRequires:	php-pecl-runkit}
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
@@ -1450,6 +1454,7 @@ sed -i -e 's,Zend/Serializer/Excception.php,Zend/Serializer/Exception.php,' libr
 find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 
 %build
+%if %{with tests}
 # check *.php files syntax using runkit extension
 lint_php() {
 	php -r '
@@ -1468,6 +1473,7 @@ lint_php() {
 	' $(find library -name '*.php')
 }
 lint_php
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
