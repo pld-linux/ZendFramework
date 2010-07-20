@@ -1,8 +1,11 @@
 #
+# Conditional build:
+%bcond_without	tests	# do not perform "make test"
+
 # TODO
 # - check Zend/Pdf/FileParser/Image/Jpeg.php and Zend/Pdf/FileParser/Image/Tiff.php
 #   presence in Zend/Pdf/Image.php after update [not implemented in 1.9.7)
-#
+
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
@@ -22,18 +25,28 @@ Patch2:		ZF-5750-pjpeg.patch
 Patch3:		%{name}-Zend_Pdf-excaption.patch
 URL:		http://framework.zend.com/
 BuildRequires:	/usr/bin/php
-BuildRequires:	php-pecl-runkit
+%{?with_tests:BuildRequires:	php-pecl-runkit}
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
 Requires:	php-pear
-Requires:	rpm-whiteout >= 1.12
+Requires:	rpm-whiteout >= 1.32
 Obsoletes:	ZendFramework-doc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-# exclude optional dependencies
-%define		_noautoreq	'php(oci8)' 'php(bitset)' 'pear(../application/bootstrap.php)' 'pear(Zend/Pdf/FileParser/Image/Tiff.php)' 'pear(Zend/Pdf/FileParser/Image/Jpeg.php)'
+# bad depsolver
+%define		_noautopear	pear(../application/bootstrap.php)
+
+# bad code
+%define		_bad_deps_1_9 pear(Zend/Pdf/FileParser/Image/Jpeg.php) pear(Zend/Pdf/FileParser/Image/Tiff.php)
+%define		_noautodeps	%{?_bad_deps_1_9}
+
+# exclude optional php dependencies
+%define		_noautophp	php-oci8 php-bitset
+
+# put it together for rpmbuild
+%define		_noautoreq	%{?_noautophp} %{?_noautopear} %{?_noautodeps}
 
 %description
 Zend Framework is a high quality and open source framework for
@@ -660,6 +673,10 @@ Summary:	Zend_OpenId
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.openid.html
 Requires:	%{name} = %{version}-%{release}
+# needed for dh keys: any of these tree can do for
+Suggests:	php-bcmath
+Suggests:	php-gmp
+Suggests:	php-openssl
 
 %description Zend_OpenId
 Zend_OpenId is a Zend Framework component that provides a simple API
@@ -820,6 +837,17 @@ Zend_Search_Lucene supports the following features:
   proximity queries, range queries and more
 - Search by specific field (e.g., title, author, contents)
 
+%package Zend_Server
+Summary:	Zend_Server
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.server.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Server
+The Zend_Server family of classes provides functionality for the
+various server classes, including Zend_XmlRpc_Server,
+Zend_Rest_Server, Zend_Json_Server and Zend_Soap_Wsdl.
+
 %package Zend_Server_Reflection
 Summary:	Zend_Server_Reflection
 Group:		Development/Languages/PHP
@@ -833,6 +861,16 @@ based on Reflection API, and extends it to provide methods for
 retrieving parameter and return value types and descriptions, a full
 list of function and method prototypes (i.e., all possible valid
 calling combinations), and function/method descriptions.
+
+%package Zend_Service
+Summary:	Zend_Service
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service
+Zend_Service is an abstract class which serves as a foundation for web
+service implementations, such as SOAP or REST.
 
 %package Zend_Service_Akismet
 Summary:	Zend_Service_Akismet
@@ -1128,6 +1166,18 @@ Requires:	php-PHPUnit
 Zend_Test provides tools to facilitate unit testing of your Zend
 Framework applications.
 
+%package Zend_TimeSync
+Summary:	Zend_TimeSync
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.timesync.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_TimeSync
+Zend_TimeSync is able to receive internet or network time from a time
+server using the NTP or SNTP protocol. With Zend_TimeSync, Zend
+Framework is able to act independently from the time settings of the
+server where it is running.
+
 %package Zend_Tool
 Summary:	Zend_Tool
 Group:		Development/Languages/PHP
@@ -1287,12 +1337,13 @@ find '(' -name '*.php' -o -name '*.xml' ')' -print0 | xargs -0 %{__sed} -i -e 's
 %patch2 -p0
 %patch3 -p1
 
-install %{SOURCE2} find-lang.sh
+install -p %{SOURCE2} find-lang.sh
 
 # cleanup backups after patching
 find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 
 %build
+%if %{with tests}
 # check *.php files syntax using runkit extension
 lint_php() {
 	php -r '
@@ -1311,6 +1362,7 @@ lint_php() {
 	' $(find library -name '*.php')
 }
 lint_php
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -1328,7 +1380,7 @@ cp -a bin/zf.php $RPM_BUILD_ROOT%{php_pear_dir}/bin
 cat >> $RPM_BUILD_ROOT%{_bindir}/zf <<-'EOF'
 #!/bin/sh
 cd %{php_pear_dir}/bin
-exec /usr/bin/php -d Safe_mode=off zf.php ${1:+"$@"}
+exec %{_bindir}/php -d safe_mode=off zf.php ${1:+"$@"}
 EOF
 
 ./find-lang.sh %{name}.lang
@@ -1344,26 +1396,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc LICENSE.txt README.txt
 %dir %{php_pear_dir}/Zend
-%dir %{php_pear_dir}/Zend/Console
-%dir %{php_pear_dir}/Zend/Search
-
-%dir %{php_pear_dir}/Zend/Server
-%{php_pear_dir}/Zend/Server/Abstract.php
-%{php_pear_dir}/Zend/Server/Exception.php
-%{php_pear_dir}/Zend/Server/Interface.php
-%{php_pear_dir}/Zend/Server/Definition.php
-%dir %{php_pear_dir}/Zend/Server/Method
-%{php_pear_dir}/Zend/Server/Method/Callback.php
-%{php_pear_dir}/Zend/Server/Method/Definition.php
-%{php_pear_dir}/Zend/Server/Method/Parameter.php
-%{php_pear_dir}/Zend/Server/Method/Prototype.php
-
-%dir %{php_pear_dir}/Zend/Service
-%{php_pear_dir}/Zend/Service/Abstract.php
-%{php_pear_dir}/Zend/Service/Exception.php
-
-%{php_pear_dir}/Zend/TimeSync
-%{php_pear_dir}/Zend/TimeSync.php
 
 %files Zend_Acl
 %defattr(644,root,root,755)
@@ -1412,6 +1444,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Zend_Console_Getopt
 %defattr(644,root,root,755)
+%dir %{php_pear_dir}/Zend/Console
 %{php_pear_dir}/Zend/Console/Getopt
 %{php_pear_dir}/Zend/Console/Getopt.php
 
@@ -1598,14 +1631,34 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Zend_Search_Lucene
 %defattr(644,root,root,755)
+%dir %{php_pear_dir}/Zend/Search
 %{php_pear_dir}/Zend/Search/Exception.php
 %{php_pear_dir}/Zend/Search/Lucene
 %{php_pear_dir}/Zend/Search/Lucene.php
+
+%files Zend_Server
+%defattr(644,root,root,755)
+%dir %{php_pear_dir}/Zend/Server
+%{php_pear_dir}/Zend/Server/Abstract.php
+%{php_pear_dir}/Zend/Server/Exception.php
+%{php_pear_dir}/Zend/Server/Interface.php
+%{php_pear_dir}/Zend/Server/Definition.php
+%dir %{php_pear_dir}/Zend/Server/Method
+%{php_pear_dir}/Zend/Server/Method/Callback.php
+%{php_pear_dir}/Zend/Server/Method/Definition.php
+%{php_pear_dir}/Zend/Server/Method/Parameter.php
+%{php_pear_dir}/Zend/Server/Method/Prototype.php
 
 %files Zend_Server_Reflection
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Server/Reflection
 %{php_pear_dir}/Zend/Server/Reflection.php
+
+%files Zend_Service
+%defattr(644,root,root,755)
+%dir %{php_pear_dir}/Zend/Service
+%{php_pear_dir}/Zend/Service/Abstract.php
+%{php_pear_dir}/Zend/Service/Exception.php
 
 %files Zend_Service_Akismet
 %defattr(644,root,root,755)
@@ -1691,6 +1744,11 @@ rm -rf $RPM_BUILD_ROOT
 %files Zend_Test
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Test
+
+%files Zend_TimeSync
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/TimeSync
+%{php_pear_dir}/Zend/TimeSync.php
 
 %files Zend_Tool
 %defattr(644,root,root,755)
