@@ -1,0 +1,16 @@
+Index: library/Zend/Tool/Framework/Metadata/Dynamic.php
+===================================================================
+--- library/Zend/Tool/Framework/Metadata/Dynamic.php	(wersja 15676)
++++ library/Zend/Tool/Framework/Metadata/Dynamic.php	(wersja 15677)
+@@ -21,9 +21,9 @@
+  */
+ 
+ /**
+- * @see Zend_Tool_Framework_Manifest_Metadata
++ * @see Zend_Tool_Framework_Metadata_Interface
+  */
+-require_once 'Zend/Tool/Framework/Manifest/Metadata.php';
++require_once 'Zend/Tool/Framework/Metadata/Interface.php';
+ 
+ /**
+  * @category   Zend

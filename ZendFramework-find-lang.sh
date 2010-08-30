@@ -5,7 +5,7 @@ langfile=${1:-ZendFramework.lang}
 > $langfile
 find $dir -type f -name '*.xml' | while read file; do
 	case "${file##*/}" in
-	supplementalData.xml|telephoneCodeData.xml|plurals.xml|characters.xml|root.xml)
+	supplementalData.xml|telephoneCodeData.xml|plurals.xml|characters.xml|root.xml|likelySubtags.xml|postalCodeData.xml|metazoneInfo.xml|numberingSystems.xml)
 		# skip - no lang tag for this one
 		continue
 		;;

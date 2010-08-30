@@ -1,63 +1,49 @@
+#
+# Conditional build:
+%bcond_without	tests	# do not perform "make test"
+
 # TODO
-# - dependencies to subpackages
-#        php-fileinfo is needed by ZendFramework-1.6.2-2.5.noarch
-#        php-mime_magic is needed by ZendFramework-1.6.2-2.5.noarch
-#        php-pecl_http is needed by ZendFramework-1.6.2-2.5.noarch
-#        php-ereg is needed by ZendFramework-Zend_Cache-1.6.2-2.5.noarch
-#        php-sqlite is needed by ZendFramework-Zend_Cache-1.6.2-2.5.noarch
-#        php-gd is needed by ZendFramework-Zend_Captcha-1.6.2-2.5.noarch
-#        php-sapi_apache is needed by ZendFramework-Zend_Controller-1.6.2-2.5.noarch
-#        php-mysqli is needed by ZendFramework-Zend_Db-1.6.2-2.5.noarch
-#        php-oci8 is needed by ZendFramework-Zend_Db-1.6.2-2.5.noarch
-#        php-zip is needed by ZendFramework-Zend_Filter-1.6.2-2.5.noarch
-#        php-ereg is needed by ZendFramework-Zend_Gdata-1.6.2-2.5.noarch
-#        php-openssl is needed by ZendFramework-Zend_Gdata-1.6.2-2.5.noarch
-#        php-mcrypt is needed by ZendFramework-Zend_InfoCard-1.6.2-2.5.noarch
-#        php-openssl is needed by ZendFramework-Zend_InfoCard-1.6.2-2.5.noarch
-#        php-json is needed by ZendFramework-Zend_Json-1.6.2-2.5.noarch
-#        php-ldap is needed by ZendFramework-Zend_Ldap-1.6.2-2.5.noarch
-#        php-zip is needed by ZendFramework-Zend_Mail-1.6.2-2.5.noarch
-#        php-bcmath is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
-#        php-gmp is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
-#        php-mhash is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
-#        php-openssl is needed by ZendFramework-Zend_OpenId-1.6.2-2.5.noarch
-#        php-gd is needed by ZendFramework-Zend_Pdf-1.6.2-2.5.noarch
-#        php-bitset is needed by ZendFramework-Zend_Search_Lucene-1.6.2-2.5.noarch
-#        php-zip is needed by ZendFramework-Zend_Search_Lucene-1.6.2-2.5.noarch
-#        php-ereg is needed by ZendFramework-Zend_Service_Amazon-1.6.2-2.5.noarch
-#        php-mcrypt is needed by ZendFramework-Zend_Service_ReCaptcha-1.6.2-2.5.noarch
-#        php-pecl_http is needed by ZendFramework-Zend_Uri-1.6.2-2.5.noarch
-#        php-mime_magic is needed by ZendFramework-Zend_Validate-1.6.2-2.5.noarch
-# - add rpm-whiteout: http://pld.pastebin.com/f33091903
+# - check Zend/Pdf/FileParser/Image/Jpeg.php and Zend/Pdf/FileParser/Image/Tiff.php
+#   presence in Zend/Pdf/Image.php after update [not implemented in 1.10.2)
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.7.4
+Version:	1.10.8
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
-Source0:	http://framework.zend.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
-# Source0-md5:	5240444dc2b0af50086ba6b3b9ee285e
-Source1:	http://framework.zend.com/releases/ZendFramework-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	0bd6bf75ac35f48ce2348a37e1789da7
+Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	2c758f0eff7dd68ddeb491fc75dd9c4c
+Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
+# Source1-md5:	e83bb75da22799e669b2ea4ea1d2b5e3
 Source2:	%{name}-find-lang.sh
-Source3:	%{name}-Zend_Tool_Framework_Manifest_Exception.php
-Source4:	%{name}-Zend_Tool_Framework_Provider_Exception.php
-Source5:	%{name}-Zend_Tool_Project_Resource.php
 Patch0:		%{name}-additional-locales.patch
-Patch1:		%{name}-db_charset.patch
+Patch1:		%{name}-deps.patch
 URL:		http://framework.zend.com/
+BuildRequires:	/usr/bin/php
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
-Requires:	rpm-whiteout >= 1.12
+Requires:	php-pear
+Requires:	rpm-whiteout >= 1.32
 Obsoletes:	ZendFramework-doc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-# exclude optional dependencies
-%define		_noautoreq	'php(oci8)' 'php(bitset)' 'pear(../application/bootstrap.php)'
+# bad depsolver
+%define		_noautopear	pear(../application/bootstrap.php)
+
+# bad code
+%define		_bad_deps_1_10 pear(Zend/Pdf/FileParser/Image/Jpeg.php) pear(Zend/Pdf/FileParser/Image/Tiff.php)
+%define		_bad_deps_1_10_2 pear(Zend/Serializer/Excception.php) pear(Zend/Services/DeveloperGarden/Response/Exception.php)
+%define		_noautodeps	%{?_bad_deps_1_10} %{?_bad_deps_1_10_2}
+
+# exclude optional php dependencies
+%define		_noautophp	php-oci8 php-bitset
+
+# put it together for rpmbuild
+%define		_noautoreq	%{?_noautophp} %{?_noautopear} %{?_noautodeps}
 
 %description
 Zend Framework is a high quality and open source framework for
@@ -115,6 +101,18 @@ szczególności udostępnia implementację serwera bramki do obsługi żądań
 wysyłanych z Flash Playera do serwera i odwzorowywania tych żądań na
 obiekty i metody klas oraz wywołania zwrotne.
 
+%package Zend_Application
+Summary:	Zend_Application - bootstrap facility
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.amf.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Application
+Zend_Application provides a bootstrapping facility for applications
+which provides reusable resources, common- and module-based bootstrap
+classes and dependency checking. It also takes care of setting up the
+PHP environment and introduces autoloading by default.
+
 %package Zend_Auth
 Summary:	Zend_Auth - authentication API
 Summary(pl.UTF-8):	Zend_Auth - API do uwierzytelniania
@@ -131,6 +129,26 @@ authentication adapters for common use case scenarios.
 %description Zend_Auth -l pl.UTF-8
 Zend_Auth udostępnia API do uwierzytelniania i zawiera właściwe
 adaptery do uwierzytelniania w popularnych przypadkach użycia.
+
+%package Zend_Barcode
+Summary:	Zend_Barcode - barcode generator
+Summary(pl.UTF_8):	Zend_Barcode - generator kodów kreskowych
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.barcode.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Barcode
+Zend_Barcode provides a generic way to generate barcodes. The
+Zend_Barcode component is divided into two subcomponents: barcode
+objects and renderers. Objects allow you to create barcodes
+independently of the renderer. Renderer allow you to draw barcodes
+based on the support required.
+
+%description Zend_Barcode -l pl.UTF-8
+Zend_Barcode udostępnia funkcjonalność generowania kodów kreskowych.
+Komponent Zend_Barcode podzielony jest na dwa podkomponenty: obiekty i
+renderery. Obiekty pozwalają na tworzenie kodów niezależnie od
+renderera, renderer na rysowanie kodów na podstawie obiektu.
 
 %package Zend_Cache
 Summary:	Zend_Cache - data caching
@@ -177,6 +195,20 @@ postaci, np. zadawanie pytań logicznych, pokazywanie wykrzywionych
 fontów lub obrazków z pytaniem o ich powiązania. Klasa Zend_Captcha
 udostępnia różne backendy. Może być używana zarówno samodzielnie, jak
 i w połączeniu z Zend_Form.
+
+%package Zend_CodeGenerator
+Summary:	Zend_CodeGenerator - generate arbitrary code using OO interface
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.codegenerator.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_CodeGenerator
+Zend_CodeGenerator provides facilities to generate arbitrary code
+using an object oriented interface, both to create new code as well as
+to update existing code. While the current implementation is limited
+to generating PHP code, you can easily extend the base class in order
+to provide code generation for other tasks: JavaScript, configuration
+files, apache vhosts, etc.
 
 %package Zend_Config
 Summary:	Zend_Config - access to configuration data
@@ -225,6 +257,15 @@ Zend_Controller to podstawa systemu MVC szkieletu Zend. MVC oznacza
 Model-View-Controller (model-widok-kontroler) i jest wzorcem
 projektowym służącym do oddzielenia logiki aplikacji od logiki
 wyświetlania.
+
+%package Zend_Crypt
+Summary:	Zend_Crypt
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.crypt.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Crypt
+Zend_Crypt
 
 %package Zend_Currency
 Summary:	Zend_Currency - currency representation handling
@@ -544,7 +585,6 @@ Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.locale.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	php-iconv
-Suggests:	php-bcmath
 
 %description Zend_Locale
 Zend_Locale is the Framework's answer to the question, "How can the
@@ -593,6 +633,24 @@ text and MIME-compliant multipart e-mail messages. Mail can be sent
 with Zend_Mail via the default Zend_Mail_Transport_Sendmail transport
 or via Zend_Mail_Transport_Smtp.
 
+%package Zend_Markup
+Summary:	Zend_Markup
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.markup.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Markup
+The Zend_Markup component provides an extensible way for parsing text
+and rendering lightweight markup languages like BBcode and Textile. It
+is available as of Zend Framework version 1.10.
+
+Zend_Markup uses a factory method to instantiate an instance of a
+renderer that extends Zend_Markup_Renderer_Abstract. The factory
+method accepts three arguments. The first one is the parser used to
+tokenize the text (e.g. BbCode). The second (optional) parameter is
+the renderer to use, Html by default. Thirdly an array with options to
+use for the renderer can be specified.
+
 %package Zend_Measure
 Summary:	Zend_Measure
 Group:		Development/Languages/PHP
@@ -633,11 +691,45 @@ Requires:	php-iconv
 %description Zend_Mime
 Zend_Mime is a support class for handling multipart MIME messages.
 
+%package Zend_Navigation
+Summary:	Zend_Navigation - manage trees of pointers to web page
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.navigation.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Navigation
+Zend_Navigation is a component for managing trees of pointers to web
+pages. Simply put: It can be used for creating menus, breadcrumbs,
+links, and sitemaps, or serve as a model for other navigation related
+purposes.
+
+%package Zend_Oauth
+Summary:	Zend_Oauth
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.oauth.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Oauth
+OAuth allows you to approve access by any application to your private
+data stored a website without being forced to disclose your username
+or password. If you think about it, the practice of handing over your
+username and password for sites like Yahoo Mail or Twitter has been
+endemic for quite a while. This has raised some serious concerns
+because there's nothing to prevent other applications from misusing
+this data. Yes, some services may appear trustworthy but that is never
+guaranteed. OAuth resolves this problem by eliminating the need for
+any username and password sharing, replacing it with a user controlled
+authorization process
+
 %package Zend_OpenId
 Summary:	Zend_OpenId
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.openid.html
 Requires:	%{name} = %{version}-%{release}
+# needed for dh keys: any of these tree can do for
+Suggests:	php-bcmath
+Suggests:	php-gmp
+Suggests:	php-openssl
 
 %description Zend_OpenId
 Zend_OpenId is a Zend Framework component that provides a simple API
@@ -708,6 +800,46 @@ takes an absolute value and optionally a status message, and then
 calls the adapter with some precalculated values like percentage and
 estimated time left.
 
+%package Zend_Queue
+Summary:	Zend_Queue
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.progressbar.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Queue
+Zend_Queue is a standardized interface for dealing with a variety of
+queuing systems. Proposed systems include: simple array access,
+Zend_Cache, Zend Platform Job Queue, Amazon's Simple Queue Service
+(SQS). It should support creating queues, determining the number of
+messages in a queue, retrieving messages from a queue (all or specific
+number), submitting messages to a queue, and removing queues.
+
+%package Zend_Reflection
+Summary:	Zend_Reflection
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.reflection.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Reflection
+Zend_Reflection is a drop-in extension to PHP's own Reflection API,
+providing several additional features:
+ - Ability to retrieve return values types.
+ - Ability to retrieve method and function parameter types.
+ - Ability to retrieve class property types.
+ - DocBlocks gain a Reflection class, allowing introspection of
+   docblocks. This provides the ability to determine what annotation tags
+   have been defined as well as to retrieve their values, and the ability
+   to retrieve the short and long descriptions.
+ - Files gain a Reflection class, allowing introspection of PHP files.
+   This provides the ability to determine what functions and classes are
+   defined in a given file, as well as to instrospect them.
+ - Ability to override any Reflection class with your own variant, for
+   the entire reflection tree you create.
+
+In general, Zend_Reflection works just like the standard Reflection
+API, but provides a few additional methods for retrieving artifacts
+not defined in the Reflection API.
+
 %package Zend_Registry
 Summary:	Zend_Registry
 Group:		Development/Languages/PHP
@@ -745,7 +877,6 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	php-ctype
 Requires:	php-dom
 Requires:	php-iconv
-Suggests:	php-pecl-bitset
 
 %description Zend_Search_Lucene
 Zend_Search_Lucene is a general purpose text search engine. Since it
@@ -758,6 +889,28 @@ Zend_Search_Lucene supports the following features:
 - Many powerful query types: phrase queries, wildcard queries,
   proximity queries, range queries and more
 - Search by specific field (e.g., title, author, contents)
+
+%package Zend_Serializer
+Summary:	Zend_Serializer
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.serializer.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Serializer
+Zend_Serializer provides an adapter based interface to simply generate
+storable representation of php types by different facilities, and
+recover.
+
+%package Zend_Server
+Summary:	Zend_Server
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.server.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Server
+The Zend_Server family of classes provides functionality for the
+various server classes, including Zend_XmlRpc_Server,
+Zend_Rest_Server, Zend_Json_Server and Zend_Soap_Wsdl.
 
 %package Zend_Server_Reflection
 Summary:	Zend_Server_Reflection
@@ -772,6 +925,16 @@ based on Reflection API, and extends it to provide methods for
 retrieving parameter and return value types and descriptions, a full
 list of function and method prototypes (i.e., all possible valid
 calling combinations), and function/method descriptions.
+
+%package Zend_Service
+Summary:	Zend_Service
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service
+Zend_Service is an abstract class which serves as a foundation for web
+service implementations, such as SOAP or REST.
 
 %package Zend_Service_Akismet
 Summary:	Zend_Service_Akismet
@@ -840,6 +1003,21 @@ JSON web services. This component gives you read-write access to posts
 at del.icio.us if you provide credentials. It also allows read-only
 access to public data of all users.
 
+%package Zend_Service_DeveloperGarden
+Summary:	Zend_Service_DeveloperGarden
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.developergarden.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_DeveloperGarden
+DeveloperGarden is the name for the "Open Development services" of the
+German Telekom. The "Open Development services" are a set of SOAP API
+Services.
+
+The family of Zend_Service_DeveloperGarden components provides a clean
+and simple interface to the DeveloperGarden API and additionally
+offers functionality to improve handling and performance
+
 %package Zend_Service_Flickr
 Summary:	Zend_Service_Flickr
 Group:		Development/Languages/PHP
@@ -853,6 +1031,23 @@ Zend_Service_Flickr is a simple API for using the Flickr REST Web
 Service. In order to use the Flickr web services, you must have an API
 key. To obtain a key, visit the Flickr API Documentation
 <http://www.flickr.com/services/api/>.
+
+%package Zend_Service_LiveDocx
+Summary:	Zend_Service_LiveDocx
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.livedocx.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_LiveDocx
+LiveDocx is a SOAP service that allows developers to generate word
+processing documents by combining structured data from PHP with a
+template, created in a word processor. The resulting document can be
+saved as a PDF, DOCX, DOC, HTML or RTF file. LiveDocx implements
+mail-merge in PHP.
+
+The family of Zend_Service_LiveDocx components provides a clean and
+simple interface to the LiveDocx API and additionally offers
+functionality to improve network performance.
 
 %package Zend_Service_Nirvanix
 Summary:	Zend_Service_Nirvanix
@@ -992,6 +1187,20 @@ if you provide a username and password for Twitter it will allow you
 to get and update your status, reply to friends, direct message
 friends, mark tweets as favorite and much more.
 
+%package Zend_Service_WindowsAzure
+Summary:	Zend_Service_WindowsAzure
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.windowsazure.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_WindowsAzure
+Windows Azure is the name for Microsoft’s Software + Services
+platform, an operating system in the cloud providing services for
+hosting, management, scalable storage with support for simple blobs,
+tables, and queues, as well as a management infrastructure for
+provisioning and geo-distribution of cloud-based services, and a
+development platform for the Azure Services layer.
+
 %package Zend_Service_Yahoo
 Summary:	Zend_Service_Yahoo
 Group:		Development/Languages/PHP
@@ -1031,6 +1240,19 @@ Requires:	%{name} = %{version}-%{release}
 Zend_Soap component is intended to simplify Web Services development
 for PHP programmers.
 
+%package Zend_Tag
+Summary:	Zend_Tag -- work with taggable Items
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.tag.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Tag
+Zend_Tag is a component suite which provides a facility to work with
+taggable Items. As its base, it provides two classes to work with
+Tags, Zend_Tag_Item and Zend_Tag_ItemList. Additionally, it comes with
+the interface Zend_Tag_Taggable, which allows you to use any of your
+models as a taggable item in conjunction with Zend_Tag.
+
 %package Zend_Text
 Summary:	Zend_Text
 Group:		Development/Languages/PHP
@@ -1054,15 +1276,28 @@ Requires:	php-PHPUnit
 Zend_Test provides tools to facilitate unit testing of your Zend
 Framework applications.
 
+%package Zend_TimeSync
+Summary:	Zend_TimeSync
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.timesync.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_TimeSync
+Zend_TimeSync is able to receive internet or network time from a time
+server using the NTP or SNTP protocol. With Zend_TimeSync, Zend
+Framework is able to act independently from the time settings of the
+server where it is running.
+
 %package Zend_Tool
 Summary:	Zend_Tool
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/wiki/display/ZFDEV/Zend_Tool
 Requires:	%{name} = %{version}-%{release}
+Requires:	/usr/bin/php
 
 %description Zend_Tool
-Zend_Tool component is intended to simplify project development
-for PHP programmers.
+Zend_Tool component is intended to simplify project development for
+PHP programmers.
 
 Please note that this component is part of Zend Framework incubator.
 
@@ -1208,11 +1443,24 @@ Podręcznik do Zend Framework w języku angielskim.
 mv %{name}-%{version}/documentation .
 find '(' -name '*.php' -o -name '*.xml' ')' -print0 | xargs -0 %{__sed} -i -e 's,\r$,,'
 %patch0 -p1
-cd library
-%patch1 -p0
-cd -
+%patch1 -p1
 
-install %{SOURCE2} find-lang.sh
+install -p %{SOURCE2} find-lang.sh
+
+sed -i -e 's,Zend/Serializer/Excception.php,Zend/Serializer/Exception.php,' library/Zend/Serializer/Adapter/PythonPickle.php
+
+# cleanup backups after patching
+find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
+
+%build
+%if %{with tests}
+lint_php() {
+	for a in $(find library -name '*.php'); do
+		php -l $a
+	done
+}
+lint_php
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -1225,20 +1473,12 @@ cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 # pear(...) deps won't be satisifed that these libs use extensively.
 cp -a library/* $RPM_BUILD_ROOT%{php_pear_dir}
 
-# copy Zend_Tool from incubator
-cp -a incubator/library/Zend/Tool $RPM_BUILD_ROOT%{php_pear_dir}/Zend
-cp -a incubator/bin/zf.php $RPM_BUILD_ROOT%{php_pear_dir}/bin
-
-# install missing files
-install %{SOURCE3} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Framework/Manifest/Exception.php
-install %{SOURCE4} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Framework/Provider/Exception.php
-install %{SOURCE5} $RPM_BUILD_ROOT%{php_pear_dir}/Zend/Tool/Project/Resource.php
-
 # create script in bindir
-cat >> $RPM_BUILD_ROOT%{_bindir}/zf << 'EOF'
+cp -a bin/zf.php $RPM_BUILD_ROOT%{php_pear_dir}/bin
+cat >> $RPM_BUILD_ROOT%{_bindir}/zf <<-'EOF'
 #!/bin/sh
 cd %{php_pear_dir}/bin
-/usr/bin/php -d Safe_mode=off zf.php
+exec %{_bindir}/php -d safe_mode=off zf.php ${1:+"$@"}
 EOF
 
 ./find-lang.sh %{name}.lang
@@ -1254,29 +1494,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc LICENSE.txt README.txt
 %dir %{php_pear_dir}/Zend
-%dir %{php_pear_dir}/Zend/Console
-%dir %{php_pear_dir}/Zend/Search
-
-%dir %{php_pear_dir}/Zend/Server
-%{php_pear_dir}/Zend/Server/Abstract.php
-%{php_pear_dir}/Zend/Server/Exception.php
-%{php_pear_dir}/Zend/Server/Interface.php
-%{php_pear_dir}/Zend/Server/Definition.php
-%dir %{php_pear_dir}/Zend/Server/Method
-%{php_pear_dir}/Zend/Server/Method/Callback.php
-%{php_pear_dir}/Zend/Server/Method/Definition.php
-%{php_pear_dir}/Zend/Server/Method/Parameter.php
-%{php_pear_dir}/Zend/Server/Method/Prototype.php
-
-%dir %{php_pear_dir}/Zend/Service
-%{php_pear_dir}/Zend/Service/Abstract.php
-%{php_pear_dir}/Zend/Service/Exception.php
-
-%dir %{php_pear_dir}/Zend/Request
-%{php_pear_dir}/Zend/Request/Interface.php
-
-%{php_pear_dir}/Zend/TimeSync
-%{php_pear_dir}/Zend/TimeSync.php
 
 %files Zend_Acl
 %defattr(644,root,root,755)
@@ -1287,6 +1504,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Amf
 
+%files Zend_Application
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Application
+%{php_pear_dir}/Zend/Application.php
+
 %files Zend_ProgressBar
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/ProgressBar.php
@@ -1296,6 +1518,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Auth
 %{php_pear_dir}/Zend/Auth.php
+
+%files Zend_Barcode
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Barcode
+%{php_pear_dir}/Zend/Barcode.php
 
 %files Zend_Cache
 %defattr(644,root,root,755)
@@ -1309,6 +1536,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Captcha
 
+%files Zend_CodeGenerator
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/CodeGenerator
+
 %files Zend_Config
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Config
@@ -1316,12 +1547,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Zend_Console_Getopt
 %defattr(644,root,root,755)
+%dir %{php_pear_dir}/Zend/Console
 %{php_pear_dir}/Zend/Console/Getopt
 %{php_pear_dir}/Zend/Console/Getopt.php
 
 %files Zend_Controller
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Controller
+
+%files Zend_Crypt
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Crypt
+%{php_pear_dir}/Zend/Crypt.php
 
 %files Zend_Currency
 %defattr(644,root,root,755)
@@ -1426,7 +1663,10 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{php_pear_dir}/Zend/Locale/Data
 %{php_pear_dir}/Zend/Locale/Data/Translation.php
 %{php_pear_dir}/Zend/Locale/Data/characters.xml
-%{php_pear_dir}/Zend/Locale/Data/plurals.xml
+%{php_pear_dir}/Zend/Locale/Data/likelySubtags.xml
+%{php_pear_dir}/Zend/Locale/Data/metazoneInfo.xml
+%{php_pear_dir}/Zend/Locale/Data/numberingSystems.xml
+%{php_pear_dir}/Zend/Locale/Data/postalCodeData.xml
 %{php_pear_dir}/Zend/Locale/Data/root.xml
 %{php_pear_dir}/Zend/Locale/Data/supplementalData.xml
 %{php_pear_dir}/Zend/Locale/Data/telephoneCodeData.xml
@@ -1441,6 +1681,11 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Mail
 %{php_pear_dir}/Zend/Mail.php
 
+%files Zend_Markup
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Markup
+%{php_pear_dir}/Zend/Markup.php
+
 %files Zend_Measure
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Measure
@@ -1454,6 +1699,16 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Mime
 %{php_pear_dir}/Zend/Mime.php
+
+%files Zend_Navigation
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Navigation
+%{php_pear_dir}/Zend/Navigation.php
+
+%files Zend_Oauth
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Oauth
+%{php_pear_dir}/Zend/Oauth.php
 
 %files Zend_OpenId
 %defattr(644,root,root,755)
@@ -1470,6 +1725,15 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Pdf
 %{php_pear_dir}/Zend/Pdf.php
 
+%files Zend_Queue
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Queue
+%{php_pear_dir}/Zend/Queue.php
+
+%files Zend_Reflection
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Reflection
+
 %files Zend_Registry
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Registry.php
@@ -1480,14 +1744,39 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Zend_Search_Lucene
 %defattr(644,root,root,755)
+%dir %{php_pear_dir}/Zend/Search
 %{php_pear_dir}/Zend/Search/Exception.php
 %{php_pear_dir}/Zend/Search/Lucene
 %{php_pear_dir}/Zend/Search/Lucene.php
+
+%files Zend_Serializer
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Serializer
+%{php_pear_dir}/Zend/Serializer.php
+
+%files Zend_Server
+%defattr(644,root,root,755)
+%dir %{php_pear_dir}/Zend/Server
+%{php_pear_dir}/Zend/Server/Abstract.php
+%{php_pear_dir}/Zend/Server/Exception.php
+%{php_pear_dir}/Zend/Server/Interface.php
+%{php_pear_dir}/Zend/Server/Definition.php
+%dir %{php_pear_dir}/Zend/Server/Method
+%{php_pear_dir}/Zend/Server/Method/Callback.php
+%{php_pear_dir}/Zend/Server/Method/Definition.php
+%{php_pear_dir}/Zend/Server/Method/Parameter.php
+%{php_pear_dir}/Zend/Server/Method/Prototype.php
 
 %files Zend_Server_Reflection
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Server/Reflection
 %{php_pear_dir}/Zend/Server/Reflection.php
+
+%files Zend_Service
+%defattr(644,root,root,755)
+%dir %{php_pear_dir}/Zend/Service
+%{php_pear_dir}/Zend/Service/Abstract.php
+%{php_pear_dir}/Zend/Service/Exception.php
 
 %files Zend_Service_Akismet
 %defattr(644,root,root,755)
@@ -1500,6 +1789,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Zend_Service_Audioscrobbler
 %defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/Audioscrobbler
 %{php_pear_dir}/Zend/Service/Audioscrobbler.php
 
 %files Zend_Service_Delicious
@@ -1507,10 +1797,19 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Service/Delicious
 %{php_pear_dir}/Zend/Service/Delicious.php
 
+%files Zend_Service_DeveloperGarden
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/DeveloperGarden
+
 %files Zend_Service_Flickr
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Flickr
 %{php_pear_dir}/Zend/Service/Flickr.php
+
+%files Zend_Service_LiveDocx
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/LiveDocx
+%{php_pear_dir}/Zend/Service/LiveDocx.php
 
 %files Zend_Service_Nirvanix
 %defattr(644,root,root,755)
@@ -1547,6 +1846,10 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Service/Twitter
 %{php_pear_dir}/Zend/Service/Twitter.php
 
+%files Zend_Service_WindowsAzure
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/WindowsAzure
+
 %files Zend_Service_Yahoo
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Yahoo
@@ -1561,6 +1864,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Soap
 
+%files Zend_Tag
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Tag
+
 %files Zend_Text
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Text
@@ -1568,6 +1875,11 @@ rm -rf $RPM_BUILD_ROOT
 %files Zend_Test
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Test
+
+%files Zend_TimeSync
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/TimeSync
+%{php_pear_dir}/Zend/TimeSync.php
 
 %files Zend_Tool
 %defattr(644,root,root,755)
