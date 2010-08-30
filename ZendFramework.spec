@@ -9,20 +9,19 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.10.7
+Version:	1.10.8
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	e8c6a473f12dbf0db31e48849ffa18b6
+# Source0-md5:	2c758f0eff7dd68ddeb491fc75dd9c4c
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	64052b1b8bde250a17116a429caefb33
+# Source1-md5:	e83bb75da22799e669b2ea4ea1d2b5e3
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
 URL:		http://framework.zend.com/
 BuildRequires:	/usr/bin/php
-%{?with_tests:BuildRequires:	php-pecl-runkit}
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 4:5.1.4
@@ -1455,22 +1454,10 @@ find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 
 %build
 %if %{with tests}
-# check *.php files syntax using runkit extension
 lint_php() {
-	php -r '
-		$errors = 0;
-		array_shift($argv);
-		echo "Checking syntax of ", count($argv), " PHP files";
-		foreach ($argv as $file) {
-			echo ".";
-			if (!runkit_lint_file($file)) {
-				echo "PHP Lint: $file\n";
-				$errors++;
-			}
-		}
-		echo "\nDONE!\n";
-		exit($errors ? 1 : 0);
-	' $(find library -name '*.php')
+	for a in $(find library -name '*.php'); do
+		php -l $a
+	done
 }
 lint_php
 %endif
