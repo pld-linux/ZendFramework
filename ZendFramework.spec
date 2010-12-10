@@ -9,14 +9,14 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.10.8
+Version:	1.11.0
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	2c758f0eff7dd68ddeb491fc75dd9c4c
+# Source0-md5:	2e4ae8b7a64a9827ecdfc412868e0a25
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	e83bb75da22799e669b2ea4ea1d2b5e3
+# Source1-md5:	9008d19fba543037bc45a918f4c6f9e9
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
@@ -195,6 +195,15 @@ postaci, np. zadawanie pytań logicznych, pokazywanie wykrzywionych
 fontów lub obrazków z pytaniem o ich powiązania. Klasa Zend_Captcha
 udostępnia różne backendy. Może być używana zarówno samodzielnie, jak
 i w połączeniu z Zend_Form.
+
+%package Zend_Cloud
+Summary:	Zend_Cloud - SimpleCloud API
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.cloud.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Cloud
+SimpleCloud API
 
 %package Zend_CodeGenerator
 Summary:	Zend_CodeGenerator - generate arbitrary code using OO interface
@@ -1018,6 +1027,19 @@ The family of Zend_Service_DeveloperGarden components provides a clean
 and simple interface to the DeveloperGarden API and additionally
 offers functionality to improve handling and performance
 
+%package Zend_Service_Ebay
+Summary:	Zend_Service_Ebay is a simple group of APIs for using eBay web services
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.ebay.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_Ebay
+Zend_Service_Ebay is a simple group of APIs for using eBay web
+services.
+
+Zend_Service_Ebay implements the eBay APIs:
+- Finding
+
 %package Zend_Service_Flickr
 Summary:	Zend_Service_Flickr
 Group:		Development/Languages/PHP
@@ -1094,6 +1116,21 @@ In order to use the reCAPTCHA service, you will need to sign up for an
 account (http://recaptcha.net/whyrecaptcha.html) and register one or
 more domains with the service in order to generate public and private
 keys.
+
+%package Zend_Service_ShortUrl
+Summary:	Zend_Service_ShortUrl
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.short-url.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_ShortUrl
+URL shorteners have exploded in popularity in the last several years,
+in large part due to the social nature of the web and the desire to
+share links.
+
+Zend_Service_ShortUrl provides an API for accessing a number of
+different URL shortener services, with the ability to both create
+short URLs as well as retrieve the original URL.
 
 %package Zend_Service_Simpy
 Summary:	Zend_Service_Simpy
@@ -1536,6 +1573,18 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Captcha
 
+%files Zend_Cloud
+%defattr(644,root,root,755)
+%dir %{php_pear_dir}/Zend/Cloud
+%{php_pear_dir}/Zend/Cloud/AbstractFactory.php
+%{php_pear_dir}/Zend/Cloud/Exception.php
+%{php_pear_dir}/Zend/Cloud/OperationNotAvailableException.php
+
+# subpackages?
+%{php_pear_dir}/Zend/Cloud/DocumentService
+%{php_pear_dir}/Zend/Cloud/QueueService
+%{php_pear_dir}/Zend/Cloud/StorageService
+
 %files Zend_CodeGenerator
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/CodeGenerator
@@ -1801,6 +1850,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/DeveloperGarden
 
+%files Zend_Service_Ebay
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/Ebay
+
 %files Zend_Service_Flickr
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Flickr
@@ -1820,6 +1873,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/ReCaptcha
 %{php_pear_dir}/Zend/Service/ReCaptcha.php
+
+%files Zend_Service_ShortUrl
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/ShortUrl
 
 %files Zend_Service_Simpy
 %defattr(644,root,root,755)
@@ -1854,6 +1911,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Yahoo
 %{php_pear_dir}/Zend/Service/Yahoo.php
+
 
 %files Zend_Session
 %defattr(644,root,root,755)
