@@ -9,14 +9,14 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.11.0
+Version:	1.11.1
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	2e4ae8b7a64a9827ecdfc412868e0a25
+# Source0-md5:	d1c4f5742c7650dea31dff5e11f53599
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	9008d19fba543037bc45a918f4c6f9e9
+# Source1-md5:	832b857955feaa2993f0caf9986c0825
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
@@ -1911,7 +1911,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Yahoo
 %{php_pear_dir}/Zend/Service/Yahoo.php
-
 
 %files Zend_Session
 %defattr(644,root,root,755)
