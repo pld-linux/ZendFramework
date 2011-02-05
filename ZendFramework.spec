@@ -132,7 +132,7 @@ adaptery do uwierzytelniania w popularnych przypadkach użycia.
 
 %package Zend_Barcode
 Summary:	Zend_Barcode - barcode generator
-Summary(pl.UTF_8):	Zend_Barcode - generator kodów kreskowych
+Summary(pl.UTF-8):	Zend_Barcode - generator kodów kreskowych
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.barcode.html
 Requires:	%{name} = %{version}-%{release}
