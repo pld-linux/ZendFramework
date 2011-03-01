@@ -10,7 +10,7 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.11.3
-Release:	1
+Release:	2
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -1307,7 +1307,6 @@ Summary:	Zend_Test
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.test.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-PHPUnit
 
 %description Zend_Test
 Zend_Test provides tools to facilitate unit testing of your Zend
