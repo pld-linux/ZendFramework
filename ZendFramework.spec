@@ -24,7 +24,7 @@ URL:		http://framework.zend.com/
 BuildRequires:	/usr/bin/php
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	sed >= 4.0
-Requires:	php-common >= 4:5.1.4
+Requires:	php-common >= 4:5.2.4
 Requires:	php-pear
 Requires:	rpm-whiteout >= 1.32
 Obsoletes:	ZendFramework-doc
