@@ -9,14 +9,14 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.11.7
+Version:	1.11.11
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	6adefa2ab397b8f435cd4b9ca7160c9b
+# Source0-md5:	1db5f3c64fced4b03a8eb70fd93b69eb
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	8addca34b6430cf898cef56a32ff01ff
+# Source1-md5:	976f7ade6b6c551b456209de0fde7ca1
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
@@ -1492,7 +1492,7 @@ find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 %if %{with tests}
 lint_php() {
 	for a in $(find library -name '*.php'); do
-		php -l $a
+		php -n -l $a
 	done
 }
 lint_php
@@ -1510,7 +1510,7 @@ cp -a demos/Zend/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -a library/* $RPM_BUILD_ROOT%{php_pear_dir}
 
 # create script in bindir
-cp -a bin/zf.php $RPM_BUILD_ROOT%{php_pear_dir}/bin
+install -p bin/zf.php $RPM_BUILD_ROOT%{php_pear_dir}/bin
 cat >> $RPM_BUILD_ROOT%{_bindir}/zf <<-'EOF'
 #!/bin/sh
 cd %{php_pear_dir}/bin
