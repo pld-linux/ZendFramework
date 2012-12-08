@@ -9,14 +9,14 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.11.12
-Release:	2
+Version:	1.12.0
+Release:	0
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	733dbac01e202b94437ada154bee64ce
+# Source0-md5:	a05571eff0c5c49d71104f293a9cb37b
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	134eb187573d9e4970a133fb11048085
+# Source1-md5:	4ff47eb32fb62c8ed1aebaa65a81858d
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
@@ -1877,10 +1877,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/ShortUrl
 
+%if 0
 %files Zend_Service_Simpy
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Simpy
 %{php_pear_dir}/Zend/Service/Simpy.php
+%endif
 
 %files Zend_Service_SlideShare
 %defattr(644,root,root,755)
