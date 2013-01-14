@@ -10,7 +10,7 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.12.1
-Release:	1
+Release:	2
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -23,6 +23,7 @@ Patch1:		%{name}-deps.patch
 URL:		http://framework.zend.com/
 BuildRequires:	/usr/bin/php
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
+BuildRequires:	rpmbuild(macros) >= 1.654
 BuildRequires:	sed >= 4.0
 Requires:	php(core) >= 5.2.4
 Requires:	php-pear
@@ -35,9 +36,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautopear	pear(../application/bootstrap.php)
 
 # bad code
-%define		_bad_deps_1_10 pear(Zend/Pdf/FileParser/Image/Jpeg.php) pear(Zend/Pdf/FileParser/Image/Tiff.php)
-%define		_bad_deps_1_10_2 pear(Zend/Serializer/Excception.php) pear(Zend/Services/DeveloperGarden/Response/Exception.php)
-%define		_noautodeps	%{?_bad_deps_1_10} %{?_bad_deps_1_10_2}
+%define		_bad_deps_1_10 Zend/Pdf/FileParser/Image/Jpeg.php Zend/Pdf/FileParser/Image/Tiff.php
+%define		_bad_deps_1_10_2 Zend/Serializer/Excception.php Zend/Services/DeveloperGarden/Response/Exception.php
+%define		_bad_deps_1_12_1 Zend/Service/Rackspace/Exception.php Zend/Service/Rackspace/Files.php Exception/InvalidArgumentException.php Zend/Loader/Exception/../Exception.php Zend/Service/Console/Command.php Zend/Service/Console/Exception.php Zend/Service/Log/Exception.php Zend/Service/Log/Formatter/Interface.php Zend/Service/Log/Writer/Abstract.php Zend/Service/Management/Exception.php
+%define		_noautoreq_pear %{?_bad_deps_1_10} %{?_bad_deps_1_10_2} %{?_bad_deps_1_12_1}
 
 # exclude optional php dependencies
 %define		_noautophp	php-oci8 php-bitset
@@ -119,7 +121,7 @@ Summary(pl.UTF-8):	Zend_Auth - API do uwierzytelniania
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.auth.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-ctype
+Requires:	php(ctype)
 # Zend_Auth_Adapter_Http has hard dependency on hash
 
 %description Zend_Auth
@@ -282,7 +284,7 @@ Summary(pl.UTF-8):	Zend_Currency - obsługa reprezentacji walut
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.currency.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-iconv
+Requires:	php(iconv)
 
 %description Zend_Currency
 Zend_Currency is part of the I18N core of the Zend_Framework. It
@@ -408,8 +410,8 @@ Summary:	Zend_Feed
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.feed.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-dom
-Requires:	php-mbstring
+Requires:	php(dom)
+Requires:	php(mbstring)
 
 %description Zend_Feed
 Zend_Feed provides functionality for consuming RSS and Atom feeds. It
@@ -477,8 +479,8 @@ Summary:	Zend_Gdata
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.gdata.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-ctype
-Requires:	php-dom
+Requires:	php(ctype)
+Requires:	php(dom)
 
 %description Zend_Gdata
 Zend_Gdata component is a interface for accessing Google Data from
@@ -495,7 +497,7 @@ Summary:	Zend_Http
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.http.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-ctype
+Requires:	php(ctype)
 # Zend_Http_Client_Adapter_Curl has hard dependency on curl
 
 %description Zend_Http
@@ -593,7 +595,7 @@ Summary:	Zend_Locale
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.locale.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-iconv
+Requires:	php(iconv)
 
 %description Zend_Locale
 Zend_Locale is the Framework's answer to the question, "How can the
@@ -695,7 +697,7 @@ Summary:	Zend_Mime
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.mime.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-iconv
+Requires:	php(iconv)
 
 %description Zend_Mime
 Zend_Mime is a support class for handling multipart MIME messages.
@@ -768,10 +770,10 @@ Summary:	Zend_Pdf
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.pdf.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-ctype
-Requires:	php-gd
-Requires:	php-iconv
-Requires:	php-zlib
+Requires:	php(ctype)
+Requires:	php(gd)
+Requires:	php(iconv)
+Requires:	php(zlib)
 
 %description Zend_Pdf
 Zend_Pdf module is a PDF (Portable Document Format) manipulation
@@ -866,8 +868,8 @@ Summary:	Zend_Rest
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.rest.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-ctype
-Requires:	php-dom
+Requires:	php(ctype)
+Requires:	php(dom)
 
 %description Zend_Rest
 REST Web Services use service-specific XML formats. These ad-hoc
@@ -883,9 +885,9 @@ Summary:	Zend_Search_Lucene
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.search.lucene.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-ctype
-Requires:	php-dom
-Requires:	php-iconv
+Requires:	php(ctype)
+Requires:	php(dom)
+Requires:	php(iconv)
 
 %description Zend_Search_Lucene
 Zend_Search_Lucene is a general purpose text search engine. Since it
@@ -974,7 +976,7 @@ Summary:	Zend_Service_Amazon
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.amazon.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-dom
+Requires:	php(dom)
 
 %description Zend_Service_Amazon
 Zend_Service_Amazon is a simple API for using Amazon web services.
@@ -991,7 +993,7 @@ Summary:	Zend_Service_Audioscrobbler
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.audioscrobbler.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-iconv
+Requires:	php(iconv)
 
 %description Zend_Service_Audioscrobbler
 Zend_Service_Audioscrobbler is a simple API for using the
@@ -1004,7 +1006,7 @@ Summary:	Zend_Service_Delicious
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.delicious.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-dom
+Requires:	php(dom)
 
 %description Zend_Service_Delicious
 Zend_Service_Delicious is simple API for using del.icio.us XML and
@@ -1045,8 +1047,8 @@ Summary:	Zend_Service_Flickr
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.delicious.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-dom
-Requires:	php-iconv
+Requires:	php(dom)
+Requires:	php(iconv)
 
 %description Zend_Service_Flickr
 Zend_Service_Flickr is a simple API for using the Flickr REST Web
@@ -1137,7 +1139,7 @@ Summary:	Zend_Service_Simpy
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.simpy.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-dom
+Requires:	php(dom)
 
 %description Zend_Service_Simpy
 Zend_Service_Simpy is a lightweight wrapper for the free REST API
@@ -1243,7 +1245,7 @@ Summary:	Zend_Service_Yahoo
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.service.yahoo.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-dom
+Requires:	php(dom)
 
 %description Zend_Service_Yahoo
 Zend_Service_Yahoo is a simple API for using many of the Yahoo! REST
@@ -1371,7 +1373,7 @@ Summary:	Zend_Uri
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.uri.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-ctype
+Requires:	php(ctype)
 
 %description Zend_Uri
 Zend_Uri is a component that aids in manipulating and validating
@@ -1384,7 +1386,7 @@ Summary:	Zend_Validate
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.validate.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-ctype
+Requires:	php(ctype)
 
 %description Zend_Validate
 The Zend_Validate component provides a set of commonly needed
@@ -1441,8 +1443,8 @@ Summary:	Zend_XmlRpc
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/en/zend.xmlrpc.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	php-dom
-Requires:	php-iconv
+Requires:	php(dom)
+Requires:	php(iconv)
 
 %description Zend_XmlRpc
 From its home page <http://www.xmlrpc.com/>, XML-RPC is described as a
