@@ -33,3 +33,32 @@
 +class Zend_Service_Audioscrobbler_Exception extends Exception
 +{
 +}
+--- ZendFramework-1.12.4/library/Zend/Xml/Security.php~	2014-05-19 22:41:57.000000000 +0300
++++ ZendFramework-1.12.4/library/Zend/Xml/Security.php	2014-05-19 23:12:43.208009810 +0300
+@@ -39,7 +39,7 @@
+     protected static function heuristicScan($xml)
+     {
+         if (strpos($xml, '<!ENTITY') !== false) {
+-            require_once 'Exception.php';
++            require_once 'Zend/Xml/Exception.php';
+             throw new Zend_Xml_Exception(self::ENTITY_DETECT);
+         }
+     }
+@@ -96,7 +96,7 @@
+             foreach ($dom->childNodes as $child) {
+                 if ($child->nodeType === XML_DOCUMENT_TYPE_NODE) {
+                     if ($child->entities->length > 0) {
+-                        require_once 'Exception.php';
++                        require_once 'Zend/Xml/Exception.php';
+                         throw new Zend_Xml_Exception(self::ENTITY_DETECT);
+                     }
+                 }
+@@ -130,7 +130,7 @@
+     public static function scanFile($file, DOMDocument $dom = null)
+     {
+         if (!file_exists($file)) {
+-            require_once 'Exception.php';
++            require_once 'Zend/Xml/Exception.php';
+             throw new Zend_Xml_Exception(
+                 "The file $file specified doesn't exist"
+             );
