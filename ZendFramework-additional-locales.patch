@@ -1,12 +1,39 @@
---- ZendFramework-1.7.2/library/Zend/Locale.php~	2009-01-07 18:56:02.000000000 +0200
-+++ ZendFramework-1.7.2/library/Zend/Locale.php	2009-01-07 18:56:05.377026299 +0200
-@@ -111,7 +111,8 @@
-         'wal_ET'=> true, 'wal'   => true, 'wo_SN' => true, 'wo'    => true, 'xh_ZA' => true,
-         'xh'    => true, 'yo_NG' => true, 'yo'    => true, 'zh_CN' => true, 'zh_HK' => true,
-         'zh_MO' => true, 'zh_SG' => true, 'zh_TW' => true, 'zh'    => true, 'zu_ZA' => true,
--        'zu'    => true
-+        'zu'    => true, 'en_EE' => true, 'en_LV' => true, 'en_LT' => true, 'en_UA' => true,
-+        'ru_EE' => true, 'ru_LV' => true, 'ru_LT' => true,
-     );
- 
-     /**
+--- ZendFramework-1.12.4/library/Zend/Locale.php~	2014-05-19 13:01:33.000000000 +0300
++++ ZendFramework-1.12.4/library/Zend/Locale.php	2014-05-19 13:13:40.339899571 +0300
+@@ -162,6 +162,7 @@
+         'en_CA'   => true,
+         'en_CM'   => true,
+         'en_DM'   => true,
++        'en_EE'   => true,
+         'en_FJ'   => true,
+         'en_FM'   => true,
+         'en_GB'   => true,
+@@ -185,6 +186,8 @@
+         'en_LC'   => true,
+         'en_LR'   => true,
+         'en_LS'   => true,
++        'en_LT'   => true,
++        'en_LV'   => true,
+         'en_MG'   => true,
+         'en_MH'   => true,
+         'en_MP'   => true,
+@@ -209,6 +212,7 @@
+         'en_TO'   => true,
+         'en_TT'   => true,
+         'en_TZ'   => true,
++        'en_UA'   => true,
+         'en_UG'   => true,
+         'en_UM'   => true,
+         'en_US'   => true,
+@@ -522,8 +526,11 @@
+         'rof_TZ'  => true,
+         'rof'     => true,
+         'ru_BY'   => true,
++        'ru_EE'   => true,
+         'ru_KG'   => true,
+         'ru_KZ'   => true,
++        'ru_LT'   => true,
++        'ru_LV'   => true,
+         'ru_MD'   => true,
+         'ru_RU'   => true,
+         'ru_UA'   => true,

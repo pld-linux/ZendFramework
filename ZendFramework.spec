@@ -5,18 +5,19 @@
 # TODO
 # - check Zend/Pdf/FileParser/Image/Jpeg.php and Zend/Pdf/FileParser/Image/Tiff.php
 #   presence in Zend/Pdf/Image.php after update [not implemented in 1.10.2)
+%define		php_min_version 5.2.4
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.12.1
-Release:	2
+Version:	1.12.4
+Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	ec978ad8890b65661e8e33ca99a3b3f4
+# Source0-md5:	4b21fe3cf729edb822347a10f99aa1b4
 Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	8ee82279a241a814b8f362bb8e9344af
+# Source1-md5:	865d52ef096db1d92cc310059372ad44
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
@@ -25,7 +26,7 @@ BuildRequires:	/usr/bin/php
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.654
 BuildRequires:	sed >= 4.0
-Requires:	php(core) >= 5.2.4
+Requires:	php(core) >= %{php_min_version}
 Requires:	php-pear
 Requires:	rpm-whiteout >= 1.32
 Obsoletes:	ZendFramework-doc
@@ -405,6 +406,18 @@ Zend_Exception is a base exception class. All exceptions thrown by
 Zend Framework classes should throw an exception that derives from the
 base class Zend_Exception.
 
+%package Zend_EventManager
+Summary:	Zend_EventManager
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.event-manager.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_EventManager
+Zend_EventManager is a component designed for the following use cases:
+- Implementing simple subject/observer patterns.
+- Implementing Aspect-Oriented designs.
+- Implementing event-driven architectures.
+
 %package Zend_Feed
 Summary:	Zend_Feed
 Group:		Development/Languages/PHP
@@ -701,6 +714,18 @@ Requires:	php(iconv)
 
 %description Zend_Mime
 Zend_Mime is a support class for handling multipart MIME messages.
+
+%package Zend_Mobile_Push
+Summary:	Zend_Mobile_Push
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.mobile.push.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Mobile_Push
+Zend_Mobile_Push provides the ability for sending push notifications
+to the vendor specific notification servers. Currently this list
+includes APNS (iTouch/iPad/iPhone), GCM (Google Android) and MPNS
+(Windows Phone).
 
 %package Zend_Navigation
 Summary:	Zend_Navigation - manage trees of pointers to web page
@@ -1097,6 +1122,16 @@ register for an account (https://www.nirvanix.com/signUpSingle.aspx).
 After registering, you will receive a Username, Password, and
 Application Key. All three are required to use Zend_Service_Nirvanix.
 
+%package Zend_Service_Rackspace
+Summary:	Zend_Service_Rackspace
+Group:		Development/Languages/PHP
+URL:		http://framework.zend.com/manual/en/zend.service.rackspace.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_Rackspace
+The Zend_Service_Rackspace is a class that provides a simple API to
+manage the Rackspace services Cloud Files and Cloud Servers.
+
 %package Zend_Service_ReCaptcha
 Summary:	Zend_Service_ReCaptcha
 Group:		Development/Languages/PHP
@@ -1165,6 +1200,13 @@ In order to use the Zend_Service_SlideShare component you must first
 create an account on the slideshare.net servers in order to receive an
 API key, username, password and shared secret value -- all of which
 are needed in order to use the Zend_Service_SlideShare component.
+
+%package Zend_Service_SqlAzure
+Summary:	Zend_Service_
+Group:		Development/Languages/PHP
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Service_SqlAzure
 
 %package Zend_Service_StrikeIron
 Summary:	Zend_Service_StrikeIron
@@ -1530,7 +1572,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE.txt README.txt
+%doc LICENSE.txt README.md
 %dir %{php_pear_dir}/Zend
 
 %files Zend_Acl
@@ -1583,6 +1625,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # subpackages?
 %{php_pear_dir}/Zend/Cloud/DocumentService
+%{php_pear_dir}/Zend/Cloud/Infrastructure
 %{php_pear_dir}/Zend/Cloud/QueueService
 %{php_pear_dir}/Zend/Cloud/StorageService
 
@@ -1642,6 +1685,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Exception.php
 
+%files Zend_EventManager
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/EventManager
+
+# package here, as for now only EventManager uses Stdlib classes
+%{php_pear_dir}/Zend/Stdlib
+
 %files Zend_Feed
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Feed
@@ -1675,10 +1725,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Http
 
+%if 0
 %files Zend_InfoCard
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/InfoCard
 %{php_pear_dir}/Zend/InfoCard.php
+%endif
 
 %files Zend_Json
 %defattr(644,root,root,755)
@@ -1713,13 +1765,21 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{php_pear_dir}/Zend/Locale/Data
 %{php_pear_dir}/Zend/Locale/Data/Translation.php
 %{php_pear_dir}/Zend/Locale/Data/characters.xml
+%{php_pear_dir}/Zend/Locale/Data/coverageLevels.xml
+%{php_pear_dir}/Zend/Locale/Data/dayPeriods.xml
+%{php_pear_dir}/Zend/Locale/Data/genderList.xml
+%{php_pear_dir}/Zend/Locale/Data/languageInfo.xml
 %{php_pear_dir}/Zend/Locale/Data/likelySubtags.xml
-%{php_pear_dir}/Zend/Locale/Data/metazoneInfo.xml
+%{php_pear_dir}/Zend/Locale/Data/metaZones.xml
 %{php_pear_dir}/Zend/Locale/Data/numberingSystems.xml
+%{php_pear_dir}/Zend/Locale/Data/ordinals.xml
+%{php_pear_dir}/Zend/Locale/Data/plurals.xml
 %{php_pear_dir}/Zend/Locale/Data/postalCodeData.xml
 %{php_pear_dir}/Zend/Locale/Data/root.xml
 %{php_pear_dir}/Zend/Locale/Data/supplementalData.xml
+%{php_pear_dir}/Zend/Locale/Data/supplementalMetadata.xml
 %{php_pear_dir}/Zend/Locale/Data/telephoneCodeData.xml
+%{php_pear_dir}/Zend/Locale/Data/windowsZones.xml
 
 %files Zend_Log
 %defattr(644,root,root,755)
@@ -1749,6 +1809,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Mime
 %{php_pear_dir}/Zend/Mime.php
+
+%files Zend_Mobile_Push
+%defattr(644,root,root,755)
+%dir %{php_pear_dir}/Zend/Mobile
+%{php_pear_dir}/Zend/Mobile/Exception.php
+%{php_pear_dir}/Zend/Mobile/Push
 
 %files Zend_Navigation
 %defattr(644,root,root,755)
@@ -1865,10 +1931,16 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Service/LiveDocx
 %{php_pear_dir}/Zend/Service/LiveDocx.php
 
+%if 0
 %files Zend_Service_Nirvanix
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Nirvanix
 %{php_pear_dir}/Zend/Service/Nirvanix.php
+%endif
+
+%files Zend_Service_Rackspace
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/Rackspace
 
 %files Zend_Service_ReCaptcha
 %defattr(644,root,root,755)
@@ -1890,6 +1962,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/SlideShare
 %{php_pear_dir}/Zend/Service/SlideShare.php
+
+%files Zend_Service_SqlAzure
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Service/SqlAzure
 
 %files Zend_Service_StrikeIron
 %defattr(644,root,root,755)
@@ -1978,6 +2054,10 @@ rm -rf $RPM_BUILD_ROOT
 %files Zend_XmlRpc
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/XmlRpc
+
+%dir %{php_pear_dir}/Zend/Xml
+%{php_pear_dir}/Zend/Xml/Exception.php
+%{php_pear_dir}/Zend/Xml/Security.php
 
 %files demos
 %defattr(644,root,root,755)
