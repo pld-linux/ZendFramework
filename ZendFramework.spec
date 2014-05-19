@@ -5,7 +5,7 @@
 # TODO
 # - check Zend/Pdf/FileParser/Image/Jpeg.php and Zend/Pdf/FileParser/Image/Tiff.php
 #   presence in Zend/Pdf/Image.php after update [not implemented in 1.10.2)
-%define		php_min_version 5.2.4
+%define		php_min_version 5.2.11
 %include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
