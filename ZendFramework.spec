@@ -92,6 +92,8 @@ Summary(pl.UTF-8):	Zend_Amf - obsługa formatu AMF (Action Message Format)
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.amf.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(dom)
+Suggests:	php(simplexml)
 
 %description Zend_Amf
 Zend_Amf provides support for Adobe's Action Message Format (AMF), to
@@ -112,6 +114,7 @@ Summary:	Zend_Application - bootstrap facility
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.amf.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(date)
 
 %description Zend_Application
 Zend_Application provides a bootstrapping facility for applications
@@ -126,7 +129,8 @@ Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.auth.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	php(ctype)
-# Zend_Auth_Adapter_Http has hard dependency on hash
+Suggests:	php(hash)
+# Zend_Auth_Adapter_Http requires hash
 
 %description Zend_Auth
 Zend_Auth provides an API for authentication and includes concrete
@@ -162,7 +166,14 @@ Summary(pl.UTF-8):	Zend_Cache - pamięć podręczna dla danych
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.cache.html
 Requires:	%{name} = %{version}-%{release}
-# Zend_Cache_Backend_Apc hard dep on php-pecl-APC
+Suggests:	php(apc)
+Suggests:	php(memcache)
+Suggests:	php(memcached)
+Suggests:	php(sqlite)
+# Zend_Cache_Backend_Apc requires apc
+# Zend_Cache_Backend_Memcached requires memcache
+# Zend_Cache_Backend_Libmemcached requires memcached
+# Zend_Cache_Backend_Sqlite requires sqlite
 
 %description Zend_Cache
 Zend_Cache provides a flexible approach toward caching data, including
@@ -178,6 +189,7 @@ Summary(pl.UTF-8):	Zend_Captcha - funkcjonalność CAPTCHA
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.captcha.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(gd)
 
 %description Zend_Captcha
 CAPTCHA stands for "Completely Automated Turing test to tell Computers
@@ -231,6 +243,8 @@ Summary(pl.UTF-8):	Zend_Config - dostęp do danych konfiguracyjnych
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.config.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(simplexml)
+# Zend_Config_Xml requires simplexml
 
 %description Zend_Config
 Zend_Config is designed to simplify access to and use of configuration
@@ -261,6 +275,8 @@ Summary(pl.UTF-8):	Zend_Controller - podstawa systemu Model-View-Controller
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.controller.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(reflection)
+Requires:	php(session)
 
 %description Zend_Controller
 Zend_Controller is the heart of Zend Framework's MVC system. MVC
@@ -329,6 +345,17 @@ Summary:	Zend_Db
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.db.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(mysqli)
+Suggests:	php(pdo-mysql)
+Suggests:	php(pdo-pgsql)
+Suggests:	php(pdo-sqlite)
+# Zend_Db_Adapter_Db2 requires ibm_db2
+# Zend_Db_Adapter_Firebird requires interbase
+# Zend_Db_Adapter_Mysqli requires mysqli
+# Zend_Db_Adapter_Oracle requires oci8
+# Zend_Db_Adapter_Pdo_Mysql requires pdo_mysql
+# Zend_Db_Adapter_Pdo_Pgsql requires pdo_pgsql
+# Zend_Db_Adapter_Pdo_Sqlite requires pdo_sqlite
 
 %description Zend_Db
 Zend_Db and its related classes provide a simple SQL database
@@ -392,6 +419,7 @@ Summary:	Zend_Dom
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.dom.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(dom)
 
 %description Zend_Dom
 Zend_Dom provides tools for working with DOM documents and structures.
@@ -428,6 +456,7 @@ URL:		http://framework.zend.com/manual/1.12/en/zend.feed.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	php(dom)
 Requires:	php(mbstring)
+Requires:	php(simplexml)
 
 %description Zend_Feed
 Zend_Feed provides functionality for consuming RSS and Atom feeds. It
@@ -442,6 +471,7 @@ Summary:	Zend_File
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.file.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(apc)
 
 %description Zend_File
 Zend_File enables developers to take control over file uploads and
@@ -456,6 +486,9 @@ Summary:	Zend_Filter
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.filter.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(reflection)
+Suggests:	php(zlib)
+# Zend_Filter_Compress requires zlib
 
 %description Zend_Filter
 Zend_Filter component provides a set of commonly needed data filters.
@@ -514,7 +547,10 @@ Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.http.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	php(ctype)
-# Zend_Http_Client_Adapter_Curl has hard dependency on curl
+Suggests:	php(curl)
+Suggests:	php(fileinfo)
+# Zend_Http_Client_Adapter_Curl requires curl
+# Zend_Http_Client has soft dependency on mime_magic (fileinfo)
 
 %description Zend_Http
 Zend_Http component provides a client for the HTTP protocol. It
@@ -528,6 +564,8 @@ Summary:	Zend_Json
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.json.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(reflection)
+Suggests:	php(json)
 
 %description Zend_Json
 Zend_Json provides convenience methods for serializing native PHP to
@@ -578,6 +616,7 @@ Summary:	Zend_Ldap
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.ldap.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(ldap)
 
 %description Zend_Ldap
 Zend_Ldap is a class for performing LDAP operations including but not
@@ -615,7 +654,9 @@ Summary:	Zend_Log
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.log.html
 Requires:	%{name} = %{version}-%{release}
-# Zend_Log_Formatter_Xml has hard dependency on dom
+Requires:	php(reflection)
+Suggests:	php(dom)
+# Zend_Log_Formatter_Xml requires dom
 
 %description Zend_Log
 Zend_Log is a component for general purpose logging. It supports
@@ -641,6 +682,7 @@ Summary:	Zend_Mail
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.mail.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(posix)
 
 %description Zend_Mail
 Zend_Mail provides generalized functionality to compose and send both
@@ -886,6 +928,8 @@ URL:		http://framework.zend.com/manual/1.12/en/zend.rest.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	php(ctype)
 Requires:	php(dom)
+Requires:	php(reflection)
+Requires:	php(simplexml)
 
 %description Zend_Rest
 REST Web Services use service-specific XML formats. These ad-hoc
@@ -904,6 +948,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	php(ctype)
 Requires:	php(dom)
 Requires:	php(iconv)
+Suggests:	php(bitset)
 
 %description Zend_Search_Lucene
 Zend_Search_Lucene is a general purpose text search engine. Since it
@@ -922,6 +967,13 @@ Summary:	Zend_Serializer
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.serializer.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(igbinary)
+Suggests:	php(json)
+Suggests:	php(simplexml)
+Suggests:	php(wddx)
+# Zend_Serializer_Adapter_Igbinary requires igbinary
+# Zend_Serializer_Adapter_Json soft depends on json
+# Zend_Serializer_Adapter_Wddx requires SimpleXML, wddx
 
 %description Zend_Serializer
 Zend_Serializer provides an adapter based interface to simply generate
@@ -944,6 +996,7 @@ Summary:	Zend_Server_Reflection
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.server.reflection.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(reflection)
 
 %description Zend_Server_Reflection
 Zend_Server_Reflection provides a standard mechanism for performing
@@ -1010,6 +1063,7 @@ Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.service.audioscrobbler.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	php(iconv)
+Requires:	php(simplexml)
 
 %description Zend_Service_Audioscrobbler
 Zend_Service_Audioscrobbler is a simple API for using the
@@ -1104,6 +1158,8 @@ Summary:	Zend_Service_ReCaptcha
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.service.recaptcha.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(mcrypt)
+# Zend_Service_ReCaptcha_MailHide requires mcrypt
 
 %description Zend_Service_ReCaptcha
 Zend_Service_ReCaptcha provides a client for the reCAPTCHA Web
@@ -1254,6 +1310,7 @@ Summary:	Zend_Session
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.session.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(session)
 
 %description Zend_Session
 Zend_Session helps manage and preserve session data across multiple
@@ -1268,6 +1325,8 @@ Summary:	Zend_Soap
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.soap.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(dom)
+Requires:	php(simplexml)
 
 %description Zend_Soap
 Zend_Soap component is intended to simplify Web Services development
@@ -1338,6 +1397,10 @@ Summary:	Zend_Translate
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.translate.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(xml)
+# Zend_Translate_Adapter_Qt requires xml
+# Zend_Translate_Adapter_Tmx requires xml
+# Zend_Translate_Adapter_Xliff requires xml
 
 %description Zend_Translate
 Zend_Translate is the Zend Framework's solution for multilingual
@@ -1381,6 +1444,7 @@ Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.validate.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	php(ctype)
+Requires:	php(reflection)
 
 %description Zend_Validate
 The Zend_Validate component provides a set of commonly needed
@@ -1403,6 +1467,7 @@ Summary:	Zend_View
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.view.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(reflection)
 
 %description Zend_View
 Zend_View is a class for working with the "view" portion of the
@@ -1439,6 +1504,8 @@ URL:		http://framework.zend.com/manual/1.12/en/zend.xmlrpc.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	php(dom)
 Requires:	php(iconv)
+Requires:	php(reflection)
+Requires:	php(simplexml)
 
 %description Zend_XmlRpc
 From its home page <http://www.xmlrpc.com/>, XML-RPC is described as a
