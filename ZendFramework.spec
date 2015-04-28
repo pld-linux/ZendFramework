@@ -1261,7 +1261,7 @@ you first need to create a new Technorati account
 %package Zend_Service_Twitter
 Summary:	Zend_Service_Twitter
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.technorati.html
+URL:		http://framework.zend.com/manual/1.12/en/zend.service.twitter.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Twitter
