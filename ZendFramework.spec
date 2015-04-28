@@ -523,18 +523,6 @@ supports:
 - cookies
 - proxy servers.
 
-%package Zend_InfoCard
-Summary:	Zend_InfoCard
-Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.infocard.html
-Requires:	%{name} = %{version}-%{release}
-
-%description Zend_InfoCard
-Zend_InfoCard component implements relying-party support for
-Information Cards. Infomation Cards are used for identity management
-on the internet and authentication of users to web sites (called
-relying parties).
-
 %package Zend_Json
 Summary:	Zend_Json
 Group:		Development/Languages/PHP
@@ -1101,30 +1089,6 @@ The family of Zend_Service_LiveDocx components provides a clean and
 simple interface to the LiveDocx API and additionally offers
 functionality to improve network performance.
 
-%package Zend_Service_Nirvanix
-Summary:	Zend_Service_Nirvanix
-Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.nirvanix.html
-Requires:	%{name} = %{version}-%{release}
-
-%description Zend_Service_Nirvanix
-Nirvanix provides an Internet Media File System (IMFS), an Internet
-storage service that allows applications to upload, store and organize
-files and subsequently access them using a standard Web Services
-interface. An IMFS is distributed clustered file system, accessed over
-the Internet, and optimized for dealing with media files (audio,
-video, etc). The goal of an IMFS is to provide massive scalability to
-deal with the challenges of media storage growth, with guaranteed
-access and availability regardless of time and location. Finally, an
-IMFS gives applications the ability to access data securely, without
-the large fixed costs associated with acquiring and maintaining
-physical storage assets.
-
-Before you can get started with Zend_Service_Nirvanix, you must first
-register for an account (https://www.nirvanix.com/signUpSingle.aspx).
-After registering, you will receive a Username, Password, and
-Application Key. All three are required to use Zend_Service_Nirvanix.
-
 %package Zend_Service_Rackspace
 Summary:	Zend_Service_Rackspace
 Group:		Development/Languages/PHP
@@ -1171,21 +1135,6 @@ share links.
 Zend_Service_ShortUrl provides an API for accessing a number of
 different URL shortener services, with the ability to both create
 short URLs as well as retrieve the original URL.
-
-%package Zend_Service_Simpy
-Summary:	Zend_Service_Simpy
-Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.simpy.html
-Requires:	%{name} = %{version}-%{release}
-Requires:	php(dom)
-
-%description Zend_Service_Simpy
-Zend_Service_Simpy is a lightweight wrapper for the free REST API
-available for the Simpy social bookmarking service.
-
-In order to use Zend_Service_Simpy, you should already have a Simpy
-account. To get an account, visit the Simpy web site
-(http://simpy.com/).
 
 %package Zend_Service_SlideShare
 Summary:	Zend_Service_SlideShare
@@ -1728,13 +1677,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Http
 
-%if 0
-%files Zend_InfoCard
-%defattr(644,root,root,755)
-%{php_pear_dir}/Zend/InfoCard
-%{php_pear_dir}/Zend/InfoCard.php
-%endif
-
 %files Zend_Json
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Json
@@ -1937,13 +1879,6 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Service/LiveDocx
 %{php_pear_dir}/Zend/Service/LiveDocx.php
 
-%if 0
-%files Zend_Service_Nirvanix
-%defattr(644,root,root,755)
-%{php_pear_dir}/Zend/Service/Nirvanix
-%{php_pear_dir}/Zend/Service/Nirvanix.php
-%endif
-
 %files Zend_Service_Rackspace
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Rackspace
@@ -1956,13 +1891,6 @@ rm -rf $RPM_BUILD_ROOT
 %files Zend_Service_ShortUrl
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/ShortUrl
-
-%if 0
-%files Zend_Service_Simpy
-%defattr(644,root,root,755)
-%{php_pear_dir}/Zend/Service/Simpy
-%{php_pear_dir}/Zend/Service/Simpy.php
-%endif
 
 %files Zend_Service_SlideShare
 %defattr(644,root,root,755)
