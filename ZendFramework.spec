@@ -276,7 +276,7 @@ wyświetlania.
 %package Zend_Crypt
 Summary:	Zend_Crypt
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.crypt.html
+#URL:		http://framework.zend.com/manual/1.12/en/zend.crypt.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Crypt
