@@ -62,3 +62,41 @@
              throw new Zend_Xml_Exception(
                  "The file $file specified doesn't exist"
              );
+--- ZendFramework-1.12.11/library/Zend/Loader/AutoloaderFactory.php~	2015-04-29 18:13:53.000000000 +0300
++++ ZendFramework-1.12.11/library/Zend/Loader/AutoloaderFactory.php	2015-04-29 18:20:50.748094112 +0300
+@@ -82,7 +82,7 @@
+         }
+ 
+         if (!is_array($options) && !($options instanceof Traversable)) {
+-            require_once 'Exception/InvalidArgumentException.php';
++            require_once 'Zend/Loader/Exception/InvalidArgumentException.php';
+             throw new Zend_Loader_Exception_InvalidArgumentException(
+                 'Options provided must be an array or Traversable'
+             );
+@@ -105,7 +105,7 @@
+                 // Autoload with standard autoloader
+                 $autoloader = self::getStandardAutoloader();
+                 if (!class_exists($class) && !$autoloader->autoload($class)) {
+-                    require_once 'Exception/InvalidArgumentException.php';
++                    require_once 'Zend/Loader/Exception/InvalidArgumentException.php';
+                     throw new Zend_Loader_Exception_InvalidArgumentException(sprintf(
+                         'Autoloader class "%s" not loaded', 
+                         $class
+@@ -116,7 +116,7 @@
+                 // additionally instanceof is also broken for this use case
+                 if (version_compare(PHP_VERSION, '5.3.7', '>=')) {
+                         if (!is_subclass_of($class, 'Zend_Loader_SplAutoloader')) {
+-                        require_once 'Exception/InvalidArgumentException.php';
++                        require_once 'Zend/Loader/Exception/InvalidArgumentException.php';
+                         throw new Zend_Loader_Exception_InvalidArgumentException(sprintf(
+                             'Autoloader class %s must implement Zend\\Loader\\SplAutoloader', 
+                             $class
+@@ -159,7 +159,7 @@
+     public static function getRegisteredAutoloader($class)
+     {
+         if (!isset(self::$loaders[$class])) {
+-            require_once 'Exception/InvalidArgumentException.php';
++            require_once 'Zend/Loader/Exception/InvalidArgumentException.php';
+             throw new Zend_Loader_Exception_InvalidArgumentException(sprintf('Autoloader class "%s" not loaded', $class));
+         }
+         return self::$loaders[$class];
