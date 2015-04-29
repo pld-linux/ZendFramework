@@ -9,6 +9,7 @@
 # - check Zend/Pdf/FileParser/Image/Jpeg.php and Zend/Pdf/FileParser/Image/Tiff.php
 #   presence in Zend/Pdf/Image.php after update [not implemented in 1.10.2)
 %define		php_min_version 5.2.11
+%include	/usr/lib/rpm/macros.php
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
@@ -25,6 +26,7 @@ Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
 URL:		http://framework.zend.com/manual/1.12/en/manual.html
 BuildRequires:	/usr/bin/php
+BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.654
 BuildRequires:	sed >= 4.0
 Requires:	php(core) >= %{php_min_version}
@@ -33,6 +35,9 @@ Requires:	rpm-whiteout >= 1.32
 Obsoletes:	ZendFramework-doc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# disable PEAR dependency solving in requirements, while we still do Provide them
+%define		_noautoreq_pear Zend/.*
 
 # exclude optional php dependencies
 %define		_noautophp	php-oci8 php-bitset
