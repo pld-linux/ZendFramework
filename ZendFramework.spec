@@ -1653,6 +1653,9 @@ Console (http://getfirebug.com/).
 Summary:	Zend_Xml
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
+Requires:	php(dom)
+Requires:	php(simplexml)
+Requires:	php(xml)
 
 %description Zend_Xml
 Zend_Xml.
