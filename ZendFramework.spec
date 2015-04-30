@@ -606,6 +606,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
 Requires:	%{name}-Zend_Server = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(reflection)
 Suggests:	php(json)
 
@@ -1648,6 +1649,14 @@ architecture. At this time the primary focus is to provide a system to
 allow server-side PHP code to inject logging messages into the Firebug
 Console (http://getfirebug.com/).
 
+%package Zend_Xml
+Summary:	Zend_Xml
+Group:		Development/Languages/PHP
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_Xml
+Zend_Xml.
+
 %package Zend_XmlRpc
 Summary:	Zend_XmlRpc
 Group:		Development/Languages/PHP
@@ -1656,6 +1665,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
 Requires:	%{name}-Zend_Server = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(dom)
 Requires:	php(iconv)
 Requires:	php(reflection)
@@ -2205,13 +2215,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Wildfire
 
+%files Zend_Xml
+%defattr(644,root,root,755)
+%{php_pear_dir}/Zend/Xml
+
 %files Zend_XmlRpc
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/XmlRpc
-
-%dir %{php_pear_dir}/Zend/Xml
-%{php_pear_dir}/Zend/Xml/Exception.php
-%{php_pear_dir}/Zend/Xml/Security.php
 
 %files demos
 %defattr(644,root,root,755)
