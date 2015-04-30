@@ -89,6 +89,7 @@ URL:		http://framework.zend.com/manual/1.12/en/zend.amf.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Server = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(dom)
 Suggests:	php(simplexml)
 
@@ -441,6 +442,7 @@ Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.dom.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(dom)
 
 %description Zend_Dom
@@ -479,6 +481,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
 Requires:	%{name}-Zend_Uri = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(dom)
 Requires:	php(mbstring)
 Requires:	php(simplexml)
@@ -564,6 +567,7 @@ Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
 Requires:	%{name}-Zend_Mime = %{version}-%{release}
 Requires:	%{name}-Zend_Version = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(ctype)
 Requires:	php(dom)
 
@@ -685,6 +689,7 @@ Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.locale.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(iconv)
 
 %description Zend_Locale
@@ -811,6 +816,7 @@ Summary:	Zend_Mobile_Push
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.mobile.push.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 
 %description Zend_Mobile_Push
 Zend_Mobile_Push provides the ability for sending push notifications
@@ -1002,6 +1008,7 @@ Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Server = %{version}-%{release}
 Requires:	%{name}-Zend_Service = %{version}-%{release}
 Requires:	%{name}-Zend_Uri = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(ctype)
 Requires:	php(dom)
 Requires:	php(reflection)
@@ -1022,6 +1029,7 @@ Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.search.lucene.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(ctype)
 Requires:	php(dom)
 Requires:	php(iconv)
@@ -1046,6 +1054,7 @@ URL:		http://framework.zend.com/manual/1.12/en/zend.serializer.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Suggests:	php(igbinary)
 Suggests:	php(json)
 Suggests:	php(simplexml)
@@ -1132,6 +1141,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
 Requires:	%{name}-Zend_Rest = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(dom)
 
 %description Zend_Service_Amazon
@@ -1151,6 +1161,7 @@ URL:		http://framework.zend.com/manual/1.12/en/zend.service.audioscrobbler.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(iconv)
 Requires:	php(simplexml)
 
@@ -1170,6 +1181,7 @@ Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
 Requires:	%{name}-Zend_Json = %{version}-%{release}
 Requires:	%{name}-Zend_Rest = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(dom)
 
 %description Zend_Service_Delicious
@@ -1198,6 +1210,7 @@ Summary:	Zend_Service_Ebay is a simple group of APIs for using eBay web services
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.service.ebay.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 
 %description Zend_Service_Ebay
 Zend_Service_Ebay is a simple group of APIs for using eBay web
@@ -1213,6 +1226,7 @@ URL:		http://framework.zend.com/manual/1.12/en/zend.service.delicious.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(dom)
 Requires:	php(iconv)
 
@@ -1299,6 +1313,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Cache = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 
 %description Zend_Service_SlideShare
 The Zend_Service_SlideShare component is used to interact with the
@@ -1315,6 +1330,7 @@ are needed in order to use the Zend_Service_SlideShare component.
 Summary:	Zend_Service_
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 
 %description Zend_Service_SqlAzure
 
@@ -1361,6 +1377,7 @@ Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
 Requires:	%{name}-Zend_Locale = %{version}-%{release}
 Requires:	%{name}-Zend_Uri = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 
 %description Zend_Service_Technorati
 Zend_Service_Technorati provides an easy, intuitive and
@@ -1397,6 +1414,7 @@ Summary:	Zend_Service_WindowsAzure
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.service.windowsazure.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 
 %description Zend_Service_WindowsAzure
 Windows Azure is the name for Microsoft’s Software + Services
@@ -1414,6 +1432,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
 Requires:	%{name}-Zend_Rest = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(dom)
 
 %description Zend_Service_Yahoo
@@ -1448,6 +1467,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Server = %{version}-%{release}
 Requires:	%{name}-Zend_Uri = %{version}-%{release}
+Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(dom)
 Requires:	php(simplexml)
 
