@@ -87,7 +87,10 @@ Summary(pl.UTF-8):	Zend_Amf - obsługa formatu AMF (Action Message Format)
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.amf.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Zend_Acl = %{version}-%{release}
+Requires:	%{name}-Zend_Auth = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
+Requires:	%{name}-Zend_Reflection = %{version}-%{release}
 Requires:	%{name}-Zend_Server = %{version}-%{release}
 Requires:	%{name}-Zend_Xml = %{version}-%{release}
 Requires:	php(dom)
@@ -112,6 +115,8 @@ Summary:	Zend_Application - bootstrap facility
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.amf.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Zend_Exception = %{version}-%{release}
+Requires:	%{name}-Zend_Loader = %{version}-%{release}
 Suggests:	php(date)
 
 %description Zend_Application
@@ -126,6 +131,7 @@ Summary(pl.UTF-8):	Zend_Auth - API do uwierzytelniania
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.auth.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Zend_Db = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	php(ctype)
 Suggests:	php(hash)
@@ -145,6 +151,8 @@ Summary(pl.UTF-8):	Zend_Barcode - generator kodów kreskowych
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.barcode.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Zend_Exception = %{version}-%{release}
+Requires:	%{name}-Zend_Validate = %{version}-%{release}
 
 %description Zend_Barcode
 Zend_Barcode provides a generic way to generate barcodes. The
@@ -222,6 +230,7 @@ Summary:	Zend_Cloud - SimpleCloud API
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.cloud.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
 %description Zend_Cloud
 SimpleCloud API
@@ -231,6 +240,7 @@ Summary:	Zend_CodeGenerator - generate arbitrary code using OO interface
 Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.codegenerator.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
 %description Zend_CodeGenerator
 Zend_CodeGenerator provides facilities to generate arbitrary code
@@ -305,6 +315,7 @@ Summary:	Zend_Crypt
 Group:		Development/Languages/PHP
 #URL:		http://framework.zend.com/manual/1.12/en/zend.crypt.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
 %description Zend_Crypt
 Zend_Crypt
@@ -1074,6 +1085,7 @@ Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/1.12/en/zend.server.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
+Requires:	php(spl)
 
 %description Zend_Server
 The Zend_Server family of classes provides functionality for the
