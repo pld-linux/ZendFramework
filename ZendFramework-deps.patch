@@ -33,17 +33,16 @@
 +class Zend_Service_Audioscrobbler_Exception extends Exception
 +{
 +}
---- ZendFramework-1.12.4/library/Zend/Xml/Security.php~	2014-05-19 22:41:57.000000000 +0300
-+++ ZendFramework-1.12.4/library/Zend/Xml/Security.php	2014-05-19 23:12:43.208009810 +0300
-@@ -39,7 +39,7 @@
-     protected static function heuristicScan($xml)
+--- ZendFramework-1.12.15/library/Zend/Xml/Security.php~	2015-08-17 14:18:52.000000000 +0300
++++ ZendFramework-1.12.15/library/Zend/Xml/Security.php	2015-08-17 14:19:42.795236199 +0300
+@@ -40,6 +40,7 @@
      {
-         if (strpos($xml, '<!ENTITY') !== false) {
--            require_once 'Exception.php';
-+            require_once 'Zend/Xml/Exception.php';
-             throw new Zend_Xml_Exception(self::ENTITY_DETECT);
+         foreach (self::getEntityComparison($xml) as $compare) {
+             if (strpos($xml, $compare) !== false) {
++                require_once 'Zend/Xml/Exception.php';
+                 throw new Zend_Xml_Exception(self::ENTITY_DETECT);
+             }
          }
-     }
 @@ -96,7 +96,7 @@
              foreach ($dom->childNodes as $child) {
                  if ($child->nodeType === XML_DOCUMENT_TYPE_NODE) {
