@@ -2173,10 +2173,12 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Service/StrikeIron
 %{php_pear_dir}/Zend/Service/StrikeIron.php
 
+%if 0
 %files Zend_Service_Technorati
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/Technorati
 %{php_pear_dir}/Zend/Service/Technorati.php
+%endif
 
 %files Zend_Service_Twitter
 %defattr(644,root,root,755)
