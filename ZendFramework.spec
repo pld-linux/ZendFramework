@@ -14,7 +14,7 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 Version:	1.12.15
-Release:	1
+Release:	2
 License:	New BSD License
 Group:		Development/Languages/PHP
 Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -2126,9 +2126,11 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/Zend/Service/Delicious
 %{php_pear_dir}/Zend/Service/Delicious.php
 
+%if 0
 %files Zend_Service_DeveloperGarden
 %defattr(644,root,root,755)
 %{php_pear_dir}/Zend/Service/DeveloperGarden
+%endif
 
 %files Zend_Service_Ebay
 %defattr(644,root,root,755)
