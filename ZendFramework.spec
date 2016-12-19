@@ -13,15 +13,16 @@
 Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
-Version:	1.12.18
+# 1.12 series EOL: https://framework.zend.com/blog/2016-06-28-zf1-eol.html
+Version:	1.12.19
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
-# Source0Download: http://framework.zend.com/downloads/latest#ZF1
-Source0:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	1daccfdf08e5b5bc9556e093a577b246
-Source1:	http://framework.zend.com/releases/%{name}-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	5808327b75666c246dc1e6e0f0596795
+# Source0Download: https://framework.zend.com/downloads/archives#ZF1
+Source0:	https://packages.zendframework.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
+# Source0-md5:	e4747cc32c1b0c1352f6ddf3813afd89
+Source1:	https://packages.zendframework.com/releases/ZendFramework-%{version}/%{name}-%{version}-manual-en.tar.gz
+# Source1-md5:	26aaf65cbcc757ac478e65ad74aa8f97
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
@@ -1430,7 +1431,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Xml = %{version}-%{release}
 
 %description Zend_Service_WindowsAzure
-Windows Azure is the name for Microsoft’s Software + Services
+Windows Azure is the name for Microsoft's Software + Services
 platform, an operating system in the cloud providing services for
 hosting, management, scalable storage with support for simple blobs,
 tables, and queues, as well as a management infrastructure for
