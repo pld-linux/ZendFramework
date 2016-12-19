@@ -14,15 +14,15 @@ Summary:	Zend Framework
 Summary(pl.UTF-8):	Szkielet Zend
 Name:		ZendFramework
 # 1.12 series EOL: https://framework.zend.com/blog/2016-06-28-zf1-eol.html
-Version:	1.12.19
+Version:	1.12.20
 Release:	1
 License:	New BSD License
 Group:		Development/Languages/PHP
 # Source0Download: https://framework.zend.com/downloads/archives#ZF1
 Source0:	https://packages.zendframework.com/releases/%{name}-%{version}/ZendFramework-%{version}.tar.gz
-# Source0-md5:	e4747cc32c1b0c1352f6ddf3813afd89
+# Source0-md5:	2f242859c42ae5d919aaf2669c9c7c94
 Source1:	https://packages.zendframework.com/releases/ZendFramework-%{version}/%{name}-%{version}-manual-en.tar.gz
-# Source1-md5:	26aaf65cbcc757ac478e65ad74aa8f97
+# Source1-md5:	b3691da3fc83d16629d23e76c9887c2e
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
