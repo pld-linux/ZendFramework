@@ -1,6 +1,6 @@
 # NOTE
 # - dependencies are filled according to official doc:
-#   http://framework.zend.com/manual/1.12/en/requirements.introduction.html
+#   https://framework.zend.com/manual/1.12/en/requirements.introduction.html
 #
 # Conditional build:
 %bcond_without	tests	# do not perform "make test"
@@ -25,7 +25,7 @@ Source1:	https://packages.zendframework.com/releases/ZendFramework-%{version}/%{
 Source2:	%{name}-find-lang.sh
 Patch0:		%{name}-additional-locales.patch
 Patch1:		%{name}-deps.patch
-URL:		http://framework.zend.com/manual/1.12/en/manual.html
+URL:		https://framework.zend.com/manual/1.12/en/manual.html
 BuildRequires:	/usr/bin/php
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.654
@@ -66,7 +66,7 @@ nowoczesnych, bogatych i bezpiecznych serwisów WWW.
 Summary:	Zend_Acl - ACL functionality and privileges management
 Summary(pl.UTF-8):	Zend_Acl - listy kontroli dostępu i zarządzanie uprawnieniami
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.acl.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.acl.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
@@ -86,7 +86,7 @@ chronionych obiektów przez inne obiekty.
 Summary:	Zend_Amf - Action Message Format support
 Summary(pl.UTF-8):	Zend_Amf - obsługa formatu AMF (Action Message Format)
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.amf.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.amf.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Acl = %{version}-%{release}
 Requires:	%{name}-Zend_Auth = %{version}-%{release}
@@ -114,7 +114,7 @@ obiekty i metody klas oraz wywołania zwrotne.
 %package Zend_Application
 Summary:	Zend_Application - bootstrap facility
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.amf.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.amf.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
@@ -130,7 +130,7 @@ PHP environment and introduces autoloading by default.
 Summary:	Zend_Auth - authentication API
 Summary(pl.UTF-8):	Zend_Auth - API do uwierzytelniania
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.auth.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.auth.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Db = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
@@ -150,7 +150,7 @@ adaptery do uwierzytelniania w popularnych przypadkach użycia.
 Summary:	Zend_Barcode - barcode generator
 Summary(pl.UTF-8):	Zend_Barcode - generator kodów kreskowych
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.barcode.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.barcode.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Validate = %{version}-%{release}
@@ -172,7 +172,7 @@ renderera, renderer na rysowanie kodów na podstawie obiektu.
 Summary:	Zend_Cache - data caching
 Summary(pl.UTF-8):	Zend_Cache - pamięć podręczna dla danych
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.cache.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.cache.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	php(apc)
 Suggests:	php(memcache)
@@ -195,7 +195,7 @@ oznaczania, modyfikowania, iterowania i usuwania podzbiorów.
 Summary:	Zend_Captcha - CAPTCHA functionality
 Summary(pl.UTF-8):	Zend_Captcha - funkcjonalność CAPTCHA
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.captcha.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.captcha.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Service_ReCaptcha = %{version}-%{release}
@@ -229,7 +229,7 @@ i w połączeniu z Zend_Form.
 %package Zend_Cloud
 Summary:	Zend_Cloud - SimpleCloud API
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.cloud.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.cloud.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
@@ -239,7 +239,7 @@ SimpleCloud API
 %package Zend_CodeGenerator
 Summary:	Zend_CodeGenerator - generate arbitrary code using OO interface
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.codegenerator.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.codegenerator.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
@@ -255,7 +255,7 @@ files, apache vhosts, etc.
 Summary:	Zend_Config - access to configuration data
 Summary(pl.UTF-8):	Zend_Config - dostęp do danych konfiguracyjnych
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.config.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.config.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Suggests:	php(simplexml)
@@ -273,7 +273,7 @@ konfiguracyjnych w aplikacjach.
 Summary:	Zend_Console_Getopt - parsing command-line options and arguments
 Summary(pl.UTF-8):	Zend_Console_Getopt - analiza opcji i argumentów linii poleceń
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.console.getopt.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.console.getopt.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
@@ -289,7 +289,7 @@ opcji i argumentów.
 Summary:	Zend_Controller - heart of Model-View-Controller system
 Summary(pl.UTF-8):	Zend_Controller - podstawa systemu Model-View-Controller
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.controller.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.controller.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Config = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
@@ -314,7 +314,7 @@ wyświetlania.
 %package Zend_Crypt
 Summary:	Zend_Crypt
 Group:		Development/Languages/PHP
-#URL:		http://framework.zend.com/manual/1.12/en/zend.crypt.html
+#URL:		https://framework.zend.com/manual/1.12/en/zend.crypt.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
@@ -325,7 +325,7 @@ Zend_Crypt
 Summary:	Zend_Currency - currency representation handling
 Summary(pl.UTF-8):	Zend_Currency - obsługa reprezentacji walut
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.currency.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.currency.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Locale = %{version}-%{release}
@@ -349,7 +349,7 @@ są używane itp.
 Summary:	Zend_Date - manipulating dates and times
 Summary(pl.UTF-8):	Zend_Date - operacje na dacie i czasie
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.date.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.date.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Locale = %{version}-%{release}
@@ -370,7 +370,7 @@ obróbki daty istniejące w PHP.
 %package Zend_Db
 Summary:	Zend_Db
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.db.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.db.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
@@ -417,7 +417,7 @@ database extensions for the following RDBMS brands:
 %package Zend_Debug
 Summary:	Zend_Debug
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.debug.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.debug.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Debug
@@ -430,7 +430,7 @@ environment.
 %package Zend_Dojo
 Summary:	Zend_Dojo
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.dojo.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.dojo.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Form = %{version}-%{release}
@@ -451,7 +451,7 @@ Integration points with Dojo include:
 %package Zend_Dom
 Summary:	Zend_Dom
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.dom.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.dom.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Xml = %{version}-%{release}
@@ -465,7 +465,7 @@ for querying DOM documents utilizing both XPath and CSS selectors.
 %package Zend_Exception
 Summary:	Zend_Exception
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.exception.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.exception.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Exception
@@ -476,7 +476,7 @@ base class Zend_Exception.
 %package Zend_EventManager
 Summary:	Zend_EventManager
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.event-manager.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.event-manager.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_EventManager
@@ -488,7 +488,7 @@ Zend_EventManager is a component designed for the following use cases:
 %package Zend_Feed
 Summary:	Zend_Feed
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.feed.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.feed.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
@@ -509,7 +509,7 @@ support could provide support for the Atom Publishing Protocol.
 %package Zend_File
 Summary:	Zend_File
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.file.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.file.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Suggests:	php(apc)
@@ -525,7 +525,7 @@ more.
 %package Zend_Filter
 Summary:	Zend_Filter
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.filter.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.filter.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
@@ -542,7 +542,7 @@ filters may be applied to a single datum in a user-defined order.
 %package Zend_Filter_Input
 Summary:	Zend_Filter_Input
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.filter.input.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.filter.input.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Filter_Input
@@ -555,7 +555,7 @@ default for safe HTML output.
 %package Zend_Form
 Summary:	Zend_Form
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.form.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.form.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Filter = %{version}-%{release}
@@ -573,7 +573,7 @@ application. It accomplishes the following goals:
 %package Zend_Gdata
 Summary:	Zend_Gdata
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.gdata.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.gdata.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
@@ -596,7 +596,7 @@ Publishing Protocol.
 %package Zend_Http
 Summary:	Zend_Http
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.http.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.http.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
@@ -617,7 +617,7 @@ supports:
 %package Zend_Json
 Summary:	Zend_Json
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.json.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.json.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
@@ -648,7 +648,7 @@ processing techniques.
 %package Zend_Layout
 Summary:	Zend_Layout
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.layout.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.layout.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
@@ -674,7 +674,7 @@ The main goals of Zend_Layout are as follows:
 %package Zend_Ldap
 Summary:	Zend_Ldap
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.ldap.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.ldap.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	php(ldap)
@@ -687,7 +687,7 @@ directory.
 %package Zend_Loader
 Summary:	Zend_Loader
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.loader.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.loader.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
@@ -698,7 +698,7 @@ dynamically.
 %package Zend_Locale
 Summary:	Zend_Locale
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.locale.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.locale.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Xml = %{version}-%{release}
@@ -716,7 +716,7 @@ the foundation of Zend_Date, Zend_Translate, and others. It provides:
 %package Zend_Log
 Summary:	Zend_Log
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.log.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.log.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	php(reflection)
@@ -745,7 +745,7 @@ the following objects:
 %package Zend_Mail
 Summary:	Zend_Mail
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.mail.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.mail.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
@@ -762,7 +762,7 @@ or via Zend_Mail_Transport_Smtp.
 %package Zend_Markup
 Summary:	Zend_Markup
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.markup.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.markup.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Markup
@@ -780,7 +780,7 @@ use for the renderer can be specified.
 %package Zend_Measure
 Summary:	Zend_Measure
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.measure.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.measure.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Locale = %{version}-%{release}
@@ -797,7 +797,7 @@ automatically extracted. Numerous units of measurement are supported.
 %package Zend_Memory
 Summary:	Zend_Memory
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.memory.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.memory.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Cache = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
@@ -815,7 +815,7 @@ limit you need to enforce.
 %package Zend_Mime
 Summary:	Zend_Mime
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.mime.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.mime.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	php(iconv)
@@ -826,7 +826,7 @@ Zend_Mime is a support class for handling multipart MIME messages.
 %package Zend_Mobile_Push
 Summary:	Zend_Mobile_Push
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.mobile.push.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.mobile.push.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Xml = %{version}-%{release}
 
@@ -839,7 +839,7 @@ includes APNS (iTouch/iPad/iPhone), GCM (Google Android) and MPNS
 %package Zend_Navigation
 Summary:	Zend_Navigation - manage trees of pointers to web page
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.navigation.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.navigation.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Navigation
@@ -851,7 +851,7 @@ purposes.
 %package Zend_Oauth
 Summary:	Zend_Oauth
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.oauth.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.oauth.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Oauth
@@ -869,7 +869,7 @@ authorization process
 %package Zend_OpenId
 Summary:	Zend_OpenId
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.openid.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.openid.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Controller = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
@@ -887,7 +887,7 @@ for building OpenID-enabled sites and identity providers.
 %package Zend_Paginator
 Summary:	Zend_Paginator
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.paginator.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.paginator.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Json = %{version}-%{release}
@@ -909,7 +909,7 @@ The primary design goals of Zend_Paginator are as follows:
 %package Zend_Pdf
 Summary:	Zend_Pdf
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.pdf.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.pdf.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Log = %{version}-%{release}
@@ -944,7 +944,7 @@ Zend_Pdf module supports the following features:
 %package Zend_ProgressBar
 Summary:	Zend_ProgressBar
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.progressbar.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.progressbar.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Config = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
@@ -961,7 +961,7 @@ estimated time left.
 %package Zend_Queue
 Summary:	Zend_Queue
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.progressbar.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.progressbar.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Queue
@@ -975,7 +975,7 @@ number), submitting messages to a queue, and removing queues.
 %package Zend_Reflection
 Summary:	Zend_Reflection
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.reflection.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.reflection.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Reflection
@@ -1001,7 +1001,7 @@ not defined in the Reflection API.
 %package Zend_Registry
 Summary:	Zend_Registry
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.registry.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.registry.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
@@ -1014,7 +1014,7 @@ is an alternative to using global storage.
 %package Zend_Rest
 Summary:	Zend_Rest
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.rest.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.rest.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Server = %{version}-%{release}
@@ -1038,7 +1038,7 @@ data for sending data. Zend_Rest component provides:
 %package Zend_Search_Lucene
 Summary:	Zend_Search_Lucene
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.search.lucene.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.search.lucene.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Xml = %{version}-%{release}
@@ -1062,7 +1062,7 @@ Zend_Search_Lucene supports the following features:
 %package Zend_Serializer
 Summary:	Zend_Serializer
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.serializer.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.serializer.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
@@ -1083,7 +1083,7 @@ recover.
 %package Zend_Server
 Summary:	Zend_Server
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.server.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.server.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	php(spl)
@@ -1096,7 +1096,7 @@ Zend_Rest_Server, Zend_Json_Server and Zend_Soap_Wsdl.
 %package Zend_Server_Reflection
 Summary:	Zend_Server_Reflection
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.server.reflection.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.server.reflection.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	php(reflection)
 
@@ -1111,7 +1111,7 @@ calling combinations), and function/method descriptions.
 %package Zend_Service
 Summary:	Zend_Service
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service
@@ -1121,7 +1121,7 @@ service implementations, such as SOAP or REST.
 %package Zend_Service_Akismet
 Summary:	Zend_Service_Akismet
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.akismet.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.akismet.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
@@ -1149,7 +1149,7 @@ specifying a 'blog' key in the various method calls.
 %package Zend_Service_Amazon
 Summary:	Zend_Service_Amazon
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.amazon.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.amazon.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
@@ -1170,7 +1170,7 @@ Web Services API.
 %package Zend_Service_Audioscrobbler
 Summary:	Zend_Service_Audioscrobbler
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.audioscrobbler.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.audioscrobbler.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
@@ -1187,7 +1187,7 @@ Tags, Groups, and Forums.
 %package Zend_Service_Delicious
 Summary:	Zend_Service_Delicious
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.delicious.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.delicious.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Date = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
@@ -1206,7 +1206,7 @@ access to public data of all users.
 %package Zend_Service_DeveloperGarden
 Summary:	Zend_Service_DeveloperGarden
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.developergarden.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.developergarden.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_DeveloperGarden
@@ -1221,7 +1221,7 @@ offers functionality to improve handling and performance
 %package Zend_Service_Ebay
 Summary:	Zend_Service_Ebay is a simple group of APIs for using eBay web services
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.ebay.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.ebay.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Xml = %{version}-%{release}
 
@@ -1235,7 +1235,7 @@ Zend_Service_Ebay implements the eBay APIs:
 %package Zend_Service_Flickr
 Summary:	Zend_Service_Flickr
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.delicious.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.delicious.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
@@ -1247,12 +1247,12 @@ Requires:	php(iconv)
 Zend_Service_Flickr is a simple API for using the Flickr REST Web
 Service. In order to use the Flickr web services, you must have an API
 key. To obtain a key, visit the Flickr API Documentation
-<http://www.flickr.com/services/api/>.
+<https://www.flickr.com/services/api/>.
 
 %package Zend_Service_LiveDocx
 Summary:	Zend_Service_LiveDocx
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.livedocx.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.livedocx.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_LiveDocx
@@ -1269,7 +1269,7 @@ functionality to improve network performance.
 %package Zend_Service_Rackspace
 Summary:	Zend_Service_Rackspace
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.rackspace.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.rackspace.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_Rackspace
@@ -1279,7 +1279,7 @@ manage the Rackspace services Cloud Files and Cloud Servers.
 %package Zend_Service_ReCaptcha
 Summary:	Zend_Service_ReCaptcha
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.recaptcha.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.recaptcha.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
@@ -1306,7 +1306,7 @@ keys.
 %package Zend_Service_ShortUrl
 Summary:	Zend_Service_ShortUrl
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.short-url.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.short-url.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Service_ShortUrl
@@ -1321,7 +1321,7 @@ short URLs as well as retrieve the original URL.
 %package Zend_Service_SlideShare
 Summary:	Zend_Service_SlideShare
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.slideshare.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.slideshare.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Cache = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
@@ -1350,7 +1350,7 @@ Requires:	%{name}-Zend_Xml = %{version}-%{release}
 %package Zend_Service_StrikeIron
 Summary:	Zend_Service_StrikeIron
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.strikeiron.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.strikeiron.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
@@ -1383,7 +1383,7 @@ website.
 %package Zend_Service_Technorati
 Summary:	Zend_Service_Technorati
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.technorati.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.technorati.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Date = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
@@ -1406,7 +1406,7 @@ you first need to create a new Technorati account
 %package Zend_Service_Twitter
 Summary:	Zend_Service_Twitter
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.twitter.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.twitter.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Feed = %{version}-%{release}
@@ -1425,7 +1425,7 @@ friends, mark tweets as favorite and much more.
 %package Zend_Service_WindowsAzure
 Summary:	Zend_Service_WindowsAzure
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.windowsazure.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.windowsazure.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Xml = %{version}-%{release}
 
@@ -1440,7 +1440,7 @@ development platform for the Azure Services layer.
 %package Zend_Service_Yahoo
 Summary:	Zend_Service_Yahoo
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.service.yahoo.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.service.yahoo.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
@@ -1459,7 +1459,7 @@ Form (http://developer.yahoo.com/wsregapp/).
 %package Zend_Session
 Summary:	Zend_Session
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.session.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.session.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	php(session)
@@ -1475,7 +1475,7 @@ page requests by the same client. Zend_Session component:
 %package Zend_Soap
 Summary:	Zend_Soap
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.soap.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.soap.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Server = %{version}-%{release}
@@ -1491,7 +1491,7 @@ for PHP programmers.
 %package Zend_Tag
 Summary:	Zend_Tag -- work with taggable Items
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.tag.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.tag.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Tag
@@ -1504,7 +1504,7 @@ models as a taggable item in conjunction with Zend_Tag.
 %package Zend_Text
 Summary:	Zend_Text
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.text.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.text.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 
@@ -1517,7 +1517,7 @@ Font).
 %package Zend_Test
 Summary:	Zend_Test
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.test.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.test.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Controller = %{version}-%{release}
 Requires:	%{name}-Zend_Dom = %{version}-%{release}
@@ -1533,7 +1533,7 @@ Framework applications.
 %package Zend_TimeSync
 Summary:	Zend_TimeSync
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.timesync.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.timesync.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Date = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
@@ -1548,7 +1548,7 @@ server where it is running.
 %package Zend_Tool
 Summary:	Zend_Tool
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/wiki/display/ZFDEV/Zend_Tool
+URL:		https://framework.zend.com/wiki/display/ZFDEV/Zend_Tool
 Requires:	%{name} = %{version}-%{release}
 Requires:	/usr/bin/php
 
@@ -1561,7 +1561,7 @@ Please note that this component is part of Zend Framework incubator.
 %package Zend_Translate
 Summary:	Zend_Translate
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.translate.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.translate.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
@@ -1597,7 +1597,7 @@ The benefits of Zend_Translate are:
 %package Zend_Uri
 Summary:	Zend_Uri
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.uri.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.uri.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
@@ -1614,7 +1614,7 @@ as a standalone utility.
 %package Zend_Validate
 Summary:	Zend_Validate
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.validate.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.validate.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Loader = %{version}-%{release}
@@ -1631,7 +1631,7 @@ user-defined order.
 %package Zend_Version
 Summary:	Zend_Version
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.version.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.version.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Zend_Version
@@ -1641,7 +1641,7 @@ Framework.
 %package Zend_View
 Summary:	Zend_View
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.view.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.view.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Controller = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
@@ -1666,7 +1666,7 @@ handing control over the view script, which generates the view output.
 %package Zend_Wildfire
 Summary:	Zend_Wildfire
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.wildfire.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.wildfire.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Controller = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
@@ -1696,7 +1696,7 @@ Zend_Xml.
 %package Zend_XmlRpc
 Summary:	Zend_XmlRpc
 Group:		Development/Languages/PHP
-URL:		http://framework.zend.com/manual/1.12/en/zend.xmlrpc.html
+URL:		https://framework.zend.com/manual/1.12/en/zend.xmlrpc.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Zend_Exception = %{version}-%{release}
 Requires:	%{name}-Zend_Http = %{version}-%{release}
