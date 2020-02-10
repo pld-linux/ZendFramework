@@ -522,6 +522,21 @@ filters. Zend_File_Transfer works with adapters which allow to use the
 same API for different transport protocols like HTTP, FTP, WEBDAV and
 more.
 
+%package Zend_File_Transfer
+Summary:	Zend_File_Transfer
+Group:		Development/Languages/PHP
+URL:		https://framework.zend.com/manual/1.12/en/zend.file.transfer.introduction.html
+Requires:	%{name} = %{version}-%{release}
+
+%description Zend_File_Transfer
+Zend_File_Transfer provides extensive support for file uploads and
+downloads.
+
+It comes with built-in validators for files plus functionality to
+change files with filters. Protocol adapters allow Zend_File_Transfer
+to expose the same API for transport protocols like HTTP, FTP, WEBDAV
+and more.
+
 %package Zend_Filter
 Summary:	Zend_Filter
 Group:		Development/Languages/PHP
@@ -1917,7 +1932,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Zend_File
 %defattr(644,root,root,755)
-%{php_pear_dir}/Zend/File
+%dir %{php_pear_dir}/Zend/File
+%{php_pear_dir}/Zend/File/ClassFileLocator.php
+%{php_pear_dir}/Zend/File/PhpClassFile.php
+
+%files Zend_File_Transfer
+%defattr(644,root,root,755)
+# XXX dir shared with Zend_File
+%dir %{php_pear_dir}/Zend/File
+%{php_pear_dir}/Zend/File/Transfer.php
+%{php_pear_dir}/Zend/File/Transfer
 
 %files Zend_Filter
 %defattr(644,root,root,755)
