@@ -1770,7 +1770,7 @@ find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 %if %{with tests}
 lint_php() {
 	for a in $(find library -name '*.php'); do
-		php -n -l $a
+		%{__php} -n -l $a
 	done
 }
 lint_php
